@@ -1,0 +1,13 @@
+{
+    "model_provider": "openrouter",
+    "model_id": "meta-llama/llama-3.3-70b-instruct:free",
+    "api_keys_folder": "config",
+    "index_path": "cancer_index_store",
+    "dataset_path": "breast_cancer.json",
+    "similarity_top_k": 5,
+    "temperature": 0.2,
+    "max_tokens": 350,
+    "combine_sources": true,
+    "fallback_message": "Sorry, I don't know the answer.",
+    "strict_breast_cancer_only": true
+}
