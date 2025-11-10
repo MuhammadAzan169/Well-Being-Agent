@@ -15,7 +15,7 @@ from Agent import load_index, BreastCancerRAGSystem, config
 
 app = FastAPI(title="Well Being Agent - Breast Cancer Support")
 
-# Mount static files - ADD THIS SECTION
+# Mount static files from current directory
 app.mount("/static", StaticFiles(directory="."), name="static")
 
 # Global RAG system instance
@@ -51,12 +51,12 @@ async def startup_event():
 async def serve_frontend():
     return FileResponse('index.html')
 
-# Serve CSS file explicitly - ADD THIS
+# Serve CSS file explicitly
 @app.get("/styles.css")
 async def serve_css():
     return FileResponse('styles.css', media_type='text/css')
 
-# Serve JS file explicitly - ADD THIS  
+# Serve JS file explicitly
 @app.get("/script.js")
 async def serve_js():
     return FileResponse('script.js', media_type='application/javascript')
