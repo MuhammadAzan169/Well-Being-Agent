@@ -1,0 +1,27 @@
+Your Index Structure:
+
+    Your cancer_index_store folder now contains:
+
+    docstore.json - Document storage
+
+    graph_store.json - Relationship graphs
+
+    image__vector_store.json - Vector embeddings
+
+    index_store.json - Main index data
+
+
+model_provider → tells your system which API you’re using (OpenRouter).
+
+model_id → specific LLM model.
+✅ You chose LLaMA 3.1 70B Instruct (free) → best open free option for medical Q&A and reasoning.
+
+api_keys_folder → tells your script where to read your key from.
+
+similarity_top_k → retrieves the top 5 most similar answers from your LlamaIndex.
+
+combine_sources: true → combines the LLM’s reasoning + your cancer database info.
+
+strict_breast_cancer_only: true → ensures it never drifts into unrelated topics.
+
+fallback_message → message shown when both sources fail.
