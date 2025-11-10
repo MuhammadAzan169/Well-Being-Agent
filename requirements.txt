@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+requests
+llama-index
+sentence-transformers

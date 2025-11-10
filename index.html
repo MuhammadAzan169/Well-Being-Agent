@@ -1,0 +1,192 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well Being Agent - Breast Cancer Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-element el-1"></div>
+        <div class="floating-element el-2"></div>
+        <div class="floating-element el-3"></div>
+        <div class="floating-element el-4"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h1 class="title">Well Being Agent</h1>
+                </div>
+                <p class="subtitle">Breast Cancer Support System</p>
+                <p class="compassion-message">Providing compassionate, evidence-based support for breast cancer patients and their families</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Quick Questions Section -->
+            <aside class="quick-questions">
+                <div class="section-header">
+                    <h2 class="section-title">Quick Questions</h2>
+                    <div class="decoration-line"></div>
+                </div>
+                <div class="questions-grid">
+                    <button class="question-card" data-question="What is a mastectomy?">
+                        <div class="card-icon">
+                            <i class="fas fa-procedures"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Mastectomy</h3>
+                            <p>Understanding surgical procedures</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </button>
+
+                    <button class="question-card" data-question="What are the fertility options after chemotherapy?">
+                        <div class="card-icon">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Fertility After Treatment</h3>
+                            <p>Family planning considerations</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </button>
+
+                    <button class="question-card" data-question="What are the typical recovery timelines for breast cancer patients?">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Recovery Timelines</h3>
+                            <p>What to expect during healing</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </button>
+
+                    <button class="question-card" data-question="Can I breastfeed after breast cancer treatment?">
+                        <div class="card-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Breastfeeding After Treatment</h3>
+                            <p>Lactation considerations</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </button>
+
+                    <button class="question-card" data-question="What are the side effects of chemotherapy?">
+                        <div class="card-icon">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Chemotherapy Effects</h3>
+                            <p>Managing treatment side effects</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </button>
+
+                    <button class="question-card" data-question="How does radiation therapy work for breast cancer?">
+                        <div class="card-icon">
+                            <i class="fas fa-radiation"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Radiation Therapy</h3>
+                            <p>Understanding treatment process</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Chat Section -->
+            <section class="chat-section">
+                <div class="chat-container">
+                    <!-- Chat Header -->
+                    <div class="chat-header">
+                        <div class="chat-profile">
+                            <div class="profile-avatar">
+                                <i class="fas fa-robot"></i>
+                                <div class="online-indicator"></div>
+                            </div>
+                            <div class="profile-info">
+                                <h3>Well Being Assistant</h3>
+                                <p>Always here to support you</p>
+                            </div>
+                        </div>
+                        <div class="chat-stats">
+                            <div class="stat">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Available</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Messages -->
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message system-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <p>Hello! I'm your Well Being Agent. I'm here to provide supportive, evidence-based information about breast cancer. How can I help you today?</p>
+                                <span class="message-time">Just now</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Typing Indicator -->
+                    <div class="typing-indicator" id="typingIndicator">
+                        <div class="typing-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <p>Thinking of the best way to help you...</p>
+                    </div>
+
+                    <!-- Chat Input -->
+                    <div class="chat-input-container">
+                        <div class="input-wrapper">
+                            <input type="text" id="userInput" placeholder="Ask about breast cancer support, treatment options, or recovery...">
+                            <button id="sendButton" class="send-button">
+                                <i class="fas fa-paper-plane"></i>
+                                <span class="button-text">Send</span>
+                            </button>
+                        </div>
+                        <div class="input-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>You can ask about symptoms, treatments, recovery, or emotional support</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
