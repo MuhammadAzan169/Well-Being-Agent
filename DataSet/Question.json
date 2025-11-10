@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "category": "Symptoms",
+    "question": "What are the earliest warning signs of breast cancer?"
+  },
+  {
+    "id": 2,
+    "category": "Symptoms",
+    "question": "Does breast pain always mean I have breast cancer?"
+  },
+  {
+    "id": 3,
+    "category": "Diagnosis",
+    "question": "How is breast cancer diagnosed through mammograms and biopsies?"
+  },
+  {
+    "id": 4,
+    "category": "Diagnosis",
+    "question": "Can breast cancer be detected without a lump?"
+  },
+  {
+    "id": 5,
+    "category": "Treatment",
+    "question": "What are the common side effects of chemotherapy for breast cancer?"
+  },
+  {
+    "id": 6,
+    "category": "Treatment",
+    "question": "Is radiation therapy painful for breast cancer patients?"
+  },
+  {
+    "id": 7,
+    "category": "Fertility & Pregnancy",
+    "question": "Can I get pregnant after completing breast cancer treatment?"
+  },
+  {
+    "id": 8,
+    "category": "Fertility & Pregnancy",
+    "question": "Is it safe to undergo IVF after breast cancer?"
+  },
+  {
+    "id": 9,
+    "category": "Lactation",
+    "question": "Can I breastfeed after having breast cancer surgery?"
+  },
+  {
+    "id": 10,
+    "category": "Lactation",
+    "question": "Does breastfeeding reduce the risk of developing breast cancer?"
+  },
+  {
+    "id": 11,
+    "category": "Recovery",
+    "question": "What type of exercises help after breast surgery for faster recovery?"
+  },
+  {
+    "id": 12,
+    "category": "Recovery",
+    "question": "How long does it take to recover fully after mastectomy?"
+  },
+  {
+    "id": 13,
+    "category": "Lifestyle",
+    "question": "What foods should I eat or avoid during breast cancer treatment?"
+  },
+  {
+    "id": 14,
+    "category": "Lifestyle",
+    "question": "Does regular exercise reduce the risk of breast cancer recurrence?"
+  },
+  {
+    "id": 15,
+    "category": "Emotional Support",
+    "question": "How can I manage anxiety and fear after a breast cancer diagnosis?"
+  },
+  {
+    "id": 16,
+    "category": "Emotional Support",
+    "question": "What support groups or counseling options are helpful for breast cancer survivors?"
+  },
+  {
+    "id": 17,
+    "category": "Post-Treatment",
+    "question": "What follow-up tests are recommended after completing breast cancer treatment?"
+  },
+  {
+    "id": 18,
+    "category": "Post-Treatment",
+    "question": "Can breast cancer come back after successful treatment?"
+  },
+  {
+    "id": 19,
+    "category": "Long-Term Health",
+    "question": "How can I strengthen my immune system after breast cancer treatment?"
+  },
+  {
+    "id": 20,
+    "category": "Long-Term Health",
+    "question": "Are there any long-term side effects of breast cancer medication?"
+  }
+]
