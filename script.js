@@ -204,7 +204,11 @@ async function sendMessage() {
         hideTypingIndicator();
 
         if (data.status === 'success') {
+<<<<<<< HEAD
             addMessageToChat(data.answer, 'system', data.language, data.sources || []);
+=======
+            addMessageToChat(data.answer, 'system', data.language);
+>>>>>>> a94e781ef00522de046b38098b30cce04a40e325
             updateMessageCount();
         } else {
             addMessageToChat("I'm having trouble processing your request. Please try again.", 'system', 'english');
@@ -281,7 +285,11 @@ function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+<<<<<<< HEAD
 function addMessageToChat(message, sender, language = 'english', sources = []) {
+=======
+function addMessageToChat(message, sender, language = 'english') {
+>>>>>>> a94e781ef00522de046b38098b30cce04a40e325
     // Clean Urdu text before displaying
     if (language === 'urdu') {
         message = cleanUrduText(message);
@@ -295,6 +303,7 @@ function addMessageToChat(message, sender, language = 'english', sources = []) {
     
     const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const avatarIcon = sender === 'user' ? 'fas fa-user' : 'fas fa-robot';
+<<<<<<< HEAD
     
     // Build sources/citations HTML for bot messages
     let sourcesHtml = '';
@@ -308,6 +317,8 @@ function addMessageToChat(message, sender, language = 'english', sources = []) {
         }).join('');
         sourcesHtml = `<div class="sources-container"><div class="sources-label"><i class="fas fa-book-medical"></i> Sources</div><div class="sources-list">${sourceItems}</div></div>`;
     }
+=======
+>>>>>>> a94e781ef00522de046b38098b30cce04a40e325
     
     messageDiv.innerHTML = `
         <div class="message-avatar">

@@ -490,6 +490,7 @@ body {
     display: inline-block !important;
 }
 
+<<<<<<< HEAD
 /* === Source Citations === */
 .sources-container {
     margin-top: 10px;
@@ -562,6 +563,8 @@ body {
     direction: rtl;
 }
 
+=======
+>>>>>>> a94e781ef00522de046b38098b30cce04a40e325
 /* Enhanced Text Rendering for Urdu */
 .urdu-text,
 [lang="ur"],

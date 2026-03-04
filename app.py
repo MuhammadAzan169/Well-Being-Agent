@@ -31,6 +31,7 @@ async def lifespan(app: FastAPI):
     try:
         logger.info("🚀 Starting Well Being Agent...")
         
+<<<<<<< HEAD
         # Import refactored Agent module (with safety, citations, improved RAG)
         try:
             from Agent_v2 import rag_system as imported_rag
@@ -52,6 +53,32 @@ async def lifespan(app: FastAPI):
             logger.error("❌ Failed to initialize RAG system")        
         # Start background cleanup task
         asyncio.create_task(cleanup_old_audio_files())            
+=======
+        # Import here to avoid circular imports
+        from Agent import load_index, BreastCancerRAGSystem
+        
+        logger.info("📋 Loading configuration and index...")
+        
+        # Add delay to ensure everything is loaded
+        await asyncio.sleep(2)
+        
+        index, retriever = load_index()
+        if index and retriever:
+            rag_system = BreastCancerRAGSystem(index, retriever)
+            logger.info("✅ RAG System initialized successfully")
+            
+            # Test the system
+            try:
+                test_answer = rag_system.get_enhanced_answer("Hello, are you working?")
+                logger.info(f"✅ System test successful: {test_answer[:50]}...")
+            except Exception as e:
+                logger.warning(f"⚠️ System test failed: {e}")
+                
+        else:
+            logger.error("❌ Failed to load index - system will not work properly")
+            rag_system = None
+            
+>>>>>>> a94e781ef00522de046b38098b30cce04a40e325
     except Exception as e:
         logger.error(f"❌ Startup error: {e}")
         import traceback
@@ -61,6 +88,7 @@ async def lifespan(app: FastAPI):
     
     # Shutdown
     logger.info("🛑 Shutting down Well Being Agent...")
+<<<<<<< HEAD
 
 app = FastAPI(
     title="Well Being Agent - Breast Cancer Support",
@@ -94,6 +122,40 @@ class VoiceResponse(BaseModel):
     language: str = "english"
     status: str = "success"
 
+=======
+
+app = FastAPI(
+    title="Well Being Agent - Breast Cancer Support",
+    description="AI-powered breast cancer support system providing evidence-based information and emotional support",
+    version="1.0.0",
+    lifespan=lifespan
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+class QueryRequest(BaseModel):
+    query: str
+    language: str = "auto"
+    response_type: str = "text"
+
+class QueryResponse(BaseModel):
+    answer: str
+    status: str
+    language: str = "english"
+
+class VoiceResponse(BaseModel):
+    text: str
+    language: str = "english"
+    status: str = "success"
+
+>>>>>>> a94e781ef00522de046b38098b30cce04a40e325
 # Create directories if they don't exist
 os.makedirs("static/audio", exist_ok=True)
 logger.info(f"📁 Created directory structure: static/audio")
@@ -186,6 +248,24 @@ async def ask_query(request: QueryRequest):
                 status="error",
                 language="english"
             )
+<<<<<<< HEAD
+=======
+        
+        # Determine language
+        if request.language == "auto":
+            detected_language = rag_system.detect_language(request.query)
+        else:
+            detected_language = request.language
+        
+        logger.info(f"🌐 Processing query in {detected_language}, Type: {request.response_type}")
+        
+        # Process the query with response type
+        answer = rag_system.get_enhanced_answer(
+            user_query=request.query, 
+            language=detected_language,
+            response_type=request.response_type
+        )
+>>>>>>> a94e781ef00522de046b38098b30cce04a40e325
         
         # Determine language
         if request.language == "auto":
@@ -224,11 +304,93 @@ async def ask_query(request: QueryRequest):
     except Exception as e:
         logger.error(f"Error processing query: {e}")
         return QueryResponse(
+<<<<<<< HEAD
             answer="I apologize, but I'm having trouble processing your request right now. Please try again in a moment.",
             status="error",
             language="english"
         )
 
+@app.post("/voice-query", response_model=VoiceResponse)
+async def process_voice_query(
+    file: UploadFile = File(...),
+    language: str = "auto"  # Auto-detect language from speech
+):
+    """Process voice query and return TEXT response only (English & Urdu)"""
+    try:
+        # Validate file type
+        if not file.content_type or not file.content_type.startswith('audio/'):
+            raise HTTPException(status_code=400, detail="File must be an audio file")
+        
+        logger.info(f"🎤 Processing voice query - Language preference: {language}")
+        
+        # Import audio processor with proper error handling
+        try:
+            from audio_processor import audio_processor
+        except ImportError as e:
+            logger.error(f"❌ Failed to import audio_processor: {e}")
+            return VoiceResponse(
+                text="Audio processing service is currently unavailable.",
+                status="error",
+                language="english"
+            )
+        
+        # Convert speech to text with language detection
+        stt_result = await audio_processor.speech_to_text(file, language)
+        
+        if not stt_result or not stt_result.get('text'):
+            raise HTTPException(status_code=400, detail="Could not transcribe audio")
+        
+        query_text = stt_result['text']
+        detected_language = stt_result.get('language', 'english')
+        
+        logger.info(f"📝 Transcribed text ({detected_language}): {query_text}")
+        
+        # Process the query through RAG system
+        if not rag_system:
+            return VoiceResponse(
+                text="System is initializing. Please try again in a moment.",
+                status="error",
+                language=detected_language
+            )
+        
+        # ✅ Always use TEXT response type for voice queries
+        answer = rag_system.get_enhanced_answer(
+            user_query=query_text,
+            language=detected_language,  # Use detected language
+            response_type="text"  # Always text response
+        )
+        
+        logger.info(f"✅ Voice query processed successfully - Response in {detected_language}")
+        
+        return VoiceResponse(
+            text=answer,  # Always return text
+            language=detected_language,
+            status="success"
+=======
+            answer=answer,
+            status="success",
+            language=detected_language
+>>>>>>> a94e781ef00522de046b38098b30cce04a40e325
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+<<<<<<< HEAD
+        logger.error(f"Error processing voice query: {e}")
+        return VoiceResponse(
+            text="Sorry, I encountered an error processing your voice message.",
+=======
+        logger.error(f"Error processing query: {e}")
+        return QueryResponse(
+            answer="I apologize, but I'm having trouble processing your request right now. Please try again in a moment.",
+>>>>>>> a94e781ef00522de046b38098b30cce04a40e325
+            status="error",
+            language="english"
+        )
+
+<<<<<<< HEAD
+=======
 @app.post("/voice-query", response_model=VoiceResponse)
 async def process_voice_query(
     file: UploadFile = File(...),
@@ -297,6 +459,7 @@ async def process_voice_query(
             language="english"
         )
 
+>>>>>>> a94e781ef00522de046b38098b30cce04a40e325
 # Audio serving endpoint (kept for any future use)
 @app.get("/audio/{filename}")
 async def serve_audio_direct(filename: str):
@@ -441,7 +604,14 @@ async def cleanup_old_audio_files():
         
         await asyncio.sleep(3600)
 
+<<<<<<< HEAD
 # Note: cleanup_old_audio_files runs inside lifespan, not via @app.on_event
+=======
+# Start cleanup task when app starts
+@app.on_event("startup")
+async def start_cleanup_task():
+    asyncio.create_task(cleanup_old_audio_files())
+>>>>>>> a94e781ef00522de046b38098b30cce04a40e325
 
 # Fallback route for SPA
 @app.get("/{full_path:path}")
