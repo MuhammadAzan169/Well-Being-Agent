@@ -1,1 +1,1602 @@
-
+[
+  {
+    "topic": "Breast cancer QA",
+    "question": null,
+    "answer": "Diagnostic tests and a biopsy are used to detect (find) and diagnose childhood rhabdomyosarcoma. The diagnostic tests that are done depend in part on where the cancer forms. The following tests and procedures may be used: - Physical exam and history : An exam of the body to check general signs of health, including checking for signs of disease, such as lumps or anything else that seems unusual. A history of the patients health habits and past illnesses and treatments will also be taken. - X-ray : An x-ray of the organs and bones inside the body, such as the chest. An x-ray is a type of energy beam that can go through the body and onto film, making a picture of areas inside the body. - CT scan (CAT scan): A procedure that makes a series of detailed pictures of areas inside the body, such as the abdomen, pelvis, or lymph nodes, taken from different angles. The pictures are made by a computer linked to an x-ray machine. A dye may be injected into a vein or swallowed to help the organs or tissues show up more clearly. This procedure is also called computed tomography, computerized tomography, or computerized axial tomography. - MRI (magnetic resonance imaging): A procedure that uses a magnet, radio waves, and a computer to make a series of detailed pictures of areas of the body, such as the skull, brain, and lymph nodes. This procedure is also called nuclear magnetic resonance imaging (NMRI). - PET scan (positron emission tomography scan): A procedure to find malignant tumor cells in the body. A small amount of radioactive glucose (sugar) is injected into a vein. The PET scanner rotates around the body and makes a picture of where glucose is being used in the body. Malignant tumor cells show up brighter in the picture because they are more active and take up more glucose than normal cells do. - Bone scan : A procedure to check if there are rapidly dividing cells, such as cancer cells, in the bone. A very small amount of radioactive material is injected into a vein and travels through the bloodstream. The radioactive material collects in the bones with cancer and is detected by a scanner. - Bone marrow aspiration and biopsy : The removal of bone marrow, blood, and a small piece of bone by inserting a hollow needle into the hipbone. Samples are removed from both hipbones. A pathologist views the bone marrow, blood, and bone under a microscope to look for signs of cancer. - Lumbar puncture : A procedure used to collect cerebrospinal fluid (CSF) from the spinal column. This is done by placing a needle between two bones in the spine and into the CSF around the spinal cord and removing a sample of the fluid. The sample of CSF is checked under a microscope for signs of cancer cells. This procedure is also called an LP or spinal tap. If these tests show there may be a rhabdomyosarcoma, a biopsy is done. A biopsy is the removal of cells or tissues so they can be viewed under a microscope by a pathologist to check for signs of cancer. Because treatment depends on the type of rhabdomyosarcoma, biopsy samples should be checked by a pathologist who has experience in diagnosing rhabdomyosarcoma. One of the following types of biopsies may be used: - Fine-needle aspiration (FNA) biopsy : The removal of tissue or fluid using a thin needle. - Core needle biopsy : The removal of tissue using a wide needle. This procedure may be guided using ultrasound, CT scan, or MRI. - Open biopsy : The removal of tissue through an incision (cut) made in the skin. - Sentinel lymph node biopsy : The removal of the sentinel lymph node during surgery. The sentinel lymph node is the first lymph node to receive lymphatic drainage from a tumor. It is the first lymph node the cancer is likely to spread to from the tumor. A radioactive substance and/or blue dye is injected near the tumor. The substance or dye flows through the lymph ducts to the lymph nodes. The first lymph node to receive the substance or dye is removed. A pathologist views the tissue under a microscope to look for cancer cells. If cancer cells are not found, it may not be necessary to remove more lymph nodes. The following tests may be done on the sample of tissue that is removed: - Light microscopy: A laboratory test in which cells in a sample of tissue are viewed under regular and high-powered microscopes to look for certain changes in the cells. - Immunohistochemistry : A test that uses antibodies to check for certain antigens in a sample of tissue. The antibody is usually linked to a radioactive substance or a dye that causes the tissue to light up under a microscope. This type of test may be used to tell the difference between different types of cancer. - FISH (fluorescence in situ hybridization): A laboratory test used to look at genes or chromosomes in cells and tissues. Pieces of DNA that contain a fluorescent dye are made in the laboratory and added to cells or tissues on a glass slide. When these pieces of DNA attach to certain genes or areas of chromosomes on the slide, they light up when viewed under a microscope with a special light. This type of test is used to find certain gene changes. - Reverse transcriptionpolymerase chain reaction (RTPCR) test: A laboratory test in which cells in a sample of tissue are studied using chemicals to look for certain changes in the structure or function of genes. - Cytogenetic analysis : A laboratory test in which cells in a sample of tissue are viewed under a microscope to look for certain changes in the chromosomes."
+  },
+  {
+    "topic": "Overview of Breast Cancer",
+    "question": null,
+    "answer": "Breast cancer is a disease in which malignant cells form in the tissues of the breast. It can affect people of all genders, most commonly women."
+  },
+  {
+    "topic": "Common Symptoms of Breast Cancer",
+    "question": null,
+    "answer": "Common symptoms include a new lump or mass in the breast or underarm, changes in breast shape or size, skin dimpling, nipple retraction, or nipple discharge."
+  },
+  {
+    "topic": "How Breast Cancer is Diagnosed",
+    "question": null,
+    "answer": "Diagnosis typically includes clinical breast exam, imaging (mammogram, ultrasound, MRI), and biopsy to determine if cells are cancerous and their type."
+  },
+  {
+    "topic": "Stages of Breast Cancer",
+    "question": null,
+    "answer": "Breast cancer stages range from 0 to IV and describe how far the cancer has spread. Stage depends on tumor size, lymph node involvement, and metastasis."
+  },
+  {
+    "topic": "Treatment Options for Breast Cancer",
+    "question": null,
+    "answer": "Treatment may include surgery (lumpectomy or mastectomy), radiation therapy, chemotherapy, hormonal therapy, targeted therapy, or combinations of these."
+  },
+  {
+    "topic": "Fertility After Breast Cancer",
+    "question": null,
+    "answer": "Fertility may be affected by treatments like chemotherapy. Options such as egg/embryo freezing and ovarian suppression can be discussed before treatment."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": null,
+    "answer": "Breastfeeding may be possible from the unaffected breast; breastfeeding is not recommended during active chemotherapy or certain targeted therapies."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": null,
+    "answer": "Emotional support includes counseling, support groups, relaxation techniques, and discussing fears with care teams; mental health is as important as physical recovery."
+  },
+  {
+    "topic": "Follow-up Care",
+    "question": null,
+    "answer": "Regular follow-up includes physical exams, mammograms of the remaining breast tissue, symptom monitoring, and management of long-term side effects."
+  },
+  {
+    "topic": "Male Breast Cancer",
+    "question": null,
+    "answer": "Men can develop breast cancer too. Symptoms and diagnosis are similar, though risk factors and presentation may differ."
+  },
+  {
+    "topic": "Treatment Options for Breast Cancer",
+    "question": "Is it safe to get pregnant after my breast cancer treatment?",
+    "answer": "Treatment may include surgery (lumpectomy or mastectomy), radiation therapy, chemotherapy, hormonal therapy, targeted therapy, or combinations of these."
+  },
+  {
+    "topic": "Treatment Options for Breast Cancer",
+    "question": "Is fertility common after breast cancer treatment?",
+    "answer": "It's understandable to worry. Treatment may include surgery (lumpectomy or mastectomy), radiation therapy, chemotherapy, hormonal therapy, targeted therapy, or combinations of these."
+  },
+  {
+    "topic": "Treatment Options for Breast Cancer",
+    "question": "Is impact on the baby common after breast cancer treatment?",
+    "answer": "Treatment may include surgery (lumpectomy or mastectomy), radiation therapy, chemotherapy, hormonal therapy, targeted therapy, or combinations of these."
+  },
+  {
+    "topic": "Treatment Options for Breast Cancer",
+    "question": "Can I breastfeed after breast cancer?",
+    "answer": "It's understandable to worry. Treatment may include surgery (lumpectomy or mastectomy), radiation therapy, chemotherapy, hormonal therapy, targeted therapy, or combinations of these."
+  },
+  {
+    "topic": "Treatment Options for Breast Cancer",
+    "question": "How will surgery impact my breast cancer recovery?",
+    "answer": "Treatment may include surgery (lumpectomy or mastectomy), radiation therapy, chemotherapy, hormonal therapy, targeted therapy, or combinations of these."
+  },
+  {
+    "topic": "Treatment Options for Breast Cancer",
+    "question": "Can I conceive after breast cancer?",
+    "answer": "Treatment may include surgery (lumpectomy or mastectomy), radiation therapy, chemotherapy, hormonal therapy, targeted therapy, or combinations of these."
+  },
+  {
+    "topic": "Fertility After Breast Cancer",
+    "question": "What can I expect regarding breastfeeding after treatment?",
+    "answer": "Fertility may be affected by treatments like chemotherapy. Options such as egg/embryo freezing and ovarian suppression can be discussed before treatment."
+  },
+  {
+    "topic": "Fertility After Breast Cancer",
+    "question": "Is it safe to produce milk after my breast cancer treatment?",
+    "answer": "It's understandable to worry. Fertility may be affected by treatments like chemotherapy. Options such as egg/embryo freezing and ovarian suppression can be discussed before treatment."
+  },
+  {
+    "topic": "Fertility After Breast Cancer",
+    "question": "How will radiation impact my breast cancer recovery?",
+    "answer": "Fertility may be affected by treatments like chemotherapy. Options such as egg/embryo freezing and ovarian suppression can be discussed before treatment."
+  },
+  {
+    "topic": "Fertility After Breast Cancer",
+    "question": "How does mastectomy affect milk production?",
+    "answer": "Fertility may be affected by treatments like chemotherapy. Options such as egg/embryo freezing and ovarian suppression can be discussed before treatment."
+  },
+  {
+    "topic": "Fertility After Breast Cancer",
+    "question": "Can I produce milk after breast cancer?",
+    "answer": "It's understandable to worry. Fertility may be affected by treatments like chemotherapy. Options such as egg/embryo freezing and ovarian suppression can be discussed before treatment."
+  },
+  {
+    "topic": "Fertility After Breast Cancer",
+    "question": "What can I expect regarding genetic risk after treatment?",
+    "answer": "It's understandable to worry. Fertility may be affected by treatments like chemotherapy. Options such as egg/embryo freezing and ovarian suppression can be discussed before treatment."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "Will future pregnancies affect my ability to produce milk?",
+    "answer": "Breastfeeding may be possible from the unaffected breast; breastfeeding is not recommended during active chemotherapy or certain targeted therapies."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "If I had a mastectomy, can I still have children?",
+    "answer": "Breastfeeding may be possible from the unaffected breast; breastfeeding is not recommended during active chemotherapy or certain targeted therapies."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "Will future pregnancies affect my ability to breastfeed?",
+    "answer": "Breastfeeding may be possible from the unaffected breast; breastfeeding is not recommended during active chemotherapy or certain targeted therapies."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "I had lumpectomy, will it affect fertility?",
+    "answer": "Breastfeeding may be possible from the unaffected breast; breastfeeding is not recommended during active chemotherapy or certain targeted therapies."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "How will chemotherapy impact my breast cancer recovery?",
+    "answer": "Breastfeeding may be possible from the unaffected breast; breastfeeding is not recommended during active chemotherapy or certain targeted therapies."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "What should I know about Breastfeeding After Treatment?",
+    "answer": "It's understandable to worry. Breastfeeding may be possible from the unaffected breast; breastfeeding is not recommended during active chemotherapy or certain targeted therapies."
+  },
+  {
+    "topic": "Emotional Support & Mental Health",
+    "question": "I'm feeling anxious about cancer coming back—what can I do?",
+    "answer": "Feeling anxious or down after breast cancer is common. Consider counseling, support groups, relaxation techniques, and talking openly with your care team or loved ones. If you have severe depression or suicidal thoughts, contact your healthcare provider immediately."
+  },
+  {
+    "topic": "Emotional Support & Mental Health",
+    "question": "How can I cope with changes in body image after surgery?",
+    "answer": "Feeling anxious or down after breast cancer is common. Consider counseling, support groups, relaxation techniques, and talking openly with your care team or loved ones. If you have severe depression or suicidal thoughts, contact your healthcare provider immediately."
+  },
+  {
+    "topic": "Emotional Support & Mental Health",
+    "question": "What support is available for depression after breast cancer?",
+    "answer": "Feeling anxious or down after breast cancer is common. Consider counseling, support groups, relaxation techniques, and talking openly with your care team or loved ones. If you have severe depression or suicidal thoughts, contact your healthcare provider immediately."
+  },
+  {
+    "topic": "Emotional Support & Mental Health",
+    "question": "I'm scared about starting a family after cancer—how can I manage the worry?",
+    "answer": "Feeling anxious or down after breast cancer is common. Consider counseling, support groups, relaxation techniques, and talking openly with your care team or loved ones. If you have severe depression or suicidal thoughts, contact your healthcare provider immediately."
+  },
+  {
+    "topic": "Emotional Support & Mental Health",
+    "question": "How do I talk to my partner about intimacy after breast surgery?",
+    "answer": "Feeling anxious or down after breast cancer is common. Consider counseling, support groups, relaxation techniques, and talking openly with your care team or loved ones. If you have severe depression or suicidal thoughts, contact your healthcare provider immediately."
+  },
+  {
+    "topic": "Fertility Preservation Options",
+    "question": "What fertility preservation options are available before chemotherapy?",
+    "answer": "Options include egg freezing, embryo freezing, ovarian suppression during chemo, and less commonly ovarian tissue preservation; discuss promptly with a fertility specialist."
+  },
+  {
+    "topic": "Timing of Pregnancy",
+    "question": "How long should I wait after treatment before trying to conceive?",
+    "answer": "Timing depends on your cancer type and treatment. Many clinicians suggest waiting at least 12 months after chemotherapy; sometimes 18–24 months is advised for higher-risk cancers. Discuss with your oncologist."
+  },
+  {
+    "topic": "Breast Reconstruction",
+    "question": "What are my options for breast reconstruction after mastectomy?",
+    "answer": "Options include implant-based reconstruction, autologous tissue reconstruction (using your own tissue), or delayed reconstruction. Discuss timing and risks with your surgeon."
+  },
+  {
+    "topic": "Symptoms to Report",
+    "question": "What symptoms should prompt immediate contact with my doctor?",
+    "answer": "Sudden new lumps, rapid swelling, redness, severe pain, shortness of breath, or unexpected weight loss should prompt urgent medical attention."
+  },
+  {
+    "topic": "Exercise After Surgery",
+    "question": "When can I start exercising after breast surgery?",
+    "answer": "Light activities often resume within days, but avoid heavy lifting and strenuous use of the affected arm for several weeks; follow your surgeon's specific advice."
+  },
+  {
+    "topic": "Survivorship",
+    "question": "how to prepare for surgery after lumpectomy?",
+    "answer": "Survivorship care focuses on monitoring recurrence, managing long-term effects, and supporting quality of life."
+  },
+  {
+    "topic": "Nutrition",
+    "question": "how to manage side effects after breast cancer?",
+    "answer": "It's normal to have concerns. Balanced nutrition supports recovery; focus on protein, fruits, vegetables, and manage side effects like nausea with small, frequent meals."
+  },
+  {
+    "topic": "Surgery and Recovery",
+    "question": "will it affect my fertility after breast cancer?",
+    "answer": "Recovery depends on type of surgery; follow wound care, avoid heavy lifting, and attend follow-up visits."
+  },
+  {
+    "topic": "Follow-up Care",
+    "question": "can I breastfeed if I had a reconstructive surgery?",
+    "answer": "It's normal to have concerns. Regular imaging and clinical exams are important to detect recurrence early and manage late effects."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "what should I expect after hormonal therapy (tamoxifen)?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Hormone Therapy",
+    "question": "what to tell my partner if I had a reconstructive surgery?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Body Image",
+    "question": "is it safe if I had a lumpectomy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Chemotherapy Effects",
+    "question": "what should I expect after chemotherapy?",
+    "answer": "It's normal to have concerns. Chemotherapy may cause temporary or permanent changes in fertility, hair loss, fatigue, and other side effects; supportive care can help manage symptoms."
+  },
+  {
+    "topic": "Sexual Health",
+    "question": "when can I try to conceive when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Fertility Preservation",
+    "question": "what should I expect following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "what lifestyle changes help following treatment for breast cancer?",
+    "answer": "Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Chemotherapy Effects",
+    "question": "what lifestyle changes help following treatment for breast cancer?",
+    "answer": "Chemotherapy may cause temporary or permanent changes in fertility, hair loss, fatigue, and other side effects; supportive care can help manage symptoms."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "what should I expect when I'm a breast cancer survivor?",
+    "answer": "Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "can I breastfeed if I had a breast-conserving surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Radiation Effects",
+    "question": "what to tell my partner when I'm a breast cancer survivor?",
+    "answer": "Radiation is localized and can affect the breast and nearby tissues; timing and effects on lactation depend on area treated."
+  },
+  {
+    "topic": "Surgery and Recovery",
+    "question": "will medicine affect my baby following treatment for breast cancer?",
+    "answer": "Recovery depends on type of surgery; follow wound care, avoid heavy lifting, and attend follow-up visits."
+  },
+  {
+    "topic": "Metastatic Disease",
+    "question": "how to cope emotionally following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Metastatic breast cancer requires systemic therapy and symptom control; palliative care is an important component."
+  },
+  {
+    "topic": "Bone Health",
+    "question": "when can I try to conceive following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Contraception during treatment",
+    "question": "can I breastfeed if I had a lumpectomy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Chemotherapy Effects",
+    "question": "is pregnancy risky after breast cancer?",
+    "answer": "Chemotherapy may cause temporary or permanent changes in fertility, hair loss, fatigue, and other side effects; supportive care can help manage symptoms."
+  },
+  {
+    "topic": "Survivorship",
+    "question": "is it safe if I had a mastectomy?",
+    "answer": "It's normal to have concerns. Survivorship care focuses on monitoring recurrence, managing long-term effects, and supporting quality of life."
+  },
+  {
+    "topic": "Radiation Effects",
+    "question": "what lifestyle changes help after breast cancer?",
+    "answer": "Radiation is localized and can affect the breast and nearby tissues; timing and effects on lactation depend on area treated."
+  },
+  {
+    "topic": "Sexual Health",
+    "question": "how long is recovery after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Palliative Care",
+    "question": "when can I try to conceive after hormonal therapy (tamoxifen)?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Medication Side Effects",
+    "question": "can I breastfeed after mastectomy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Radiation Effects",
+    "question": "is it safe when I'm a breast cancer survivor?",
+    "answer": "Radiation is localized and can affect the breast and nearby tissues; timing and effects on lactation depend on area treated."
+  },
+  {
+    "topic": "Radiation Effects",
+    "question": "how to prepare for surgery after lumpectomy?",
+    "answer": "It's normal to have concerns. Radiation is localized and can affect the breast and nearby tissues; timing and effects on lactation depend on area treated."
+  },
+  {
+    "topic": "Hair Loss",
+    "question": "will it affect my fertility after surgery?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Clinical Trials",
+    "question": "how long is recovery when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "can I breastfeed after breast cancer?",
+    "answer": "Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Reconstruction",
+    "question": "when can I try to conceive if I had a breast-conserving surgery?",
+    "answer": "Reconstruction options vary; discuss timing, risks, and goals with your surgeon."
+  },
+  {
+    "topic": "Metastatic Disease",
+    "question": "what lifestyle changes help following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Metastatic breast cancer requires systemic therapy and symptom control; palliative care is an important component."
+  },
+  {
+    "topic": "Chemotherapy Effects",
+    "question": "will it affect my fertility after targeted therapy?",
+    "answer": "It's normal to have concerns. Chemotherapy may cause temporary or permanent changes in fertility, hair loss, fatigue, and other side effects; supportive care can help manage symptoms."
+  },
+  {
+    "topic": "Body Image",
+    "question": "will medicine affect my baby after hormonal therapy (tamoxifen)?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Work and Insurance",
+    "question": "how to prepare for surgery after breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Reconstruction",
+    "question": "how to prepare for surgery after targeted therapy?",
+    "answer": "Reconstruction options vary; discuss timing, risks, and goals with your surgeon."
+  },
+  {
+    "topic": "Reconstruction",
+    "question": "how to cope emotionally after chemotherapy?",
+    "answer": "Reconstruction options vary; discuss timing, risks, and goals with your surgeon."
+  },
+  {
+    "topic": "Fertility",
+    "question": "how to manage side effects if I had a lumpectomy?",
+    "answer": "Fertility can be affected by chemotherapy; discuss preservation before treatment and consult a fertility specialist."
+  },
+  {
+    "topic": "Hair Loss",
+    "question": "will medicine affect my baby if I had a reconstructive surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Sexual Health",
+    "question": "can I breastfeed after breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Body Image",
+    "question": "will medicine affect my baby if I had a reconstructive surgery?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "how to cope emotionally following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Exercise and Fitness",
+    "question": "how to manage side effects if I had a breast-conserving surgery?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Male Breast Cancer",
+    "question": "how to cope emotionally after breast cancer?",
+    "answer": "Men can also get breast cancer; awareness and early evaluation of lumps is important."
+  },
+  {
+    "topic": "Pain Management",
+    "question": "how to manage side effects when I'm a breast cancer survivor?",
+    "answer": "Pain control includes medications, physical therapy, and sometimes interventions; discuss persistent pain with your care team."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "will it affect my fertility when I'm a breast cancer survivor?",
+    "answer": "Breastfeeding may be possible from the unaffected breast; avoid breastfeeding during active chemotherapy or targeted agents that are contraindicated."
+  },
+  {
+    "topic": "Lymphedema Management",
+    "question": "is it safe following treatment for breast cancer?",
+    "answer": "Lymphedema can follow lymph node removal or radiation; physical therapy and compression can help."
+  },
+  {
+    "topic": "Palliative Care",
+    "question": "how to cope emotionally when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Fertility",
+    "question": "is pregnancy risky when I'm a breast cancer survivor?",
+    "answer": "Fertility can be affected by chemotherapy; discuss preservation before treatment and consult a fertility specialist."
+  },
+  {
+    "topic": "Male Breast Cancer",
+    "question": "how to manage side effects after chemotherapy?",
+    "answer": "Men can also get breast cancer; awareness and early evaluation of lumps is important."
+  },
+  {
+    "topic": "Nutrition",
+    "question": "is pregnancy risky after lumpectomy?",
+    "answer": "Balanced nutrition supports recovery; focus on protein, fruits, vegetables, and manage side effects like nausea with small, frequent meals."
+  },
+  {
+    "topic": "Palliative Care",
+    "question": "how to cope emotionally if I had a breast-conserving surgery?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Bone Health",
+    "question": "what lifestyle changes help when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Pregnancy After Breast Cancer",
+    "question": "when can I try to conceive following treatment for breast cancer?",
+    "answer": "Many people can have healthy pregnancies after treatment; timing and monitoring are individualized. Discuss with your oncology and obstetrics teams."
+  },
+  {
+    "topic": "Palliative Care",
+    "question": "what to tell my partner if I had a reconstructive surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Survivorship",
+    "question": "what lifestyle changes help when I'm a breast cancer survivor?",
+    "answer": "Survivorship care focuses on monitoring recurrence, managing long-term effects, and supporting quality of life."
+  },
+  {
+    "topic": "Body Image",
+    "question": "will it affect my fertility after hormonal therapy (tamoxifen)?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Male Breast Cancer",
+    "question": "can I breastfeed if I had a mastectomy?",
+    "answer": "Men can also get breast cancer; awareness and early evaluation of lumps is important."
+  },
+  {
+    "topic": "Bone Health",
+    "question": "what to tell my partner if I had a reconstructive surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Pregnancy After Breast Cancer",
+    "question": "will medicine affect my baby following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Many people can have healthy pregnancies after treatment; timing and monitoring are individualized. Discuss with your oncology and obstetrics teams."
+  },
+  {
+    "topic": "Exercise and Fitness",
+    "question": "is it safe after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Exercise and Fitness",
+    "question": "what lifestyle changes help following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "how to prepare for surgery following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Sexual Health",
+    "question": "what lifestyle changes help when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Sexual Health",
+    "question": "when can I try to conceive after chemotherapy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Body Image",
+    "question": "how to manage side effects if I had a mastectomy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Reconstruction",
+    "question": "is pregnancy risky following treatment for breast cancer?",
+    "answer": "Reconstruction options vary; discuss timing, risks, and goals with your surgeon."
+  },
+  {
+    "topic": "Exercise and Fitness",
+    "question": "how to cope emotionally following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "will medicine affect my baby after breast cancer?",
+    "answer": "Breastfeeding may be possible from the unaffected breast; avoid breastfeeding during active chemotherapy or targeted agents that are contraindicated."
+  },
+  {
+    "topic": "Clinical Trials",
+    "question": "will medicine affect my baby following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Rehabilitation",
+    "question": "what to tell my partner following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Bone Health",
+    "question": "how to manage side effects if I had a reconstructive surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Follow-up Care",
+    "question": "how long is recovery when I'm a breast cancer survivor?",
+    "answer": "Regular imaging and clinical exams are important to detect recurrence early and manage late effects."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "will it affect my fertility following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Breastfeeding may be possible from the unaffected breast; avoid breastfeeding during active chemotherapy or targeted agents that are contraindicated."
+  },
+  {
+    "topic": "Lymphedema Management",
+    "question": "how to cope emotionally following treatment for breast cancer?",
+    "answer": "Lymphedema can follow lymph node removal or radiation; physical therapy and compression can help."
+  },
+  {
+    "topic": "Bone Health",
+    "question": "when can I try to conceive after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Chemotherapy Effects",
+    "question": "how to manage side effects after breast cancer?",
+    "answer": "Chemotherapy may cause temporary or permanent changes in fertility, hair loss, fatigue, and other side effects; supportive care can help manage symptoms."
+  },
+  {
+    "topic": "Fertility",
+    "question": "will medicine affect my baby if I had a mastectomy?",
+    "answer": "Fertility can be affected by chemotherapy; discuss preservation before treatment and consult a fertility specialist."
+  },
+  {
+    "topic": "Reconstruction",
+    "question": "what should I expect after breast cancer?",
+    "answer": "Reconstruction options vary; discuss timing, risks, and goals with your surgeon."
+  },
+  {
+    "topic": "Metastatic Disease",
+    "question": "what to tell my partner after targeted therapy?",
+    "answer": "It's normal to have concerns. Metastatic breast cancer requires systemic therapy and symptom control; palliative care is an important component."
+  },
+  {
+    "topic": "Nutrition",
+    "question": "will medicine affect my baby after breast cancer?",
+    "answer": "Balanced nutrition supports recovery; focus on protein, fruits, vegetables, and manage side effects like nausea with small, frequent meals."
+  },
+  {
+    "topic": "Clinical Trials",
+    "question": "how long is recovery if I had a reconstructive surgery?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Sexual Health",
+    "question": "will it affect my fertility when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Fertility",
+    "question": "how to manage side effects after hormonal therapy (tamoxifen)?",
+    "answer": "It's normal to have concerns. Fertility can be affected by chemotherapy; discuss preservation before treatment and consult a fertility specialist."
+  },
+  {
+    "topic": "Body Image",
+    "question": "is it safe following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Hormone Therapy",
+    "question": "what lifestyle changes help if I had a reconstructive surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Pain Management",
+    "question": "how long is recovery following treatment for breast cancer?",
+    "answer": "Pain control includes medications, physical therapy, and sometimes interventions; discuss persistent pain with your care team."
+  },
+  {
+    "topic": "Pain Management",
+    "question": "how to manage side effects after breast cancer?",
+    "answer": "It's normal to have concerns. Pain control includes medications, physical therapy, and sometimes interventions; discuss persistent pain with your care team."
+  },
+  {
+    "topic": "Work and Insurance",
+    "question": "what should I expect when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Body Image",
+    "question": "is it safe after targeted therapy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Metastatic Disease",
+    "question": "how to manage side effects after surgery?",
+    "answer": "Metastatic breast cancer requires systemic therapy and symptom control; palliative care is an important component."
+  },
+  {
+    "topic": "Pain Management",
+    "question": "how to prepare for surgery if I had a mastectomy?",
+    "answer": "It's normal to have concerns. Pain control includes medications, physical therapy, and sometimes interventions; discuss persistent pain with your care team."
+  },
+  {
+    "topic": "Vaccinations",
+    "question": "what to tell my partner following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Contraception during treatment",
+    "question": "what to tell my partner after chemotherapy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "is pregnancy risky following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Lymphedema Management",
+    "question": "what should I expect if I had a mastectomy?",
+    "answer": "Lymphedema can follow lymph node removal or radiation; physical therapy and compression can help."
+  },
+  {
+    "topic": "Genetics and BRCA",
+    "question": "what should I expect following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Genetic testing may be recommended for some patients; BRCA-positive individuals have special considerations for risk and family planning."
+  },
+  {
+    "topic": "Blood Tests & Markers",
+    "question": "will it affect my fertility if I had a lumpectomy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Clinical Trials",
+    "question": "is it safe after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Blood Tests & Markers",
+    "question": "is pregnancy risky following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Pregnancy After Breast Cancer",
+    "question": "how long is recovery following treatment for breast cancer?",
+    "answer": "Many people can have healthy pregnancies after treatment; timing and monitoring are individualized. Discuss with your oncology and obstetrics teams."
+  },
+  {
+    "topic": "Genetics and BRCA",
+    "question": "is it safe following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Genetic testing may be recommended for some patients; BRCA-positive individuals have special considerations for risk and family planning."
+  },
+  {
+    "topic": "Radiation Effects",
+    "question": "how to cope emotionally when I'm a breast cancer survivor?",
+    "answer": "Radiation is localized and can affect the breast and nearby tissues; timing and effects on lactation depend on area treated."
+  },
+  {
+    "topic": "Chemotherapy Effects",
+    "question": "can I breastfeed when I'm a breast cancer survivor?",
+    "answer": "Chemotherapy may cause temporary or permanent changes in fertility, hair loss, fatigue, and other side effects; supportive care can help manage symptoms."
+  },
+  {
+    "topic": "Surgery and Recovery",
+    "question": "what should I expect following treatment for breast cancer?",
+    "answer": "Recovery depends on type of surgery; follow wound care, avoid heavy lifting, and attend follow-up visits."
+  },
+  {
+    "topic": "Rehabilitation",
+    "question": "will medicine affect my baby following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "when can I try to conceive after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Metastatic Disease",
+    "question": "what lifestyle changes help after breast cancer?",
+    "answer": "It's normal to have concerns. Metastatic breast cancer requires systemic therapy and symptom control; palliative care is an important component."
+  },
+  {
+    "topic": "Genetics and BRCA",
+    "question": "how to prepare for surgery after breast cancer?",
+    "answer": "Genetic testing may be recommended for some patients; BRCA-positive individuals have special considerations for risk and family planning."
+  },
+  {
+    "topic": "Fertility Preservation",
+    "question": "when can I try to conceive after radiation therapy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Exercise and Fitness",
+    "question": "will it affect my fertility when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Male Breast Cancer",
+    "question": "how to cope emotionally if I had a mastectomy?",
+    "answer": "Men can also get breast cancer; awareness and early evaluation of lumps is important."
+  },
+  {
+    "topic": "Pain Management",
+    "question": "can I breastfeed if I had a mastectomy?",
+    "answer": "Pain control includes medications, physical therapy, and sometimes interventions; discuss persistent pain with your care team."
+  },
+  {
+    "topic": "Blood Tests & Markers",
+    "question": "what to tell my partner after mastectomy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Pain Management",
+    "question": "how to prepare for surgery after breast cancer?",
+    "answer": "Pain control includes medications, physical therapy, and sometimes interventions; discuss persistent pain with your care team."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "is pregnancy risky after lumpectomy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Rehabilitation",
+    "question": "what lifestyle changes help after targeted therapy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Genetics and BRCA",
+    "question": "what to tell my partner if I had a reconstructive surgery?",
+    "answer": "Genetic testing may be recommended for some patients; BRCA-positive individuals have special considerations for risk and family planning."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "what lifestyle changes help following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Contraception during treatment",
+    "question": "when can I try to conceive when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Surgery and Recovery",
+    "question": "how to manage side effects after breast cancer?",
+    "answer": "Recovery depends on type of surgery; follow wound care, avoid heavy lifting, and attend follow-up visits."
+  },
+  {
+    "topic": "Medication Side Effects",
+    "question": "how to prepare for surgery when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Chemotherapy Effects",
+    "question": "what should I expect following treatment for breast cancer?",
+    "answer": "Chemotherapy may cause temporary or permanent changes in fertility, hair loss, fatigue, and other side effects; supportive care can help manage symptoms."
+  },
+  {
+    "topic": "Chemotherapy Effects",
+    "question": "what should I expect if I had a breast-conserving surgery?",
+    "answer": "Chemotherapy may cause temporary or permanent changes in fertility, hair loss, fatigue, and other side effects; supportive care can help manage symptoms."
+  },
+  {
+    "topic": "Work and Insurance",
+    "question": "is pregnancy risky after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Sexual Health",
+    "question": "is pregnancy risky when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Vaccinations",
+    "question": "will it affect my fertility after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Nutrition",
+    "question": "what lifestyle changes help after mastectomy?",
+    "answer": "Balanced nutrition supports recovery; focus on protein, fruits, vegetables, and manage side effects like nausea with small, frequent meals."
+  },
+  {
+    "topic": "Pain Management",
+    "question": "how to cope emotionally if I had a reconstructive surgery?",
+    "answer": "Pain control includes medications, physical therapy, and sometimes interventions; discuss persistent pain with your care team."
+  },
+  {
+    "topic": "Reconstruction",
+    "question": "how to cope emotionally when I'm a breast cancer survivor?",
+    "answer": "Reconstruction options vary; discuss timing, risks, and goals with your surgeon."
+  },
+  {
+    "topic": "Follow-up Care",
+    "question": "will it affect my fertility following treatment for breast cancer?",
+    "answer": "Regular imaging and clinical exams are important to detect recurrence early and manage late effects."
+  },
+  {
+    "topic": "Pain Management",
+    "question": "is it safe after hormonal therapy (tamoxifen)?",
+    "answer": "Pain control includes medications, physical therapy, and sometimes interventions; discuss persistent pain with your care team."
+  },
+  {
+    "topic": "Contraception during treatment",
+    "question": "can I breastfeed following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Bone Health",
+    "question": "what to tell my partner if I had a breast-conserving surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Sexual Health",
+    "question": "how long is recovery following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Fertility Preservation",
+    "question": "is pregnancy risky if I had a reconstructive surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Fertility",
+    "question": "can I breastfeed after breast cancer?",
+    "answer": "Fertility can be affected by chemotherapy; discuss preservation before treatment and consult a fertility specialist."
+  },
+  {
+    "topic": "Work and Insurance",
+    "question": "will it affect my fertility if I had a reconstructive surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Reconstruction",
+    "question": "will it affect my fertility after targeted therapy?",
+    "answer": "Reconstruction options vary; discuss timing, risks, and goals with your surgeon."
+  },
+  {
+    "topic": "Medication Side Effects",
+    "question": "what lifestyle changes help after targeted therapy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Bone Health",
+    "question": "how to manage side effects when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Radiation Effects",
+    "question": "what should I expect after breast cancer?",
+    "answer": "Radiation is localized and can affect the breast and nearby tissues; timing and effects on lactation depend on area treated."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "will medicine affect my baby if I had a mastectomy?",
+    "answer": "Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "is it safe after breast cancer?",
+    "answer": "It's normal to have concerns. Breastfeeding may be possible from the unaffected breast; avoid breastfeeding during active chemotherapy or targeted agents that are contraindicated."
+  },
+  {
+    "topic": "Hormone Therapy",
+    "question": "how to cope emotionally when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Genetics and BRCA",
+    "question": "can I breastfeed when I'm a breast cancer survivor?",
+    "answer": "Genetic testing may be recommended for some patients; BRCA-positive individuals have special considerations for risk and family planning."
+  },
+  {
+    "topic": "Sexual Health",
+    "question": "what to tell my partner following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Exercise and Fitness",
+    "question": "when can I try to conceive following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Survivorship",
+    "question": "will it affect my fertility when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Survivorship care focuses on monitoring recurrence, managing long-term effects, and supporting quality of life."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "is pregnancy risky after mastectomy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Bone Health",
+    "question": "what to tell my partner following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Chemotherapy Effects",
+    "question": "how long is recovery after targeted therapy?",
+    "answer": "Chemotherapy may cause temporary or permanent changes in fertility, hair loss, fatigue, and other side effects; supportive care can help manage symptoms."
+  },
+  {
+    "topic": "Rehabilitation",
+    "question": "how long is recovery if I had a breast-conserving surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Follow-up Care",
+    "question": "what lifestyle changes help after breast cancer?",
+    "answer": "Regular imaging and clinical exams are important to detect recurrence early and manage late effects."
+  },
+  {
+    "topic": "Work and Insurance",
+    "question": "is it safe if I had a breast-conserving surgery?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Blood Tests & Markers",
+    "question": "how to manage side effects if I had a reconstructive surgery?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Hormone Therapy",
+    "question": "how to prepare for surgery if I had a breast-conserving surgery?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Fertility Preservation",
+    "question": "will medicine affect my baby after hormonal therapy (tamoxifen)?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Exercise and Fitness",
+    "question": "will it affect my fertility if I had a lumpectomy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Medication Side Effects",
+    "question": "will medicine affect my baby following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Nutrition",
+    "question": "what to tell my partner after hormonal therapy (tamoxifen)?",
+    "answer": "Balanced nutrition supports recovery; focus on protein, fruits, vegetables, and manage side effects like nausea with small, frequent meals."
+  },
+  {
+    "topic": "Hormone Therapy",
+    "question": "will it affect my fertility after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Palliative Care",
+    "question": "how long is recovery after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Exercise and Fitness",
+    "question": "is pregnancy risky following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Fertility",
+    "question": "is it safe after breast cancer?",
+    "answer": "It's normal to have concerns. Fertility can be affected by chemotherapy; discuss preservation before treatment and consult a fertility specialist."
+  },
+  {
+    "topic": "Follow-up Care",
+    "question": "how to cope emotionally when I'm a breast cancer survivor?",
+    "answer": "Regular imaging and clinical exams are important to detect recurrence early and manage late effects."
+  },
+  {
+    "topic": "Reconstruction",
+    "question": "how to cope emotionally following treatment for breast cancer?",
+    "answer": "Reconstruction options vary; discuss timing, risks, and goals with your surgeon."
+  },
+  {
+    "topic": "Pain Management",
+    "question": "is it safe following treatment for breast cancer?",
+    "answer": "Pain control includes medications, physical therapy, and sometimes interventions; discuss persistent pain with your care team."
+  },
+  {
+    "topic": "Sexual Health",
+    "question": "how to manage side effects after hormonal therapy (tamoxifen)?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Hair Loss",
+    "question": "is it safe if I had a reconstructive surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Chemotherapy Effects",
+    "question": "will medicine affect my baby if I had a breast-conserving surgery?",
+    "answer": "Chemotherapy may cause temporary or permanent changes in fertility, hair loss, fatigue, and other side effects; supportive care can help manage symptoms."
+  },
+  {
+    "topic": "Metastatic Disease",
+    "question": "will it affect my fertility if I had a lumpectomy?",
+    "answer": "Metastatic breast cancer requires systemic therapy and symptom control; palliative care is an important component."
+  },
+  {
+    "topic": "Rehabilitation",
+    "question": "how to manage side effects when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Reconstruction",
+    "question": "can I breastfeed if I had a breast-conserving surgery?",
+    "answer": "It's normal to have concerns. Reconstruction options vary; discuss timing, risks, and goals with your surgeon."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "can I breastfeed if I had a mastectomy?",
+    "answer": "Breastfeeding may be possible from the unaffected breast; avoid breastfeeding during active chemotherapy or targeted agents that are contraindicated."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "can I breastfeed if I had a breast-conserving surgery?",
+    "answer": "Breastfeeding may be possible from the unaffected breast; avoid breastfeeding during active chemotherapy or targeted agents that are contraindicated."
+  },
+  {
+    "topic": "Nutrition",
+    "question": "is pregnancy risky following treatment for breast cancer?",
+    "answer": "Balanced nutrition supports recovery; focus on protein, fruits, vegetables, and manage side effects like nausea with small, frequent meals."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "what to tell my partner after breast cancer?",
+    "answer": "Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Clinical Trials",
+    "question": "what to tell my partner following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Surgery and Recovery",
+    "question": "how to manage side effects if I had a lumpectomy?",
+    "answer": "It's normal to have concerns. Recovery depends on type of surgery; follow wound care, avoid heavy lifting, and attend follow-up visits."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "will medicine affect my baby when I'm a breast cancer survivor?",
+    "answer": "Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Exercise and Fitness",
+    "question": "how to cope emotionally after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Palliative Care",
+    "question": "what lifestyle changes help if I had a breast-conserving surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Fertility Preservation",
+    "question": "will it affect my fertility after breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "is pregnancy risky if I had a breast-conserving surgery?",
+    "answer": "Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Body Image",
+    "question": "what lifestyle changes help after mastectomy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "is pregnancy risky when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "how long is recovery following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "how to manage side effects after chemotherapy?",
+    "answer": "Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "how to prepare for surgery after lumpectomy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Pain Management",
+    "question": "is pregnancy risky after surgery?",
+    "answer": "It's normal to have concerns. Pain control includes medications, physical therapy, and sometimes interventions; discuss persistent pain with your care team."
+  },
+  {
+    "topic": "Reconstruction",
+    "question": "how long is recovery if I had a reconstructive surgery?",
+    "answer": "Reconstruction options vary; discuss timing, risks, and goals with your surgeon."
+  },
+  {
+    "topic": "Survivorship",
+    "question": "how to manage side effects after hormonal therapy (tamoxifen)?",
+    "answer": "Survivorship care focuses on monitoring recurrence, managing long-term effects, and supporting quality of life."
+  },
+  {
+    "topic": "Surgery and Recovery",
+    "question": "is it safe when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Recovery depends on type of surgery; follow wound care, avoid heavy lifting, and attend follow-up visits."
+  },
+  {
+    "topic": "Surgery and Recovery",
+    "question": "when can I try to conceive following treatment for breast cancer?",
+    "answer": "Recovery depends on type of surgery; follow wound care, avoid heavy lifting, and attend follow-up visits."
+  },
+  {
+    "topic": "Work and Insurance",
+    "question": "how to cope emotionally when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "will it affect my fertility when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Clinical Trials",
+    "question": "is it safe when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Metastatic Disease",
+    "question": "when can I try to conceive if I had a lumpectomy?",
+    "answer": "Metastatic breast cancer requires systemic therapy and symptom control; palliative care is an important component."
+  },
+  {
+    "topic": "Blood Tests & Markers",
+    "question": "how to manage side effects following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Genetics and BRCA",
+    "question": "can I breastfeed if I had a reconstructive surgery?",
+    "answer": "Genetic testing may be recommended for some patients; BRCA-positive individuals have special considerations for risk and family planning."
+  },
+  {
+    "topic": "Hair Loss",
+    "question": "will it affect my fertility after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Exercise and Fitness",
+    "question": "will it affect my fertility following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Vaccinations",
+    "question": "when can I try to conceive after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Survivorship",
+    "question": "will medicine affect my baby after targeted therapy?",
+    "answer": "It's normal to have concerns. Survivorship care focuses on monitoring recurrence, managing long-term effects, and supporting quality of life."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "what should I expect following treatment for breast cancer?",
+    "answer": "Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Medication Side Effects",
+    "question": "when can I try to conceive after radiation therapy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Radiation Effects",
+    "question": "how to prepare for surgery when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Radiation is localized and can affect the breast and nearby tissues; timing and effects on lactation depend on area treated."
+  },
+  {
+    "topic": "Hair Loss",
+    "question": "how to manage side effects after breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Male Breast Cancer",
+    "question": "can I breastfeed after breast cancer?",
+    "answer": "It's normal to have concerns. Men can also get breast cancer; awareness and early evaluation of lumps is important."
+  },
+  {
+    "topic": "Contraception during treatment",
+    "question": "what to tell my partner when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Palliative Care",
+    "question": "what lifestyle changes help following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Work and Insurance",
+    "question": "what lifestyle changes help after targeted therapy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Hair Loss",
+    "question": "how to prepare for surgery following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Bone Health",
+    "question": "what to tell my partner when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Palliative Care",
+    "question": "how long is recovery if I had a reconstructive surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Work and Insurance",
+    "question": "will it affect my fertility after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Survivorship",
+    "question": "how to manage side effects following treatment for breast cancer?",
+    "answer": "Survivorship care focuses on monitoring recurrence, managing long-term effects, and supporting quality of life."
+  },
+  {
+    "topic": "Body Image",
+    "question": "what lifestyle changes help after targeted therapy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "how to prepare for surgery after surgery?",
+    "answer": "Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Reconstruction",
+    "question": "how to manage side effects if I had a mastectomy?",
+    "answer": "Reconstruction options vary; discuss timing, risks, and goals with your surgeon."
+  },
+  {
+    "topic": "Clinical Trials",
+    "question": "what lifestyle changes help when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Surgery and Recovery",
+    "question": "when can I try to conceive after hormonal therapy (tamoxifen)?",
+    "answer": "Recovery depends on type of surgery; follow wound care, avoid heavy lifting, and attend follow-up visits."
+  },
+  {
+    "topic": "Surgery and Recovery",
+    "question": "what lifestyle changes help after lumpectomy?",
+    "answer": "It's normal to have concerns. Recovery depends on type of surgery; follow wound care, avoid heavy lifting, and attend follow-up visits."
+  },
+  {
+    "topic": "Clinical Trials",
+    "question": "can I breastfeed following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Follow-up Care",
+    "question": "can I breastfeed after breast cancer?",
+    "answer": "Regular imaging and clinical exams are important to detect recurrence early and manage late effects."
+  },
+  {
+    "topic": "Fertility",
+    "question": "what lifestyle changes help when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Fertility can be affected by chemotherapy; discuss preservation before treatment and consult a fertility specialist."
+  },
+  {
+    "topic": "Bone Health",
+    "question": "can I breastfeed when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Survivorship",
+    "question": "is pregnancy risky following treatment for breast cancer?",
+    "answer": "Survivorship care focuses on monitoring recurrence, managing long-term effects, and supporting quality of life."
+  },
+  {
+    "topic": "Sexual Health",
+    "question": "when can I try to conceive if I had a reconstructive surgery?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Work and Insurance",
+    "question": "what to tell my partner following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Vaccinations",
+    "question": "can I breastfeed when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Lymphedema Management",
+    "question": "is it safe after targeted therapy?",
+    "answer": "Lymphedema can follow lymph node removal or radiation; physical therapy and compression can help."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "is pregnancy risky after breast cancer?",
+    "answer": "Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Pain Management",
+    "question": "what to tell my partner following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Pain control includes medications, physical therapy, and sometimes interventions; discuss persistent pain with your care team."
+  },
+  {
+    "topic": "Hormone Therapy",
+    "question": "what should I expect after chemotherapy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Palliative Care",
+    "question": "will it affect my fertility if I had a breast-conserving surgery?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Blood Tests & Markers",
+    "question": "what to tell my partner following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Pregnancy After Breast Cancer",
+    "question": "will it affect my fertility if I had a mastectomy?",
+    "answer": "Many people can have healthy pregnancies after treatment; timing and monitoring are individualized. Discuss with your oncology and obstetrics teams."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "will it affect my fertility after radiation therapy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Sexual Health",
+    "question": "how to cope emotionally after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Contraception during treatment",
+    "question": "how long is recovery when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Reconstruction",
+    "question": "when can I try to conceive when I'm a breast cancer survivor?",
+    "answer": "Reconstruction options vary; discuss timing, risks, and goals with your surgeon."
+  },
+  {
+    "topic": "Vaccinations",
+    "question": "can I breastfeed after lumpectomy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Breastfeeding After Treatment",
+    "question": "how to cope emotionally following treatment for breast cancer?",
+    "answer": "Breastfeeding may be possible from the unaffected breast; avoid breastfeeding during active chemotherapy or targeted agents that are contraindicated."
+  },
+  {
+    "topic": "Lymphedema Management",
+    "question": "is pregnancy risky after breast cancer?",
+    "answer": "Lymphedema can follow lymph node removal or radiation; physical therapy and compression can help."
+  },
+  {
+    "topic": "Emotional Support",
+    "question": "will medicine affect my baby after breast cancer?",
+    "answer": "Emotional health is crucial; seek counseling, peer support groups, and consider mental health professionals for persistent anxiety or depression."
+  },
+  {
+    "topic": "Body Image",
+    "question": "what lifestyle changes help following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Fertility Preservation",
+    "question": "what lifestyle changes help if I had a lumpectomy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Fertility",
+    "question": "how to manage side effects following treatment for breast cancer?",
+    "answer": "Fertility can be affected by chemotherapy; discuss preservation before treatment and consult a fertility specialist."
+  },
+  {
+    "topic": "Fertility Preservation",
+    "question": "when can I try to conceive if I had a mastectomy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Chemotherapy Effects",
+    "question": "what lifestyle changes help after breast cancer?",
+    "answer": "Chemotherapy may cause temporary or permanent changes in fertility, hair loss, fatigue, and other side effects; supportive care can help manage symptoms."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "how to cope emotionally after mastectomy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Contraception during treatment",
+    "question": "is pregnancy risky when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Surgery and Recovery",
+    "question": "is pregnancy risky following treatment for breast cancer?",
+    "answer": "Recovery depends on type of surgery; follow wound care, avoid heavy lifting, and attend follow-up visits."
+  },
+  {
+    "topic": "Blood Tests & Markers",
+    "question": "when can I try to conceive following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Work and Insurance",
+    "question": "how to manage side effects after chemotherapy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Travel and Flying",
+    "question": "when can I try to conceive following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Survivorship",
+    "question": "is it safe when I'm a breast cancer survivor?",
+    "answer": "Survivorship care focuses on monitoring recurrence, managing long-term effects, and supporting quality of life."
+  },
+  {
+    "topic": "Work and Insurance",
+    "question": "is it safe if I had a lumpectomy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Hormone Therapy",
+    "question": "how to manage side effects after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Work and Insurance",
+    "question": "how to manage side effects after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Hormone Therapy",
+    "question": "how to cope emotionally after hormonal therapy (tamoxifen)?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Nutrition",
+    "question": "is it safe when I'm a breast cancer survivor?",
+    "answer": "Balanced nutrition supports recovery; focus on protein, fruits, vegetables, and manage side effects like nausea with small, frequent meals."
+  },
+  {
+    "topic": "Nutrition",
+    "question": "when can I try to conceive following treatment for breast cancer?",
+    "answer": "It's normal to have concerns. Balanced nutrition supports recovery; focus on protein, fruits, vegetables, and manage side effects like nausea with small, frequent meals."
+  },
+  {
+    "topic": "Blood Tests & Markers",
+    "question": "is pregnancy risky after breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Radiation Effects",
+    "question": "what to tell my partner following treatment for breast cancer?",
+    "answer": "Radiation is localized and can affect the breast and nearby tissues; timing and effects on lactation depend on area treated."
+  },
+  {
+    "topic": "Palliative Care",
+    "question": "what lifestyle changes help after breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Blood Tests & Markers",
+    "question": "when can I try to conceive if I had a lumpectomy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Rehabilitation",
+    "question": "will it affect my fertility if I had a lumpectomy?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Contraception during treatment",
+    "question": "is it safe when I'm a breast cancer survivor?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Follow-up Care",
+    "question": "how long is recovery after chemotherapy?",
+    "answer": "Regular imaging and clinical exams are important to detect recurrence early and manage late effects."
+  },
+  {
+    "topic": "Fertility Preservation",
+    "question": "how to prepare for surgery following treatment for breast cancer?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Radiation Effects",
+    "question": "can I breastfeed after breast cancer?",
+    "answer": "Radiation is localized and can affect the breast and nearby tissues; timing and effects on lactation depend on area treated."
+  },
+  {
+    "topic": "Hair Loss",
+    "question": "can I breastfeed if I had a lumpectomy?",
+    "answer": "Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Chemotherapy Effects",
+    "question": "will it affect my fertility if I had a lumpectomy?",
+    "answer": "It's normal to have concerns. Chemotherapy may cause temporary or permanent changes in fertility, hair loss, fatigue, and other side effects; supportive care can help manage symptoms."
+  },
+  {
+    "topic": "Rehabilitation",
+    "question": "how to manage side effects after breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Pain Management",
+    "question": "can I breastfeed when I'm a breast cancer survivor?",
+    "answer": "It's normal to have concerns. Pain control includes medications, physical therapy, and sometimes interventions; discuss persistent pain with your care team."
+  },
+  {
+    "topic": "Survivorship",
+    "question": "how long is recovery when I'm a breast cancer survivor?",
+    "answer": "Survivorship care focuses on monitoring recurrence, managing long-term effects, and supporting quality of life."
+  },
+  {
+    "topic": "Body Image",
+    "question": "how long is recovery after breast cancer?",
+    "answer": "It's normal to have concerns. Discuss with your care team for personalized guidance; many resources and supportive options exist."
+  },
+  {
+    "topic": "Lymphedema Management",
+    "question": "what lifestyle changes help when I'm a breast cancer survivor?",
+    "answer": "Lymphedema can follow lymph node removal or radiation; physical therapy and compression can help."
+  }
+]
