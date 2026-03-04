@@ -29,7 +29,7 @@ if IS_HUGGING_FACE:
 
 # Load environment variables
 if not IS_HUGGING_FACE:
-    env_path = os.path.join("config", ".env")
+    env_path = ".env"
     print(f"🔍 Looking for .env file at: {env_path}")
     if os.path.exists(env_path):
         load_dotenv(env_path)
@@ -142,12 +142,12 @@ conversation_logger = ConversationLogger()
 
 # === Centralized Configuration System ===
 class Config:
-    """Centralized configuration - loads ONLY from config/config.json for all environments"""
+    """Centralized configuration - loads ONLY from environment variables for all environments"""
     
     def __init__(self):
         self.api_keys = []
         self.current_key_index = 0
-        self.settings = self._load_config_file()
+        self.settings = self._load_config_from_env()
         self._validate_and_correct_paths()
         
         self.SUPPORTED_LANGUAGES = ["english", "urdu"]
@@ -156,7 +156,6 @@ class Config:
         # Apply settings
         self.MODEL_PROVIDER = self.settings["model_provider"]
         self.MODEL_ID = self.settings["model_id"]
-        self.API_KEYS_FOLDER = self.settings["api_keys_folder"]
         self.INDEX_PATH = self.settings["index_path"]
         self.DATASET_PATH = self.settings["dataset_path"]
         self.SIMILARITY_TOP_K = self.settings["similarity_top_k"]
@@ -169,46 +168,64 @@ class Config:
         
         self._validate_config()
 
-    def _load_config_file(self):
-        """Load configuration ONLY from config/config.json file for ALL environments"""
-        config_file = os.path.join("config", "config.json")
-        
-        # Default configuration as fallback
-        default_config = {
-            "model_provider": "openrouter",
-            "model_id": "deepseek/deepseek-chat-v3.1:free",
-            "api_keys_folder": "config",
-            "index_path": "cancer_index_store",
-            "dataset_path": "breast_cancer.json",
-            "similarity_top_k": 5,
-            "temperature": 0.2,
-            "max_tokens": 350,
-            "fallback_message": "Sorry, I don't know the answer."
+    def _load_config_from_env(self):
+        """Load configuration from environment variables with defaults for non-sensitive settings"""
+        # Required environment variables (no defaults)
+        required_vars = {
+            "LLM_PROVIDER": "model_provider",
+            "LLM_MODEL": "model_id",
+            "LLM_TEMPERATURE": "temperature",
+            "LLM_MAX_TOKENS": "max_tokens"
         }
-    
-        try:
-            if os.path.exists(config_file):
-                print(f"✅ Loading configuration from: {config_file}")
-                with open(config_file, 'r', encoding='utf-8') as f:
-                    loaded_config = json.load(f)
-                
-                # Merge with defaults for missing keys
-                final_config = {**default_config, **loaded_config}
-                
-                print("📋 Configuration loaded successfully from config.json")
-                return final_config
+        
+        # Optional environment variables with defaults
+        optional_vars = {
+            "INDEX_PATH": ("index_path", "cancer_index_store"),
+            "DATASET_PATH": ("dataset_path", "breast_cancer.json"),
+            "SIMILARITY_TOP_K": ("similarity_top_k", 5),
+            "COMBINE_SOURCES": ("combine_sources", True),
+            "FALLBACK_MESSAGE": ("fallback_message", "Sorry, I don't know the answer."),
+            "STRICT_BREAST_CANCER_ONLY": ("strict_breast_cancer_only", True)
+        }
+        
+        config = {}
+        missing_vars = []
+        
+        # Load required vars
+        for env_var, config_key in required_vars.items():
+            value = os.getenv(env_var)
+            if value is None:
+                missing_vars.append(env_var)
             else:
-                # Create directory and config file if it doesn't exist
-                os.makedirs(os.path.dirname(config_file), exist_ok=True)
-                with open(config_file, 'w', encoding='utf-8') as f:
-                    json.dump(default_config, f, indent=4)
-                print(f"📁 Created default config file at: {config_file}")
-                return default_config
-                
-        except Exception as e:
-            print(f"❌ Error loading config from {config_file}: {e}")
-            print("🔄 Using default configuration as fallback")
-            return default_config
+                # Convert types appropriately
+                if config_key in ["max_tokens"]:
+                    config[config_key] = int(value)
+                elif config_key in ["temperature"]:
+                    config[config_key] = float(value)
+                else:
+                    config[config_key] = value
+        
+        # Load optional vars with defaults
+        for env_var, (config_key, default_value) in optional_vars.items():
+            value = os.getenv(env_var)
+            if value is not None:
+                # Convert types appropriately
+                if config_key in ["similarity_top_k", "max_tokens"]:
+                    config[config_key] = int(value)
+                elif config_key in ["temperature"]:
+                    config[config_key] = float(value)
+                elif config_key in ["combine_sources", "strict_breast_cancer_only"]:
+                    config[config_key] = value.lower() == "true"
+                else:
+                    config[config_key] = value
+            else:
+                config[config_key] = default_value
+        
+        if missing_vars:
+            raise ValueError(f"Missing required environment variables: {', '.join(missing_vars)}. Please set them in .env file.")
+        
+        print("📋 Configuration loaded successfully from environment variables")
+        return config
 
     def _validate_and_correct_paths(self):
         """Validate and correct file paths"""
@@ -241,7 +258,7 @@ class Config:
         api_keys = []
         print("🔍 Checking for API keys in environment variables...")
         
-        keys_to_check = ["API_KEY", "API_KEY_2", "API_KEY_3", "API_KEY_4", "API_KEY_5"]
+        keys_to_check = ["LLM_API_KEY", "LLM_API_KEY_2", "LLM_API_KEY_3", "LLM_API_KEY_4", "LLM_API_KEY_5"]
         
         for key_name in keys_to_check:
             key_value = os.getenv(key_name)
@@ -278,7 +295,7 @@ class Config:
             print(f"✅ Found {len(self.api_keys)} API key(s)")
             
         # Print current configuration
-        print("📋 Current Configuration (from config.json):")
+        print("📋 Current Configuration (from environment variables):")
         print(f"   Model Provider: {self.MODEL_PROVIDER}")
         print(f"   Model ID: {self.MODEL_ID}")
         print(f"   Index Path: {self.INDEX_PATH}")

@@ -3,55 +3,58 @@ import os
 import json
 import logging
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # === Centralized Configuration System ===
 class Config:
-    """Centralized configuration - loads from config.json"""
+    """Centralized configuration - loads from environment variables"""
     
     def __init__(self):
-        # Load settings from config.json
-        self.settings = self._load_config_file()
+        # Load settings from environment variables
+        self.settings = self._load_config_from_env()
         
         # Apply settings
         self.INDEX_PATH = self.settings["index_path"]
         self.DATASET_PATH = self._find_dataset_path()
         self._validate_config()
     
-    def _load_config_file(self):
-        """Load configuration from config/config.json file"""
-        config_file = os.path.join("config", "config.json")
-        default_config = {
-            "model_provider": "openrouter",
-            "model_id": "meta-llama/llama-3.3-70b-instruct:free",
-            "api_keys_folder": "config",
-            "index_path": "cancer_index_store",
-            "dataset_path": "DataSet/breast_cancer.json",
-            "similarity_top_k": 5,
-            "temperature": 0.2,
-            "max_tokens": 350,
-            "combine_sources": True,
-            "fallback_message": "Sorry, I don't know the answer.",
-            "strict_breast_cancer_only": True
+    def _load_config_from_env(self):
+        """Load configuration from environment variables with defaults for non-sensitive settings"""
+        # Optional environment variables with defaults (Index.py doesn't need LLM settings)
+        optional_vars = {
+            "INDEX_PATH": ("index_path", "cancer_index_store"),
+            "DATASET_PATH": ("dataset_path", "breast_cancer.json"),
+            "SIMILARITY_TOP_K": ("similarity_top_k", 5),
+            "LLM_TEMPERATURE": ("temperature", 0.3),
+            "LLM_MAX_TOKENS": ("max_tokens", 1500),
+            "COMBINE_SOURCES": ("combine_sources", True),
+            "FALLBACK_MESSAGE": ("fallback_message", "Sorry, I don't know the answer."),
+            "STRICT_BREAST_CANCER_ONLY": ("strict_breast_cancer_only", True)
         }
-    
-        try:
-            if os.path.exists(config_file):
-                with open(config_file, 'r', encoding='utf-8') as f:
-                    loaded_config = json.load(f)
-                # Merge with defaults for missing keys
-                merged_config = {**default_config, **loaded_config}
-                logging.info("✅ Configuration loaded from config/config.json")
-                return merged_config
+        
+        config = {}
+        
+        # Load optional vars with defaults
+        for env_var, (config_key, default_value) in optional_vars.items():
+            value = os.getenv(env_var)
+            if value is not None:
+                # Convert types appropriately
+                if config_key in ["similarity_top_k", "max_tokens"]:
+                    config[config_key] = int(value)
+                elif config_key in ["temperature"]:
+                    config[config_key] = float(value)
+                elif config_key in ["combine_sources", "strict_breast_cancer_only"]:
+                    config[config_key] = value.lower() == "true"
+                else:
+                    config[config_key] = value
             else:
-                os.makedirs(os.path.dirname(config_file), exist_ok=True)
-                with open(config_file, 'w', encoding='utf-8') as f:
-                    json.dump(default_config, f, indent=4)
-                logging.info("📁 Created default config/config.json file")
-                return default_config
-        except Exception as e:
-            logging.error(f"❌ Error loading config/config.json: {e}")
-            logging.info("🔄 Using default configuration")
-            return default_config
+                config[config_key] = default_value
+        
+        logging.info("✅ Configuration loaded from environment variables")
+        return config
     
     def _find_dataset_path(self):
         """Find the correct dataset path"""
