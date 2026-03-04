@@ -30,12 +30,8 @@ if IS_HUGGING_FACE:
 
 # Load environment variables
 if not IS_HUGGING_FACE:
-    env_path = os.path.join("config", ".env")
-    if os.path.exists(env_path):
-        load_dotenv(env_path)
-        print("✅ .env file loaded")
-    else:
-        print(f"⚠️ .env file not found at: {env_path}")
+    load_dotenv()  # Load from .env in current directory
+    print("✅ .env file loaded")
 else:
     print("✅ Hugging Face environment - using repository secrets")
 
@@ -147,14 +143,14 @@ class Config:
 
         self.SUPPORTED_LANGUAGES = ["english", "urdu"]
         self.DEFAULT_LANGUAGE = "english"
-        self.MODEL_PROVIDER = self.settings["model_provider"]
-        self.MODEL_ID = self.settings["model_id"]
+        self.MODEL_PROVIDER = os.getenv("LLM_PROVIDER", "openrouter")  # fallback for compatibility
+        self.MODEL_ID = os.getenv("LLM_MODEL", "deepseek/deepseek-chat-v3.1:free")  # fallback
         self.API_KEYS_FOLDER = self.settings["api_keys_folder"]
         self.INDEX_PATH = self.settings["index_path"]
         self.DATASET_PATH = self.settings["dataset_path"]
         self.SIMILARITY_TOP_K = self.settings.get("similarity_top_k", 5)
-        self.TEMPERATURE = self.settings.get("temperature", 0.2)
-        self.MAX_TOKENS = self.settings.get("max_tokens", 500)
+        self.TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", self.settings.get("temperature", 0.2)))
+        self.MAX_TOKENS = int(os.getenv("LLM_MAX_TOKENS", self.settings.get("max_tokens", 500)))
         self.FALLBACK_MESSAGE = self.settings["fallback_message"]
         self.EMBEDDING_MODEL = self.settings.get(
             "embedding_model", "sentence-transformers/all-MiniLM-L6-v2"
@@ -167,8 +163,6 @@ class Config:
     def _load_config_file(self):
         config_file = os.path.join("config", "config.json")
         default_config = {
-            "model_provider": "openrouter",
-            "model_id": "deepseek/deepseek-chat-v3.1:free",
             "api_keys_folder": "config",
             "index_path": "cancer_index_store",
             "dataset_path": "breast_cancer_comprehensive.json",
@@ -203,11 +197,10 @@ class Config:
 
     def _load_api_keys(self) -> List[str]:
         api_keys = []
-        for key_name in ["API_KEY", "API_KEY_2", "API_KEY_3", "API_KEY_4", "API_KEY_5"]:
-            key_value = os.getenv(key_name)
-            if key_value and key_value.strip():
-                api_keys.append(key_value.strip())
-                print(f"✅ Found {key_name}")
+        key_value = os.getenv("LLM_API_KEY")
+        if key_value and key_value.strip():
+            api_keys.append(key_value.strip())
+            print("✅ Found LLM_API_KEY")
         return api_keys
 
     def _get_current_api_key(self) -> str:
@@ -651,7 +644,7 @@ being medically accurate. You are NOT a doctor — you always encourage consulti
         for attempt in range(max_retries):
             try:
                 client = OpenAI(
-                    base_url="https://openrouter.ai/api/v1",
+                    base_url=os.getenv("LLM_BASE_URL", "https://openrouter.ai/api/v1"),
                     api_key=config.api_key,
                 )
 

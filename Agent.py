@@ -29,13 +29,8 @@ if IS_HUGGING_FACE:
 
 # Load environment variables
 if not IS_HUGGING_FACE:
-    env_path = os.path.join("config", ".env")
-    print(f"🔍 Looking for .env file at: {env_path}")
-    if os.path.exists(env_path):
-        load_dotenv(env_path)
-        print("✅ .env file loaded successfully")
-    else:
-        print(f"❌ .env file not found at: {env_path}")
+    load_dotenv()  # Load from .env in current directory
+    print("✅ .env file loaded successfully")
 else:
     print("✅ Hugging Face environment - using repository secrets")
 
@@ -154,14 +149,14 @@ class Config:
         self.DEFAULT_LANGUAGE = "english"
         
         # Apply settings
-        self.MODEL_PROVIDER = self.settings["model_provider"]
-        self.MODEL_ID = self.settings["model_id"]
+        self.MODEL_PROVIDER = os.getenv("LLM_PROVIDER", "openrouter")
+        self.MODEL_ID = os.getenv("LLM_MODEL", "deepseek/deepseek-chat-v3.1:free")
         self.API_KEYS_FOLDER = self.settings["api_keys_folder"]
         self.INDEX_PATH = self.settings["index_path"]
         self.DATASET_PATH = self.settings["dataset_path"]
         self.SIMILARITY_TOP_K = self.settings["similarity_top_k"]
-        self.TEMPERATURE = self.settings["temperature"]
-        self.MAX_TOKENS = self.settings["max_tokens"]
+        self.TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", self.settings["temperature"]))
+        self.MAX_TOKENS = int(os.getenv("LLM_MAX_TOKENS", self.settings["max_tokens"]))
         self.FALLBACK_MESSAGE = self.settings["fallback_message"]
         
         self.api_keys = self._load_api_keys()
@@ -175,8 +170,6 @@ class Config:
         
         # Default configuration as fallback
         default_config = {
-            "model_provider": "openrouter",
-            "model_id": "deepseek/deepseek-chat-v3.1:free",
             "api_keys_folder": "config",
             "index_path": "cancer_index_store",
             "dataset_path": "breast_cancer.json",
@@ -241,13 +234,10 @@ class Config:
         api_keys = []
         print("🔍 Checking for API keys in environment variables...")
         
-        keys_to_check = ["API_KEY", "API_KEY_2", "API_KEY_3", "API_KEY_4", "API_KEY_5"]
-        
-        for key_name in keys_to_check:
-            key_value = os.getenv(key_name)
-            if key_value and key_value.strip():
-                api_keys.append(key_value.strip())
-                print(f"✅ Found {key_name}")
+        key_value = os.getenv("LLM_API_KEY")
+        if key_value and key_value.strip():
+            api_keys.append(key_value.strip())
+            print("✅ Found LLM_API_KEY")
         
         return api_keys
 
@@ -946,7 +936,7 @@ CRITICAL URDU LANGUAGE RULES:
             try:
                 # Initialize OpenAI client with OpenRouter configuration
                 client = OpenAI(
-                    base_url="https://openrouter.ai/api/v1",
+                    base_url=os.getenv("LLM_BASE_URL", "https://openrouter.ai/api/v1"),
                     api_key=config.api_key,
                 )
 

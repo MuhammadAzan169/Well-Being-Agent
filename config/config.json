@@ -1,6 +1,4 @@
 {
-    "model_provider": "openrouter",
-    "model_id": "deepseek/deepseek-chat-v3.1:free",
     "api_keys_folder": "config",
     "index_path": "cancer_index_store",
     "dataset_path": "DataSet/breast_cancer_comprehensive.json",

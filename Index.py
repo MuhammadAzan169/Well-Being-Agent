@@ -32,8 +32,6 @@ class Config:
     def _load_config_file(self):
         config_file = os.path.join("config", "config.json")
         default_config = {
-            "model_provider": "openrouter",
-            "model_id": "deepseek/deepseek-chat-v3.1:free",
             "api_keys_folder": "config",
             "index_path": "cancer_index_store",
             "dataset_path": "breast_cancer_comprehensive.json",
@@ -43,9 +41,9 @@ class Config:
             "similarity_top_k": 5,
             "temperature": 0.2,
             "max_tokens": 500,
-            "combine_sources": True,
+            "combine_sources": true,
             "fallback_message": "Sorry, I don't know the answer.",
-            "strict_breast_cancer_only": True,
+            "strict_breast_cancer_only": true,
         }
         try:
             if os.path.exists(config_file):
