@@ -29,18 +29,8 @@ if IS_HUGGING_FACE:
 
 # Load environment variables
 if not IS_HUGGING_FACE:
-<<<<<<< HEAD
     load_dotenv()  # Load from .env in current directory
     print("✅ .env file loaded successfully")
-=======
-    env_path = ".env"
-    print(f"🔍 Looking for .env file at: {env_path}")
-    if os.path.exists(env_path):
-        load_dotenv(env_path)
-        print("✅ .env file loaded successfully")
-    else:
-        print(f"❌ .env file not found at: {env_path}")
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
 else:
     print("✅ Hugging Face environment - using repository secrets")
 
@@ -147,36 +137,18 @@ conversation_logger = ConversationLogger()
 
 # === Centralized Configuration System ===
 class Config:
-<<<<<<< HEAD
-    """Centralized configuration - loads ONLY from config/config.json for all environments"""
-=======
     """Centralized configuration - loads ONLY from environment variables for all environments"""
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
     
     def __init__(self):
         self.api_keys = []
         self.current_key_index = 0
-<<<<<<< HEAD
-        self.settings = self._load_config_file()
-=======
         self.settings = self._load_config_from_env()
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
         self._validate_and_correct_paths()
         
         self.SUPPORTED_LANGUAGES = ["english", "urdu"]
         self.DEFAULT_LANGUAGE = "english"
         
         # Apply settings
-<<<<<<< HEAD
-        self.MODEL_PROVIDER = os.getenv("LLM_PROVIDER", "openrouter")
-        self.MODEL_ID = os.getenv("LLM_MODEL", "deepseek/deepseek-chat-v3.1:free")
-        self.API_KEYS_FOLDER = self.settings["api_keys_folder"]
-        self.INDEX_PATH = self.settings["index_path"]
-        self.DATASET_PATH = self.settings["dataset_path"]
-        self.SIMILARITY_TOP_K = self.settings["similarity_top_k"]
-        self.TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", self.settings["temperature"]))
-        self.MAX_TOKENS = int(os.getenv("LLM_MAX_TOKENS", self.settings["max_tokens"]))
-=======
         self.MODEL_PROVIDER = self.settings["model_provider"]
         self.MODEL_ID = self.settings["model_id"]
         self.INDEX_PATH = self.settings["index_path"]
@@ -184,7 +156,6 @@ class Config:
         self.SIMILARITY_TOP_K = self.settings["similarity_top_k"]
         self.TEMPERATURE = self.settings["temperature"]
         self.MAX_TOKENS = self.settings["max_tokens"]
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
         self.FALLBACK_MESSAGE = self.settings["fallback_message"]
         
         self.api_keys = self._load_api_keys()
@@ -192,46 +163,6 @@ class Config:
         
         self._validate_config()
 
-<<<<<<< HEAD
-    def _load_config_file(self):
-        """Load configuration ONLY from config/config.json file for ALL environments"""
-        config_file = os.path.join("config", "config.json")
-        
-        # Default configuration as fallback
-        default_config = {
-            "api_keys_folder": "config",
-            "index_path": "cancer_index_store",
-            "dataset_path": "breast_cancer.json",
-            "similarity_top_k": 5,
-            "temperature": 0.2,
-            "max_tokens": 350,
-            "fallback_message": "Sorry, I don't know the answer."
-        }
-    
-        try:
-            if os.path.exists(config_file):
-                print(f"✅ Loading configuration from: {config_file}")
-                with open(config_file, 'r', encoding='utf-8') as f:
-                    loaded_config = json.load(f)
-                
-                # Merge with defaults for missing keys
-                final_config = {**default_config, **loaded_config}
-                
-                print("📋 Configuration loaded successfully from config.json")
-                return final_config
-            else:
-                # Create directory and config file if it doesn't exist
-                os.makedirs(os.path.dirname(config_file), exist_ok=True)
-                with open(config_file, 'w', encoding='utf-8') as f:
-                    json.dump(default_config, f, indent=4)
-                print(f"📁 Created default config file at: {config_file}")
-                return default_config
-                
-        except Exception as e:
-            print(f"❌ Error loading config from {config_file}: {e}")
-            print("🔄 Using default configuration as fallback")
-            return default_config
-=======
     def _load_config_from_env(self):
         """Load configuration from environment variables with defaults for non-sensitive settings"""
         # Required environment variables (no defaults)
@@ -290,8 +221,6 @@ class Config:
         
         print("📋 Configuration loaded successfully from environment variables")
         return config
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
-
     def _validate_and_correct_paths(self):
         """Validate and correct file paths"""
         # Correct dataset path if needed
@@ -323,12 +252,6 @@ class Config:
         api_keys = []
         print("🔍 Checking for API keys in environment variables...")
         
-<<<<<<< HEAD
-        key_value = os.getenv("LLM_API_KEY")
-        if key_value and key_value.strip():
-            api_keys.append(key_value.strip())
-            print("✅ Found LLM_API_KEY")
-=======
         keys_to_check = ["LLM_API_KEY", "LLM_API_KEY_2", "LLM_API_KEY_3", "LLM_API_KEY_4", "LLM_API_KEY_5"]
         
         for key_name in keys_to_check:
@@ -336,7 +259,6 @@ class Config:
             if key_value and key_value.strip():
                 api_keys.append(key_value.strip())
                 print(f"✅ Found {key_name}")
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
         
         return api_keys
 
@@ -367,11 +289,7 @@ class Config:
             print(f"✅ Found {len(self.api_keys)} API key(s)")
             
         # Print current configuration
-<<<<<<< HEAD
-        print("📋 Current Configuration (from config.json):")
-=======
         print("📋 Current Configuration (from environment variables):")
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
         print(f"   Model Provider: {self.MODEL_PROVIDER}")
         print(f"   Model ID: {self.MODEL_ID}")
         print(f"   Index Path: {self.INDEX_PATH}")
@@ -1039,11 +957,7 @@ CRITICAL URDU LANGUAGE RULES:
             try:
                 # Initialize OpenAI client with OpenRouter configuration
                 client = OpenAI(
-<<<<<<< HEAD
-                    base_url=os.getenv("LLM_BASE_URL", "https://openrouter.ai/api/v1"),
-=======
                     base_url="https://openrouter.ai/api/v1",
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
                     api_key=config.api_key,
                 )
 

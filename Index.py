@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 # Index.py - Enhanced RAG Indexing Pipeline with structured metadata
-=======
-# Index.py - Multilingual version (English + Urdu) for creating embeddings and vector index
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
 import os
 import json
 import logging
 from pathlib import Path
-<<<<<<< HEAD
 
 # === Setup Logging ===
 logging.basicConfig(
@@ -17,59 +12,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# === Centralized Configuration System ===
-class Config:
-    """Centralized configuration - loads from config.json"""
-
-    def __init__(self):
-        self.settings = self._load_config_file()
-        self.INDEX_PATH = self.settings["index_path"]
-        self.DATASET_PATH = self._find_dataset_path()
-        self.EMBEDDING_MODEL = self.settings.get(
-            "embedding_model",
-            "sentence-transformers/all-MiniLM-L6-v2",
-        )
-        self.CHUNK_SIZE = self.settings.get("chunk_size", 512)
-        self.CHUNK_OVERLAP = self.settings.get("chunk_overlap", 64)
-        self.SIMILARITY_TOP_K = self.settings.get("similarity_top_k", 5)
-        self._validate_config()
-
-    def _load_config_file(self):
-        config_file = os.path.join("config", "config.json")
-        default_config = {
-            "api_keys_folder": "config",
-            "index_path": "cancer_index_store",
-            "dataset_path": "breast_cancer_comprehensive.json",
-            "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
-            "chunk_size": 512,
-            "chunk_overlap": 64,
-            "similarity_top_k": 5,
-            "temperature": 0.2,
-            "max_tokens": 500,
-            "combine_sources": true,
-            "fallback_message": "Sorry, I don't know the answer.",
-            "strict_breast_cancer_only": true,
-        }
-        try:
-            if os.path.exists(config_file):
-                with open(config_file, "r", encoding="utf-8") as f:
-                    loaded_config = json.load(f)
-                merged_config = {**default_config, **loaded_config}
-                logger.info("[OK] Configuration loaded from config/config.json")
-                return merged_config
-            else:
-                os.makedirs(os.path.dirname(config_file), exist_ok=True)
-                with open(config_file, "w", encoding="utf-8") as f:
-                    json.dump(default_config, f, indent=4)
-                logger.info("[OK] Created default config/config.json file")
-                return default_config
-        except Exception as e:
-            logger.error(f"[FAIL] Error loading config: {e}")
-            return default_config
-
-    def _find_dataset_path(self):
-        original_path = self.settings.get("dataset_path", "breast_cancer_comprehensive.json")
-=======
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -126,12 +68,10 @@ class Config:
     def _find_dataset_path(self):
         """Find the correct dataset path"""
         original_path = self.settings["dataset_path"]
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
         possible_paths = [
             original_path,
             f"DataSet/{original_path}",
             f"data/{original_path}",
-<<<<<<< HEAD
             "DataSet/breast_cancer_comprehensive.json",
             "DataSet/breast_cancer.json",
             "breast_cancer_comprehensive.json",
@@ -153,35 +93,7 @@ class Config:
         logger.info(f"[OK] Embedding model: {self.EMBEDDING_MODEL}")
         logger.info(f"[OK] Chunk size: {self.CHUNK_SIZE}, overlap: {self.CHUNK_OVERLAP}")
 
-=======
-            "DataSet/breast_cancer.json",
-            "breast_cancer.json",
-            "../DataSet/breast_cancer.json"
-        ]
-        
-        for path in possible_paths:
-            if os.path.exists(path):
-                if path != original_path:
-                    logging.info(f"🔄 Using dataset at: {path}")
-                else:
-                    logging.info(f"✅ Dataset found at: {path}")
-                return path
-        
-        logging.error(f"❌ Dataset not found in any location")
-        return original_path  # Return original even if not found for error handling
-    
-    def _validate_config(self):
-        """Validate configuration"""
-        if not os.path.exists(self.DATASET_PATH):
-            logging.error(f"❌ Dataset file not found: {self.DATASET_PATH}")
-        else:
-            logging.info(f"✅ Dataset found: {self.DATASET_PATH}")
-        logging.info(f"✅ Index will be stored at: {self.INDEX_PATH}")
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
-
 config = Config()
-
-<<<<<<< HEAD
 
 def load_and_prepare_documents():
     """
@@ -408,7 +320,6 @@ def main():
     else:
         print("\n[FAIL] Index creation failed!")
 
-=======
 # === Setup Logging ===
 logging.basicConfig(
     level=logging.INFO, 
@@ -522,7 +433,6 @@ def main():
         print("2️⃣ Run app.py for web interface")
     else:
         print("\n💥 Index creation failed!")
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
 
 if __name__ == "__main__":
     main()
