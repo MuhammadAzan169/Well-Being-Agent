@@ -1,6 +1,6 @@
 {
     "model_provider": "openrouter",
-    "model_id": "meta-llama/llama-3.3-70b-instruct:free",
+    "model_id": "deepseek/deepseek-chat-v3.1:free",
     "api_keys_folder": "config",
     "index_path": "cancer_index_store",
     "dataset_path": "breast_cancer.json",
