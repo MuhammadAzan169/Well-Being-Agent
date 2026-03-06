@@ -2,7 +2,7 @@
   "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
   "chunk_size": 512,
   "chunk_overlap": 64,
-  "num_documents": 365,
-  "num_nodes": 367,
+  "num_documents": 378,
+  "num_nodes": 384,
   "dataset_path": "DataSet/breast_cancer_comprehensive.json"
 }

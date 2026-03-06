@@ -101,5 +101,29 @@
     "llm_response": "Please remember that after every storm comes calm.\n\nSorry, I don't know the answer.\n\nRemember to discuss any concerns with your healthcare team.",
     "language": "english",
     "response_type": "text"
+  },
+  {
+    "timestamp": "2026-03-06T05:09:51.463030",
+    "user_input": "What are the earliest warning signs of breast cancer?",
+    "response": "Sweetheart, I'm so glad you're being proactive about your health! The earliest warning signs of breast cancer can be subtle, but it's great that you're paying attention. According to the American Cancer Society, some common signs to look out for include a new lump or thickening in the breast or underarm, swelling or changes in the size or shape of the breast, and nipple discharge or changes in the nipple. You might also notice changes in the skin, like dimpling or redness. It's essential to remember that these symptoms can also be caused by other conditions, so if you notice anything unusual, don't hesitate to discuss it with your healthcare team. They can help you determine the cause and develop a plan to stay on top of your health. Remember, early detection is key, and regular check-ups can make a big difference. Be sure to talk to your doctor about your specific risk factors and any concerns you may have. You're taking a great first step by being informed and aware - keep up the good work, and don't forget to be kind to yourself throughout this process! 💛\n\nRemember to discuss any concerns with your healthcare team.",
+    "language": "english",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-06T05:11:57.843749",
+    "user_input": "Can I breastfeed after breast cancer surgery?",
+    "response": "I'm sorry, I'm unable to respond right now. Please try again shortly.\n\nRemember to discuss any concerns with your healthcare team.",
+    "language": "english",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-06T05:12:20.018849",
+    "user_input": "hi",
+    "response": "I'm sorry, I'm unable to respond right now. Please try again shortly.\n\nRemember to discuss any concerns with your healthcare team.",
+    "language": "english",
+    "response_type": "text",
+    "sources": []
   }
 ]

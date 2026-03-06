@@ -493,5 +493,149 @@
     "source": "National Cancer Institute, ClinicalTrials.gov, ASCO",
     "tags": ["clinical trials", "research", "new treatments", "participation", "safety"],
     "language": "english"
+  },
+
+  {
+    "id": "bc-mental-001",
+    "topic": "Anxiety and Breast Cancer",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "How do I cope with anxiety after being diagnosed with breast cancer?",
+    "answer": "Anxiety after a breast cancer diagnosis is one of the most common emotional responses, and it is completely normal. Here are evidence-based strategies that help: (1) Acknowledge your feelings — telling yourself 'I shouldn't feel this way' only adds guilt. It is okay to be scared. (2) Deep breathing exercises — try the 4-7-8 technique: breathe in for 4 seconds, hold for 7, exhale for 8. Practice 3-4 times daily. (3) Stay informed, not overwhelmed — learn about your specific diagnosis from reliable sources. Ask your oncologist to explain things at your pace. (4) Establish a routine — keep as much normalcy as possible. Small daily structures reduce the feeling of chaos. (5) Mindfulness and meditation — apps like Calm or Headspace have cancer-specific programs. Even 5 minutes daily makes a measurable difference. (6) Physical activity — gentle walking, yoga, or stretching release endorphins. Studies show 30 minutes of moderate activity 3 times weekly significantly reduces anxiety. (7) Support groups — connecting with others who understand can be profoundly comforting. Organizations like the Breast Cancer Network offer peer support. (8) Professional help — a therapist specializing in cancer psychology (psycho-oncology) can provide targeted coping strategies. Many cancer centers offer free counseling. (9) Limit 'Dr. Google' — set specific times to research rather than constant searching. (10) Journaling — writing thoughts down helps process emotions and identify anxiety triggers. Remember, seeking help for anxiety is a sign of strength, not weakness.",
+    "source": "American Psychological Association, Cancer Support Community, Breastcancer.org",
+    "tags": ["anxiety", "coping", "mental health", "mindfulness", "diagnosis"],
+    "language": "english"
+  },
+  {
+    "id": "bc-mental-002",
+    "topic": "Depression During Treatment",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "Is it normal to feel depressed during breast cancer treatment?",
+    "answer": "Yes, depression during breast cancer treatment is very common — studies show up to 25% of breast cancer patients experience clinical depression, and many more have depressive symptoms. This is not a personal failing; it is a natural response to an incredibly stressful situation, and treatment side effects (fatigue, hormonal changes, pain) can also contribute. Warning signs include: persistent sadness lasting more than two weeks, loss of interest in activities you used to enjoy, changes in sleep or appetite, difficulty concentrating, feelings of worthlessness or hopelessness, withdrawal from friends and family, and thoughts of self-harm. What helps: (1) Talk to your oncology team — they can adjust medications that may contribute to mood changes and refer you to appropriate support. (2) Antidepressants — SSRIs are safe during most cancer treatments and can make a significant difference. (3) Therapy — cognitive behavioral therapy (CBT) is highly effective for cancer-related depression. (4) Exercise — even gentle movement improves mood through endorphin release. (5) Social connection — isolation worsens depression; stay connected even when you do not feel like it. (6) Sleep hygiene — maintain consistent sleep schedules despite treatment disruptions. (7) Nutrition — omega-3 fatty acids, whole grains, and leafy greens support brain health. You deserve to feel as well as possible during treatment. Depression is treatable, and asking for help is one of the bravest things you can do.",
+    "source": "National Comprehensive Cancer Network, Journal of Clinical Oncology, ASCO",
+    "tags": ["depression", "mental health", "treatment", "therapy", "medication"],
+    "language": "english"
+  },
+  {
+    "id": "bc-mental-003",
+    "topic": "Body Image After Breast Cancer",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "How do I deal with body image changes after mastectomy or treatment?",
+    "answer": "Body image changes after breast cancer treatment — whether from mastectomy, lumpectomy, hair loss, weight changes, or surgical scars — can deeply affect how you feel about yourself. These feelings are valid and shared by many survivors. Here is what can help: (1) Give yourself time — adjusting to body changes is a process, not an event. Be patient and compassionate with yourself. (2) Explore reconstruction options — if you had a mastectomy, discuss breast reconstruction with your surgeon. Options include implant-based or autologous (using your own tissue) reconstruction. There is no wrong choice, including choosing not to reconstruct. (3) Prosthetics and specialty bras — many women find high-quality breast prosthetics restore confidence. Insurance often covers them. (4) Look Good Feel Better — this free program (lookgoodfeelbetter.org) helps women manage appearance changes during treatment, including wigs, makeup tips, and skincare. (5) Scar healing — silicone sheets, massage, and specialized creams can improve scar appearance over time. (6) Intimacy — talk openly with your partner. Consider couples counseling. Physical intimacy may look different but can remain fulfilling. (7) Exercise — regular activity improves body confidence and physical function. Yoga and strength training are particularly beneficial. (8) Peer support — connecting with other survivors who understand body changes can be incredibly healing. (9) Therapy — a therapist specializing in body image or cancer can help you reframe your relationship with your body. Your body carried you through treatment — that is something to honor.",
+    "source": "Breastcancer.org, Look Good Feel Better, American Society of Plastic Surgeons",
+    "tags": ["body image", "mastectomy", "reconstruction", "self-esteem", "appearance"],
+    "language": "english"
+  },
+  {
+    "id": "bc-mental-004",
+    "topic": "Fear of Recurrence",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "How do I manage my fear that the cancer will come back?",
+    "answer": "Fear of recurrence is one of the most common concerns among breast cancer survivors — nearly every survivor experiences it at some point. It often peaks around follow-up appointments, anniversaries of diagnosis, or when hearing about someone else's cancer diagnosis. Here are strategies that help: (1) Acknowledge the fear — trying to suppress it gives it more power. Accept that some worry is normal and does not mean cancer is returning. (2) Focus on what you can control — maintain follow-up appointments, eat well, exercise, limit alcohol, and do not smoke. These actions meaningfully reduce recurrence risk. (3) Recognize triggers — note when fear spikes (before scans, during body aches, on the news). Awareness helps you prepare coping strategies in advance. (4) The 'worry window' technique — designate 15 minutes daily for cancer worries. Outside that time, gently redirect your thoughts. (5) Stay connected — talk to people who understand. Survivor support groups are especially helpful for this specific fear. (6) Mindfulness meditation — research shows it significantly reduces fear of recurrence. Programs like MBSR (Mindfulness-Based Stress Reduction) are offered at many cancer centers. (7) Physical activity — exercise reduces both recurrence risk AND anxiety about recurrence. (8) Professional support — if fear is interfering with daily life, sleep, or relationships, consider therapy. Specific programs like ConquerFear therapy are designed for this. (9) Celebrate milestones — each follow-up visit with good results is worth acknowledging. Remember, living well is the best response to fear.",
+    "source": "American Cancer Society, Journal of Clinical Oncology, Cancer Support Community",
+    "tags": ["fear of recurrence", "survivorship", "anxiety", "coping", "follow-up"],
+    "language": "english"
+  },
+  {
+    "id": "bc-mental-005",
+    "topic": "Telling Family About Breast Cancer",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "How do I tell my family and children about my breast cancer diagnosis?",
+    "answer": "Telling loved ones about your diagnosis is one of the hardest conversations you may ever have. Here is guidance from cancer psychologists: For your partner: (1) Choose a quiet, private time. (2) Share what you know so far — diagnosis, next steps, what the doctor said. (3) Be honest about your feelings. (4) Give them time to process — they may react differently than expected. For children: (1) Use age-appropriate language. For young children (3-7): 'Mama has a sickness called cancer in her breast. The doctors are going to give me medicine to help me get better. I might feel tired sometimes, but I still love you just as much.' (2) For older children (8-12): Be more specific about treatment and side effects. Reassure them it is not contagious and not their fault. (3) For teenagers: They can handle more details but may try to act tough. Watch for behavioral changes. (4) For all ages: Keep routines as normal as possible. Let them ask questions. Be honest without oversharing scary details. Let school counselors know. For parents and siblings: They may feel helpless. Give them specific ways to help — 'Can you drive me to appointments on Tuesdays?' is easier than 'I need help.' General tips: You do not have to tell everyone at once. You can designate a family spokesperson to update others. It is okay to set boundaries about what you share and when. Organizations like CancerCare offer free guides for family communication.",
+    "source": "CancerCare, American Cancer Society, Kids Konnected",
+    "tags": ["family", "communication", "children", "partner", "telling others"],
+    "language": "english"
+  },
+  {
+    "id": "bc-mental-006",
+    "topic": "Sleep Problems During Treatment",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "Why can't I sleep during breast cancer treatment and what can I do?",
+    "answer": "Sleep disruption during breast cancer treatment is extremely common, affecting up to 80% of patients. Causes include: anxiety and racing thoughts, treatment side effects (hot flashes from hormone therapy, steroid-induced insomnia from chemo, pain), frequent bathroom trips, and disrupted daily routines. Poor sleep worsens fatigue, mood, and even immune function, so addressing it is important. What helps: (1) Sleep hygiene basics — go to bed and wake at the same time daily, keep the bedroom cool and dark, avoid screens 1 hour before bed. (2) Cognitive behavioral therapy for insomnia (CBT-I) — this is the gold standard treatment and is more effective than sleeping pills long-term. Many cancer centers offer it. (3) Relaxation techniques — progressive muscle relaxation, guided imagery, or body scan meditation before bed. (4) Hot flash management — if hormone therapy is causing night sweats, talk to your doctor about medications like venlafaxine or gabapentin that can help. Keep a fan nearby, use moisture-wicking sleepwear. (5) Limit naps — if you must nap, keep it under 30 minutes before 2 PM. (6) Exercise — regular physical activity improves sleep quality, but avoid vigorous exercise within 3 hours of bedtime. (7) Avoid stimulants — limit caffeine after noon, minimize alcohol (it disrupts sleep cycles). (8) Talk to your doctor — some sleep medications are safe during treatment. Melatonin may also help and is being studied in cancer patients. (9) Create a worry journal — write down tomorrow's concerns before bed to clear your mind. Your oncology team can help you find the right combination of strategies.",
+    "source": "Sleep Foundation, Journal of Clinical Sleep Medicine, ASCO",
+    "tags": ["sleep", "insomnia", "treatment side effects", "relaxation", "CBT-I"],
+    "language": "english"
+  },
+  {
+    "id": "bc-mental-007",
+    "topic": "Relationships and Intimacy",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "How does breast cancer affect relationships and intimacy?",
+    "answer": "Breast cancer can significantly impact your relationships and intimate life, but with communication and support, many couples find their bond actually strengthens. Common challenges include: changes in body image and self-confidence, reduced libido from hormonal treatments or emotional distress, physical discomfort during intimacy, partner's fear of causing pain, and changes in family roles. What can help: (1) Communication is key — share your feelings, fears, and needs openly. Many couples find that cancer actually deepens their communication. (2) Physical intimacy may look different — explore non-sexual touch like holding hands, massage, cuddling. Intimacy is much broader than sex. (3) Address physical symptoms — vaginal dryness from hormone therapy can be managed with moisturizers and lubricants. Your doctor can recommend safe options. (4) Take it slowly — there is no timeline for returning to intimacy. Both partners should feel comfortable. (5) Couples counseling — a therapist specializing in cancer can help navigate relationship changes. Many cancer centers offer this service. (6) For single patients — dating after cancer has its challenges, but many survivors find loving, supportive partners. Deciding when and how to disclose your history is personal. (7) LGBTQ+ considerations — seek out inclusive support groups and healthcare providers. (8) Caregiver support — partners also need support. Organizations like CancerCare offer caregiver-specific programs. Remember, your worth and lovability have nothing to do with your diagnosis or physical changes.",
+    "source": "American Cancer Society, Breastcancer.org, Cancer Support Community",
+    "tags": ["relationships", "intimacy", "partner", "communication", "sexuality"],
+    "language": "english"
+  },
+  {
+    "id": "bc-mental-008",
+    "topic": "Financial Stress and Cancer",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "How can I manage financial stress during breast cancer treatment?",
+    "answer": "Financial toxicity — the term for financial distress caused by cancer treatment costs — affects a significant number of breast cancer patients. The stress of medical bills on top of a cancer diagnosis is overwhelming, but there are resources to help: (1) Talk to a financial counselor at your cancer center — most hospitals have patient financial services that can help with payment plans, charity care, and assistance programs. (2) Insurance navigation — contact your insurance company to understand coverage. Ask about prior authorizations and appeal processes for denied claims. (3) Copay assistance programs — pharmaceutical companies often offer copay cards or free medication programs for those who qualify. (4) Non-profit assistance — organizations like CancerCare, Patient Access Network, and the Breast Cancer Alliance offer financial grants for treatment costs, transportation, childcare, and living expenses. (5) Government programs — Medicaid, Social Security Disability (SSDI), and the Affordable Care Act marketplace may provide coverage options. (6) Work and legal protections — the Family and Medical Leave Act (FMLA) protects your job during treatment. Some employers offer short-term disability. (7) Transportation assistance — the American Cancer Society's Road to Recovery program provides free rides to treatment. (8) Reduce expenses — contact utility companies about hardship programs, and check if your mortgage company offers forbearance. Do not let financial worry prevent you from getting treatment. Help is available, and asking for it is not shameful — it is smart self-care.",
+    "source": "CancerCare, Patient Advocate Foundation, American Cancer Society",
+    "tags": ["financial stress", "insurance", "assistance programs", "work", "costs"],
+    "language": "english"
+  },
+  {
+    "id": "bc-mental-009",
+    "topic": "Mindfulness and Meditation",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "Can mindfulness and meditation help with breast cancer?",
+    "answer": "Yes, research strongly supports mindfulness and meditation as beneficial for breast cancer patients. Studies published in major oncology journals show measurable improvements in: stress reduction — cortisol levels decrease significantly with regular practice. Anxiety and depression — mindfulness-based stress reduction (MBSR) programs reduce anxiety by 30-50% in cancer patients. Sleep quality — regular meditation improves both time to fall asleep and sleep duration. Immune function — some studies show improved immune markers in meditating cancer patients. Pain management — mindfulness reduces the perception of pain and discomfort. Quality of life — overall well-being scores improve consistently. How to start: (1) Guided meditation apps — Calm, Headspace, and Insight Timer all have cancer-specific programs. (2) MBSR programs — 8-week structured courses available at many cancer centers. (3) Simple breathing — start with just 5 minutes of focused breathing daily. (4) Body scan meditation — lie down and slowly move your attention through each body part, releasing tension. (5) Walking meditation — combine gentle movement with mindful awareness. (6) Loving-kindness meditation — practice sending compassion to yourself and others. (7) Cancer center programs — many hospitals now offer free meditation classes for patients. Start small — even 3-5 minutes daily creates real benefits. Consistency matters more than duration.",
+    "source": "Journal of Clinical Oncology, Annals of Behavioral Medicine, Dana-Farber Cancer Institute",
+    "tags": ["mindfulness", "meditation", "stress reduction", "MBSR", "complementary therapy"],
+    "language": "english"
+  },
+  {
+    "id": "bc-mental-010",
+    "topic": "Caregiver Support",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "How can I support a loved one with breast cancer without burning out?",
+    "answer": "Caring for a loved one with breast cancer is both rewarding and exhausting. Caregiver burnout is real and common — you cannot pour from an empty cup. Here is how to care for your loved one AND yourself: (1) Accept your own emotions — it is normal to feel scared, angry, sad, or even resentful sometimes. These feelings do not make you a bad person. (2) Set boundaries — you do not have to do everything. It is okay to say 'I need a break' or 'I cannot do that today.' (3) Accept help — when people offer, say yes. Keep a list of specific tasks others can do (meals, rides, errands). (4) Take breaks — schedule regular time for yourself. Even 30 minutes of walking, reading, or a coffee with a friend helps. (5) Stay healthy — maintain your own medical appointments, eat well, exercise, and sleep. Your health matters too. (6) Join a caregiver support group — connecting with others in similar situations reduces isolation. CancerCare and the Cancer Support Community offer free groups. (7) Communicate openly — talk with your loved one about what they need versus what you can give. (8) Learn about the disease — understanding treatment and side effects helps you provide better support and reduces fear of the unknown. (9) Watch for burnout signs — persistent exhaustion, irritability, withdrawal, neglecting your own needs, feeling hopeless. (10) Seek professional help if needed — therapy is not just for patients. Caregivers benefit greatly from counseling. Remember: taking care of yourself is not selfish. It is necessary for you to be there for your loved one.",
+    "source": "National Alliance for Caregiving, CancerCare, Family Caregiver Alliance",
+    "tags": ["caregiver", "burnout", "support", "self-care", "family"],
+    "language": "english"
+  },
+  {
+    "id": "bc-mental-ur-001",
+    "topic": "بریسٹ کینسر اور ذہنی صحت",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "بریسٹ کینسر کی تشخیص کے بعد پریشانی سے کیسے نمٹیں؟",
+    "answer": "بریسٹ کینسر کی تشخیص کے بعد پریشانی اور خوف محسوس کرنا بالکل فطری ہے۔ آپ اکیلی نہیں ہیں — تقریباً ہر مریض اس دور سے گزرتا ہے۔ یہ طریقے مددگار ہیں: (1) اپنے جذبات کو قبول کریں — رونا، غصہ، یا ڈر محسوس کرنا ٹھیک ہے۔ (2) سانس کی مشقیں — 4 سیکنڈ سانس لیں، 7 سیکنڈ روکیں، 8 سیکنڈ چھوڑیں۔ دن میں 3-4 بار کریں۔ (3) معلومات حاصل کریں — اپنے ڈاکٹر سے سوالات پوچھیں اور قابل اعتماد ذرائع سے پڑھیں۔ (4) روزمرہ کے معمول برقرار رکھیں — چھوٹی عادتیں مستحکم محسوس کرنے میں مدد کرتی ہیں۔ (5) ورزش — ہلکی سیر یا یوگا پریشانی کم کرتی ہے۔ (6) اپنوں سے بات کریں — تنہائی میں نہ رہیں۔ خاندان، دوست، یا سپورٹ گروپ سے رابطہ رکھیں۔ (7) ماہر نفسیات سے ملیں — کینسر کے مریضوں کے لیے مخصوص مشاورت بہت مؤثر ہے۔ (8) نماز اور دعا — روحانی سکون بھی اہم ہے۔ (9) ڈائری لکھیں — اپنے خیالات لکھنا جذبات کو سمجھنے میں مدد کرتا ہے۔ یاد رکھیں، مدد مانگنا کمزوری نہیں بلکہ ہمت ہے۔ 💛",
+    "source": "World Health Organization, Cancer Support Community",
+    "tags": ["anxiety", "mental health", "coping", "urdu"],
+    "language": "urdu"
+  },
+  {
+    "id": "bc-mental-ur-002",
+    "topic": "بریسٹ کینسر اور خاندان",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "بچوں کو بریسٹ کینسر کے بارے میں کیسے بتائیں؟",
+    "answer": "بچوں کو اپنی بیماری کے بارے میں بتانا مشکل ہے لیکن ضروری ہے — بچے محسوس کرتے ہیں کہ کچھ ہو رہا ہے۔ عمر کے مطابق بتائیں: چھوٹے بچے (3-7 سال): 'امی کو ایک بیماری ہوئی ہے جسے کینسر کہتے ہیں۔ ڈاکٹر دوائی دے رہے ہیں تاکہ امی ٹھیک ہو جائیں۔ امی کبھی تھکی ہوئی ہوں گی لیکن آپ سے اتنا ہی پیار ہے۔' بڑے بچے (8-12 سال): زیادہ تفصیل دے سکتے ہیں — علاج، ممکنہ تبدیلیاں (بال گرنا وغیرہ)۔ یقین دہانی کروائیں کہ یہ چھوت کی بیماری نہیں اور ان کی وجہ سے نہیں ہوا۔ نوجوان (13+): وہ زیادہ سمجھ سکتے ہیں لیکن اپنے جذبات چھپا سکتے ہیں۔ ان کے رویے پر نظر رکھیں۔ عمومی نکات: معمول کی زندگی جاری رکھیں، سوالات کی اجازت دیں، اسکول کو آگاہ کریں، اور بچوں کو یقین دلائیں کہ وہ محفوظ ہیں۔ 💛",
+    "source": "CancerCare, American Cancer Society",
+    "tags": ["children", "family", "communication", "urdu"],
+    "language": "urdu"
+  },
+  {
+    "id": "bc-mental-ur-003",
+    "topic": "علاج کے دوران نیند کے مسائل",
+    "category": "emotional",
+    "subcategory": "mental_health",
+    "question": "علاج کے دوران نیند نہیں آتی — کیا کروں؟",
+    "answer": "بریسٹ کینسر کے علاج کے دوران نیند نہ آنا بہت عام ہے — 80 فیصد تک مریض اس سے متاثر ہوتے ہیں۔ وجوہات میں پریشانی، دوائیوں کے اثرات، درد، اور گرم لہریں شامل ہیں۔ مددگار طریقے: (1) سونے اور جاگنے کا ایک مقررہ وقت رکھیں۔ (2) سونے سے 1 گھنٹہ پہلے موبائل اور سکرین استعمال نہ کریں۔ (3) کمرہ ٹھنڈا اور اندھیرا رکھیں۔ (4) سونے سے پہلے سکون کی مشقیں کریں — گہری سانسیں، آرام دہ موسیقی۔ (5) دن میں 30 منٹ نہیں تو 2 بجے سے پہلے رکھیں۔ (6) کیفین دوپہر کے بعد استعمال نہ کریں۔ (7) ہلکی ورزش (سیر) نیند بہتر کرتی ہے — لیکن سونے سے 3 گھنٹے پہلے۔ (8) اگر گرم لہریں نیند خراب کرتی ہیں تو ڈاکٹر سے بات کریں — ادویات دستیاب ہیں۔ (9) فکروں کی ڈائری لکھیں — سونے سے پہلے اگلے دن کے مسائل لکھ دیں تاکہ ذہن خالی ہو۔ ڈاکٹر سے ضرور بات کریں — نیند صحت یابی کے لیے بہت اہم ہے۔ 💛",
+    "source": "Sleep Foundation, ASCO",
+    "tags": ["sleep", "insomnia", "treatment", "urdu"],
+    "language": "urdu"
   }
 ]
