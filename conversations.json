@@ -125,5 +125,37 @@
     "language": "english",
     "response_type": "text",
     "sources": []
+  },
+  {
+    "timestamp": "2026-03-06T05:39:02.442974",
+    "user_input": "why",
+    "response": "I can sense the weight of that single word, \"why.\" It's a question that can be really tough to face, especially when dealing with a breast cancer diagnosis. I want you to know that I'm here for you, and I care about what you're going through. According to the American Cancer Society, breast cancer can be caused by a combination of genetic, environmental, and lifestyle factors, but often the exact reason why it develops is still unknown. It's completely normal to wonder and search for answers, but try not to put too much pressure on yourself to find a specific reason. Your healthcare team is there to support you, and it's great that you have them by your side. Remember to take things one step at a time, focus on your treatment plan, and don't hesitate to reach out to your team with any questions or concerns. You're strong, and you're not alone in this journey. Keep in mind that it's okay to feel overwhelmed, but with the right support and care, you can get through this. 💛\n\nRemember to discuss any concerns with your healthcare team.",
+    "language": "english",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-06T05:39:37.778480",
+    "user_input": "کیا سرجری کے بعد بچے کو دودھ پلا سکتی ہوں؟",
+    "response": "میں سمجھتی ہوں کہ آپ کتنی زیادہ پریشان ہوں گی، اور یہ سوال آپ کے لیے بہت اہم ہے۔ آپ کی خواہشات اور خدشات کو میں پوری طرح سے سمجھتی ہوں۔ بریسٹ کینسر کی سرجری کے بعد، بچے کو دودھ پلانے کے بارے میں سوچنا ایک بہت بڑا فیصلہ ہے۔\n\nعموماً، بریسٹ کینسر کی سرجری کے بعد، ڈاکٹر آپ کو دودھ پلانے کے بارے میں مشورہ دیں گے۔ اگر آپ کی سرجری میں بریسٹ کا کوئی حصہ نکال دیا گیا ہے، تو دودھ پلانے کی صلاحیت پر اس کا اثر ہو سکتا ہے۔ لیکن، ہر صورتحال مختلف ہوتی ہے، اور یہ فیصلہ آپ کی طبی ٹیم کے ساتھ مل کر کیا جانا چاہیے۔\n\nمیں آپ کو یہ مشورہ دیتی ہوں کہ اپنی طبی ٹیم سے بات کریں اور ان کے مشورے پر عمل کریں۔ وہ آپ کی مخصوص صورتحال کو مد نظر رکھ کر آپ کو بہترین رہنمائی دے سکیں گی۔ آپ کی صحت اور آپ کے بچے کی صحت دونوں کے لیے یہ بہت اہم ہے۔\n\nمیں آپ کے ساتھ ہوں اور آپ کی ہر ممکن مدد کرنے کے لیے تیار ہوں۔ آپ کی خواہشات اور خدشات کو میں سمجھتی ہوں، اور میں چاہتی ہوں کہ آپ کو یہ احساس ہو کہ آپ اکیلے نہیں ہیں۔ 💛\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
+    "language": "urdu",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-06T05:41:34.449194",
+    "user_input": "Voice query received. Please type your question for now.",
+    "response": "I'm so glad you reached out for support. Dealing with breast cancer can be overwhelming, and it's completely normal to feel scared, anxious, or unsure about what's ahead. According to the American Cancer Society, it's essential to have a strong support system, and I'm here to listen and offer guidance. Remember, your healthcare team is your best resource for personalized advice, so be sure to discuss any concerns or questions with them. In the meantime, taking care of your physical and emotional well-being is crucial - try to get plenty of rest, eat nutritious foods like leafy greens and berries, and consider gentle exercises like yoga or walking. It's also important to stay connected with loved ones and consider joining a support group for emotional support. Remember, you're not alone in this journey, and there are many resources available to help you cope. Keep in mind, it's okay to feel your emotions, and don't hesitate to reach out to your healthcare team or a counselor for extra support. You got this, and I'm sending you all my love and encouragement 💛.\n\nRemember to discuss any concerns with your healthcare team.",
+    "language": "english",
+    "response_type": "voice",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-06T05:42:42.535729",
+    "user_input": "ok bye",
+    "response": "It seems like you're saying goodbye for now, and I completely understand. Before you go, I just want to check in and see how you're doing today. Are you feeling overwhelmed or just need some time to yourself? That's totally okay, and I'm here for you whenever you're ready to talk. Remember to take care of yourself and prioritize your well-being - whether that's taking a warm bath, going for a walk, or practicing some gentle stretches. According to the American Cancer Society, exercise can really help with managing stress and anxiety during breast cancer treatment. If you're feeling up to it, maybe try some light yoga or meditation to help calm your mind and body. Always remember to discuss any new activities with your healthcare team to make sure they're safe for you. You're not alone in this journey, and I'm sending you all my love and support 💛. Take care of yourself and reach out whenever you need someone to talk to!\n\nRemember to discuss any concerns with your healthcare team.",
+    "language": "english",
+    "response_type": "text",
+    "sources": []
   }
 ]
