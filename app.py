@@ -125,7 +125,7 @@ async def voice_query(req: VoiceRequest):
         )
 
         # Cleanup temp file in background
-        asyncio.get_event_loop().call_later(60, _safe_remove, tmp.name)
+        asyncio.get_running_loop().call_later(60, _safe_remove, tmp.name)
 
         return JSONResponse(content={
             "answer": result["answer"],

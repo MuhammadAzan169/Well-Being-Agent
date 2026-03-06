@@ -11,10 +11,9 @@ from typing import List, Optional, Any, Dict
 from dotenv import load_dotenv
 from datetime import datetime
 
+import httpx
 from langdetect import detect, DetectorFactory
 DetectorFactory.seed = 0
-
-from transformers import pipeline
 
 from safety import SafetyValidator
 
@@ -224,7 +223,7 @@ class BreastCancerRAGSystem:
         self.index = index
         self.retriever = retriever
         self.conversation_history: List[Dict] = []
-        self.llm = pipeline("text-generation", model=config.LLM_MODEL)
+        self.http_client = httpx.Client(timeout=60.0)
 
     # ── Language Detection ───────────────────────────────────────────────
     def detect_language(self, text: str) -> str:
@@ -483,8 +482,9 @@ doctor — always encourage consulting their healthcare team.
 ## آپ کا اردو جواب:"""
 
     # ── LLM Query ────────────────────────────────────────────────────────
-    def _query_llm(self, prompt: str, language: str, retries: int = 5) -> str:
+    def _query_llm(self, prompt: str, language: str, retries: int = 3) -> str:
         if not config.api_key:
+            logger.error("No API key available")
             return config.FALLBACK_MESSAGE
 
         sys_msg = (
@@ -498,22 +498,49 @@ doctor — always encourage consulting their healthcare team.
             "stopping treatment or give false medical promises."
         )
 
+        headers = {
+            "Authorization": f"Bearer {config.api_key}",
+            "Content-Type": "application/json",
+        }
+        payload = {
+            "model": config.LLM_MODEL,
+            "messages": [
+                {"role": "system", "content": sys_msg},
+                {"role": "user", "content": prompt},
+            ],
+            "max_tokens": config.LLM_MAX_TOKENS,
+            "temperature": config.LLM_TEMPERATURE,
+        }
+
         for attempt in range(retries):
             try:
-                prompt_text = f"System: {sys_msg}\nUser: {prompt}"
-                result = self.llm(prompt_text, max_length=config.LLM_MAX_TOKENS, temperature=config.LLM_TEMPERATURE, do_sample=True, num_return_sequences=1)
-                text = result[0]['generated_text']
-                # Remove the prompt from the response
-                if text.startswith(prompt_text):
-                    text = text[len(prompt_text):].strip()
+                url = f"{config.LLM_BASE_URL}/chat/completions"
+                resp = self.http_client.post(url, headers=headers, json=payload)
+
+                if resp.status_code == 429 or resp.status_code >= 500:
+                    logger.warning(f"API returned {resp.status_code}, attempt {attempt + 1}")
+                    if config.rotate_key():
+                        headers["Authorization"] = f"Bearer {config.api_key}"
+                    time.sleep(2 ** attempt)
+                    continue
+
+                resp.raise_for_status()
+                data = resp.json()
+                text = data["choices"][0]["message"]["content"].strip()
                 logger.info("✅ LLM response received")
                 return text
 
+            except httpx.TimeoutException:
+                logger.warning(f"LLM timeout (attempt {attempt + 1}/{retries})")
+                time.sleep(2 ** attempt)
+            except (KeyError, IndexError) as e:
+                logger.error(f"Unexpected API response format: {e}")
+                return config.FALLBACK_MESSAGE
             except Exception as e:
                 logger.error(f"LLM error (attempt {attempt + 1}): {e}")
-                if attempt == retries - 1:
-                    return config.FALLBACK_MESSAGE
-                time.sleep(1)
+                if config.rotate_key():
+                    headers["Authorization"] = f"Bearer {config.api_key}"
+                time.sleep(2 ** attempt)
 
         return config.FALLBACK_MESSAGE
 

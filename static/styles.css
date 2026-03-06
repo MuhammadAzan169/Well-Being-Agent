@@ -490,7 +490,6 @@ body {
     display: inline-block !important;
 }
 
-<<<<<<< HEAD
 /* === Source Citations === */
 .sources-container {
     margin-top: 10px;
@@ -522,7 +521,8 @@ body {
     gap: 6px;
 }
 
-.source-badge {
+.source-badge,
+.source-tag {
     display: inline-flex;
     align-items: center;
     gap: 4px;
@@ -537,14 +537,16 @@ body {
     cursor: default;
 }
 
-.source-badge:hover {
+.source-badge:hover,
+.source-tag:hover {
     background: linear-gradient(135deg, #fce7f3, #fbcfe8);
     border-color: rgba(236, 72, 153, 0.3);
     transform: translateY(-1px);
     box-shadow: 0 2px 6px rgba(236, 72, 153, 0.15);
 }
 
-.source-badge i {
+.source-badge i,
+.source-tag i {
     font-size: 0.8em;
     opacity: 0.7;
 }
@@ -563,8 +565,6 @@ body {
     direction: rtl;
 }
 
-=======
->>>>>>> a94e781ef00522de046b38098b30cce04a40e325
 /* Enhanced Text Rendering for Urdu */
 .urdu-text,
 [lang="ur"],
@@ -1086,7 +1086,7 @@ body {
     color: rgba(255, 255, 255, 0.8);
 }
 
-@keyframes pulse {
+@keyframes audioPulse {
     0% {
         height: 8px;
         opacity: 0.7;
@@ -1111,23 +1111,12 @@ body {
     white-space: nowrap;
 }
 
-.message {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-    transition: all 0.3s ease;
-}
-
-.message.show {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
 #voiceButton.recording {
     background: #dc3545;
-    animation: pulse 1.5s infinite;
+    animation: voicePulse 1.5s infinite;
 }
 
-@keyframes pulse {
+@keyframes voicePulse {
     0% {
         box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
     }

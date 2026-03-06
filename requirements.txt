@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 python-dotenv
-requests
+httpx
 pydantic
 langdetect
 sentence-transformers
@@ -9,6 +9,4 @@ llama-index-core
 llama-index-embeddings-huggingface
 python-multipart
 huggingface_hub
-transformers
-torch
 numpy
