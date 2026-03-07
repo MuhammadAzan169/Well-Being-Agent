@@ -371,40 +371,63 @@ function reRecord() {
     startRecording();
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// ✅ FIXED: sendVoice with FileReader error handling and fetch timeout
+// ═══════════════════════════════════════════════════════════════════════════
 async function sendVoice(blob) {
     setGenerating(true);
     showTypingIndicator();
     try {
-        const reader = new FileReader();
-        const base64 = await new Promise((res) => {
-            reader.onloadend = () => res(reader.result.split(",")[1]);
+        // Convert blob to base64 with error handling
+        const base64 = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result.split(",")[1]);
+            reader.onerror = (err) => reject(new Error('FileReader error: ' + err));
             reader.readAsDataURL(blob);
         });
+
+        // Fetch with timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000);
 
         const resp = await fetch("/voice-query", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ audio_data: base64 }),
+            signal: controller.signal
         });
+        clearTimeout(timeoutId);
 
         hideTypingIndicator();
 
-        if (!resp.ok) throw new Error(`Voice error ${resp.status}`);
+        if (!resp.ok) {
+            const errorText = await resp.text();
+            throw new Error(`Server error ${resp.status}: ${errorText}`);
+        }
+
         const data = await resp.json();
 
+        // Display transcribed text if available
         if (data.transcribed_text) {
             addMessageToChat(data.transcribed_text, "user", data.language || "english");
         }
+        // Always display the answer
         addMessageToChat(
             data.answer,
             "system",
             data.language || "english",
             data.sources || []
         );
-    } catch (e) {
+    } catch (err) {
         hideTypingIndicator();
-        addMessageToChat("Voice processing failed. Please type your question.", "system", "english");
-        console.error("Voice error:", e);
+        let errorMsg = "Voice processing failed. Please type your question.";
+        if (err.name === 'AbortError') {
+            errorMsg = "Request timed out. Please try again.";
+        } else if (err.message) {
+            errorMsg = `Voice error: ${err.message}`;
+        }
+        addMessageToChat(errorMsg, "system", "english");
+        console.error("Voice error:", err);
     } finally {
         setGenerating(false);
     }

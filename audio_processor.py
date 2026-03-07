@@ -5,17 +5,22 @@ Uses Whisper Large v3 (via the `transformers` library from Hugging Face)
 for high-quality, multilingual transcription with automatic language detection.
 
 Supported flow:
-  Audio bytes → save to temp file → transcribe with Whisper → detect language → return text + language
+  Audio bytes → save to permanent file → transcribe with Whisper → detect language → return text + language
 """
 
 import os
 import re
 import time
-import tempfile
 import logging
+import uuid
+from datetime import datetime
 from typing import Optional, Dict, Any
 
 logger = logging.getLogger("WellBeingAgent.Audio")
+
+# Directory to store permanent audio recordings
+RECORDINGS_DIR = "recorded_audio"
+os.makedirs(RECORDINGS_DIR, exist_ok=True)
 
 # ── Whisper Model State ───────────────────────────────────────────────────
 _whisper_pipeline = None
@@ -121,17 +126,16 @@ def transcribe_audio(
             ),
         }
 
-    # Ensure audio output directory exists
-    os.makedirs("static/audio", exist_ok=True)
-
-    tmp_path: Optional[str] = None
     try:
-        # Save bytes to a temporary file (Whisper needs a file path)
-        with tempfile.NamedTemporaryFile(
-            suffix=".webm", delete=False, dir="static/audio"
-        ) as tmp:
-            tmp.write(audio_bytes)
-            tmp_path = tmp.name
+        # Generate unique filename and save audio permanently
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        unique_id = str(uuid.uuid4())[:8]
+        filename = f"voice_{timestamp}_{unique_id}.webm"
+        file_path = os.path.join(RECORDINGS_DIR, filename)
+
+        with open(file_path, "wb") as f:
+            f.write(audio_bytes)
+        logger.info(f"Saved audio to {file_path}")
 
         # Build generate_kwargs
         generate_kwargs: Dict[str, Any] = {}
@@ -146,7 +150,7 @@ def transcribe_audio(
         # Transcribe
         t0 = time.time()
         result = pipe(
-            tmp_path,
+            file_path,
             generate_kwargs=generate_kwargs,
             return_timestamps=True,
         )
@@ -201,14 +205,6 @@ def transcribe_audio(
             "success": False,
             "error": f"Transcription failed: {exc}. Please try again.",
         }
-
-    finally:
-        # Clean up temporary file
-        if tmp_path:
-            try:
-                os.unlink(tmp_path)
-            except OSError:
-                pass
 
 
 def _extract_whisper_language(result: Dict[str, Any]) -> Optional[str]:
