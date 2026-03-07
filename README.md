@@ -68,7 +68,7 @@ The Well-Being-Agent is an AI-powered breast cancer support system that provides
 
 - **`cache/`** - Response cache to improve performance and reduce API calls
 
-- **`static/audio/`** - Temporary storage for audio files (auto-cleaned)
+- **`audio/`** - Temporary storage for audio files (auto-cleaned)
 
 - **`__pycache__/`** - Python bytecode cache
 
