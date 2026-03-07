@@ -1,12 +1,32 @@
+# ── WellBeing Agent Dependencies ──────────────────────────────────────
+
+# Web framework
 fastapi
-uvicorn
-python-dotenv
-httpx
+uvicorn[standard]
+python-multipart
 pydantic
+
+# HTTP client
+httpx
+
+# Environment / config
+python-dotenv
+
+# Language detection
 langdetect
-sentence-transformers
+
+# RAG pipeline (LlamaIndex)
 llama-index-core
 llama-index-embeddings-huggingface
-python-multipart
+sentence-transformers
+
+# Hugging Face
 huggingface_hub
+
+# Whisper Large v3 (speech-to-text)
+transformers>=4.36.0
+torch
+accelerate
+
+# Numerical
 numpy

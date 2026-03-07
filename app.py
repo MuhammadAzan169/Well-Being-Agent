@@ -1,7 +1,11 @@
-# app.py - FastAPI server for Well Being Agent
+"""app.py — FastAPI Server for WellBeing Agent
+
+Serves the web interface, text queries, and voice queries.
+Integrates the RAG system and Whisper speech-to-text pipeline.
+"""
+
 import os
 import asyncio
-import tempfile
 import logging
 from contextlib import asynccontextmanager
 
@@ -14,23 +18,41 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-logger = logging.getLogger(__name__)
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+logger = logging.getLogger("WellBeingAgent.Server")
 
 
-# ── Lifespan (import RAG system once on startup) ────────────────────────
+# ── Lifespan (import RAG system + Whisper on startup) ────────────────────
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logger.info("🚀 Starting Well Being Agent server…")
+    logger.info("🚀 Starting WellBeing Agent server…")
+
+    # Load RAG system
     try:
-        from Agent_v2 import rag_system
+        from Agent import rag_system
         app.state.rag = rag_system
         logger.info("✅ RAG system loaded")
-    except Exception as e:
-        logger.error(f"❌ RAG init failed: {e}")
+    except Exception as exc:
+        logger.error(f"❌ RAG init failed: {exc}")
         import traceback
         traceback.print_exc()
         app.state.rag = None
+
+    # Pre-load Whisper (in background so startup isn't blocked)
+    try:
+        from audio_processor import is_whisper_available
+        app.state.whisper_available = is_whisper_available()
+        if app.state.whisper_available:
+            logger.info("✅ Whisper Large v3 available")
+        else:
+            logger.warning("⚠️  Whisper not available — voice queries will return errors")
+    except Exception as exc:
+        logger.warning(f"⚠️  Whisper init error: {exc}")
+        app.state.whisper_available = False
+
     yield
     logger.info("🛑 Server shutting down")
 
@@ -101,7 +123,7 @@ async def ask_query(req: QueryRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# ── Voice query ──────────────────────────────────────────────────────────
+# ── Voice query (Whisper Large v3 transcription) ─────────────────────────
 @app.post("/voice-query")
 async def voice_query(req: VoiceRequest):
     rag = getattr(app.state, "rag", None)
@@ -109,33 +131,49 @@ async def voice_query(req: VoiceRequest):
         raise HTTPException(status_code=503, detail="RAG system not available")
 
     import base64
+    from audio_processor import transcribe_audio
+    from language_utils import map_whisper_lang_to_system
 
     try:
         audio_bytes = base64.b64decode(req.audio_data)
-        tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".webm", dir="static/audio")
-        tmp.write(audio_bytes)
-        tmp.close()
 
-        # Placeholder: real STT integration goes here.
-        # For now, return a helpful message.
-        transcribed = "Voice query received. Please type your question for now."
-        language = rag.detect_language(transcribed)
+        # Transcribe using Whisper Large v3
+        transcription = await asyncio.to_thread(transcribe_audio, audio_bytes)
+
+        if not transcription["success"]:
+            return JSONResponse(content={
+                "answer": transcription["error"],
+                "sources": [],
+                "language": "english",
+                "transcribed_text": "",
+            })
+
+        transcribed_text = transcription["text"]
+        detected_lang = transcription["language"]
+
+        # Map Whisper language to system language ('urdu' or 'english')
+        language = map_whisper_lang_to_system(detected_lang)
+
+        # Also check with the RAG system's language detector for Roman Urdu
+        rag_lang = rag.detect_language(transcribed_text)
+        if rag_lang == "urdu":
+            language = "urdu"
+
+        # Get answer from RAG system
         result = await asyncio.to_thread(
-            rag.get_enhanced_answer_with_sources, transcribed, language, "voice"
+            rag.get_enhanced_answer_with_sources, transcribed_text, language, "voice"
         )
-
-        # Cleanup temp file in background
-        asyncio.get_running_loop().call_later(60, _safe_remove, tmp.name)
 
         return JSONResponse(content={
             "answer": result["answer"],
             "sources": result.get("sources", []),
             "language": result.get("language", language),
-            "transcribed_text": transcribed,
+            "transcribed_text": transcribed_text,
         })
-    except Exception as e:
-        logger.error(f"Voice error: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+
+    except Exception as exc:
+        logger.error(f"Voice query error: {exc}")
+        raise HTTPException(status_code=500, detail=str(exc))
 
 
 # ── Predefined questions ─────────────────────────────────────────────────
@@ -151,9 +189,11 @@ async def predefined_questions(language: str = "english"):
 @app.get("/health")
 async def health():
     rag = getattr(app.state, "rag", None)
+    whisper = getattr(app.state, "whisper_available", False)
     return JSONResponse(content={
         "status": "healthy" if rag else "degraded",
         "rag_loaded": rag is not None,
+        "whisper_available": whisper,
     })
 
 
@@ -161,14 +201,16 @@ async def health():
 @app.get("/info")
 async def info():
     return JSONResponse(content={
-        "name": "Well Being Agent",
-        "description": "Breast Cancer Support System",
-        "version": "2.0.0",
+        "name": "WellBeing Agent",
+        "description": "RAG-based Breast Cancer Well-Being Support System",
+        "version": "3.0.0",
         "features": [
-            "Bilingual support (English / Urdu)",
-            "RAG-powered medical answers",
+            "Bilingual support (English / Urdu / Roman Urdu)",
+            "RAG-powered well-being answers",
+            "Whisper Large v3 voice transcription",
             "Emotional support detection",
             "Crisis / safety filtering",
+            "Response caching with similarity matching",
             "Source citations",
         ],
     })
@@ -187,5 +229,5 @@ def _safe_remove(path: str):
 if __name__ == "__main__":
     import uvicorn
 
-    port = int(os.getenv("PORT", "7860"))
+    port = int(os.getenv("PORT", "8000"))
     uvicorn.run("app:app", host="0.0.0.0", port=port, reload=False)

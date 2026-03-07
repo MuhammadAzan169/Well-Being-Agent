@@ -1,5 +1,5 @@
-// script.js - Well Being Agent Frontend
-// Clean rewrite: no merge conflicts, proper blocking during LLM calls
+// script.js — WellBeing Agent Frontend
+// Handles chat, voice recording, language detection, and UI state
 
 // ═══════════════════════════════════════════════════════════════════════════
 // State
@@ -322,12 +322,41 @@ async function sendVoice(blob) {
     }
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-// Language Detection (client-side quick check)
-// ═══════════════════════════════════════════════════════════════════════════
+// ═════════════════════════════════════════════════════════════════════════
+// Language Detection (client-side quick check with Roman Urdu support)
+// ═════════════════════════════════════════════════════════════════════════
+
+// Common Roman Urdu words for client-side detection
+const ROMAN_URDU_WORDS = new Set([
+    "mera", "meri", "mere", "mujhe", "apna", "apni", "apne",
+    "dard", "sar", "sir", "pet", "seena", "hath", "pair",
+    "bohat", "bohot", "bahut", "kaise", "kya", "kyun", "kab",
+    "hai", "hain", "tha", "thi", "raha", "rahi",
+    "ilaj", "ilaaj", "dawa", "dawai", "doctor", "daktar",
+    "cancer", "kenser", "chemo", "chemotherapy",
+    "thakan", "kamzori", "bukhar", "ulti", "matli",
+    "dar", "khauf", "fikar", "pareshani", "udasi",
+    "batao", "batain", "chahiye", "sakta", "sakti",
+    "ke baad", "ke doran", "ke liye", "ke sath",
+    "acha", "achi", "theek", "nahi", "nahin", "haan",
+    "doodh", "dudh", "bachcha", "bacche",
+    "shukria", "shukriya", "meharbani",
+]);
+
 function detectLanguage(text) {
+    // 1) Check for Urdu script
     const urduRange = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/;
-    return urduRange.test(text) ? "urdu" : "english";
+    if (urduRange.test(text)) return "urdu";
+
+    // 2) Check for Roman Urdu
+    const words = text.toLowerCase().split(/\s+/);
+    let romanUrduCount = 0;
+    for (const w of words) {
+        if (ROMAN_URDU_WORDS.has(w)) romanUrduCount++;
+    }
+    if (romanUrduCount >= 2) return "urdu";
+
+    return "english";
 }
 
 function updateLanguageDisplay(lang) {

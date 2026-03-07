@@ -1,168 +1,400 @@
-# Well-Being-Agent
+# 💛 WellBeing Agent — Breast Cancer Support System
 
-## Overview
+> A RAG-based AI well-being assistant designed to support breast cancer patients during their treatment journey with empathetic, evidence-based information.
 
-The Well-Being-Agent is an AI-powered breast cancer support system that provides compassionate, evidence-based information and emotional support to breast cancer patients and their families. The system uses advanced Retrieval-Augmented Generation (RAG) technology to deliver accurate, personalized responses in both English and Urdu, with support for both text and voice queries.
+---
 
-## Project Structure
+## 📋 Table of Contents
 
-### Core Files
+- [Project Overview](#-project-overview)
+- [Features](#-features)
+- [Architecture](#-architecture)
+- [Installation Guide](#-installation-guide)
+- [Running the System](#-running-the-system)
+- [Voice Input Setup](#-voice-input-setup)
+- [Folder Structure](#-folder-structure)
+- [Language Support](#-language-support)
+- [API Endpoints](#-api-endpoints)
+- [Safety Disclaimer](#-safety-disclaimer)
 
-- **`app.py`** - Main FastAPI web server that handles HTTP requests, serves the frontend, and orchestrates the RAG system. Includes endpoints for:
-  - `/` - Serves the main web interface
-  - `/ask-query` - Processes text queries about breast cancer
-  - `/voice-query` - Processes voice queries (speech-to-text, then text response)
-  - `/predefined-questions` - Returns curated question suggestions
-  - `/health` - System health check
-  - `/info` - System information
+---
 
-- **`Agent.py`** - Contains the core AI logic including:
-  - `BreastCancerRAGSystem` class - Main RAG implementation
-  - Response caching system for performance
-  - Language detection and text processing
-  - Emotional support integration
-  - Conversation logging
+## 🌟 Project Overview
 
-- **`audio_processor.py`** - Handles voice input processing:
-  - Speech-to-text conversion using Whisper/OpenAI
-  - Audio file management and cleanup
-  - Language detection from speech
+**WellBeing Agent** is a Retrieval-Augmented Generation (RAG) powered AI assistant specifically designed to support breast cancer patients and their families. Unlike medical chatbots, this agent focuses exclusively on **well-being support** — providing empathetic answers, emotional comfort, lifestyle guidance, and practical coping strategies.
 
-- **`Index.py`** - Builds and manages the vector index for document retrieval from the breast cancer dataset
+### What this agent does:
+- ✅ Answers patient questions about symptoms, side effects, and recovery
+- ✅ Provides emotional support and coping strategies
+- ✅ Offers nutritional guidance during treatment
+- ✅ Addresses concerns about body changes (e.g., after mastectomy)
+- ✅ Supports multilingual queries (English, Urdu, Roman Urdu)
+- ✅ Accepts voice input via Whisper Large v3
 
-- **`language_utils.py`** - Utility functions for language processing, text cleaning, and Urdu text normalization
+### What this agent does NOT do:
+- ❌ Does **not** prescribe medications or treatments
+- ❌ Does **not** replace professional medical advice
+- ❌ Does **not** diagnose conditions
+- ❌ Does **not** recommend stopping any treatment
 
-### Data Files
+---
 
-- **`DataSet/breast_cancer.json`** - Comprehensive dataset containing breast cancer information, Q&A pairs, treatment details, and medical knowledge
+## ✨ Features
 
-- **`DataSet/Question.json`** - Additional question templates and predefined queries
+| Feature | Description |
+|---------|-------------|
+| **RAG-Powered Q&A** | Retrieves answers from a curated breast cancer knowledge base and enhances them with LLM generation |
+| **Breast Cancer Knowledge** | Comprehensive dataset covering symptoms, treatments, side effects, recovery, and well-being |
+| **Emotional Support** | Detects emotional distress and adjusts response tone with empathy-first approach |
+| **Nutrition Guidance** | Provides dietary suggestions and lifestyle tips during treatment |
+| **Voice Input** | Whisper Large v3 for high-quality speech-to-text transcription |
+| **Multilingual Support** | English + Urdu (script) + Roman Urdu (transliterated) |
+| **Response Caching** | JSON-based cache with similarity matching for faster repeat queries and error resilience |
+| **Safety Guardrails** | Crisis detection, off-topic filtering, dangerous advice prevention |
+| **Source Citations** | Every answer includes relevant source references |
+| **API Key Rotation** | Automatic failover between multiple API keys |
 
-- **`conversations.json`** - Logs of user interactions for analysis and improvement
+---
 
-### Frontend Files
+## 🏗️ Architecture
 
-- **`index.html`** - Main web interface with modern UI, supporting both English and Urdu text input, voice recording, and quick question buttons
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        Frontend (HTML/JS/CSS)               │
+│  ┌──────────┐  ┌──────────────┐  ┌─────────────────────┐   │
+│  │ Text Chat │  │ Voice Record │  │ Predefined Questions│   │
+│  └─────┬────┘  └──────┬───────┘  └──────────┬──────────┘   │
+└────────┼──────────────┼──────────────────────┼──────────────┘
+         │              │                      │
+         ▼              ▼                      ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    FastAPI Server (app.py)                   │
+│  ┌──────────┐  ┌────────────┐  ┌──────────────────────┐    │
+│  │/ask-query│  │/voice-query│  │/predefined-questions │    │
+│  └─────┬────┘  └──────┬─────┘  └──────────────────────┘    │
+└────────┼──────────────┼─────────────────────────────────────┘
+         │              │
+         │              ▼
+         │    ┌──────────────────┐
+         │    │  Whisper Large v3 │ ← Speech-to-Text
+         │    │ (audio_processor) │
+         │    └────────┬─────────┘
+         │             │
+         ▼             ▼
+┌─────────────────────────────────────────────────────────────┐
+│              RAG Pipeline (Agent.py)                         │
+│                                                             │
+│  ┌───────────┐  ┌────────────┐  ┌──────────────────────┐   │
+│  │ Language   │  │  Safety    │  │  Response Cache      │   │
+│  │ Detection  │  │ Validator  │  │  (JSON + Similarity) │   │
+│  └─────┬─────┘  └──────┬─────┘  └──────────┬───────────┘   │
+│        ▼               ▼                    ▼               │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │              Vector Retrieval (LlamaIndex)           │   │
+│  │  ┌─────────────────┐  ┌──────────────────────────┐   │   │
+│  │  │ HuggingFace     │  │ Vector Store              │   │   │
+│  │  │ Embeddings      │  │ (cancer_index_store/)     │   │   │
+│  │  └─────────────────┘  └──────────────────────────┘   │   │
+│  └──────────────────────────────────────────────────────┘   │
+│        │                                                    │
+│        ▼                                                    │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  Prompt Builder → LLM (via API) → Post-Processing    │   │
+│  └──────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────┘
+```
 
-- **`styles.css`** - Styling for the web interface with responsive design and Urdu font support
+### Component Details
 
-- **`script.js`** - Frontend JavaScript handling user interactions, API calls, voice recording, and UI updates
+| Component | File | Purpose |
+|-----------|------|---------|
+| **RAG Agent** | `Agent.py` | Core pipeline: language detection → safety → cache → retrieval → LLM → response |
+| **Web Server** | `app.py` | FastAPI server with REST endpoints for text, voice, and health |
+| **Audio Processor** | `audio_processor.py` | Whisper Large v3 speech-to-text transcription |
+| **Language Utils** | `language_utils.py` | Language detection (English, Urdu script, Roman Urdu) and text normalization |
+| **Safety Module** | `safety.py` | Crisis detection, off-topic filtering, dangerous advice prevention |
+| **Index Builder** | `Index.py` | Builds the vector index from the breast cancer dataset |
+| **Frontend** | `index.html`, `static/` | Chat interface with voice recording and bilingual support |
+| **Knowledge Base** | `DataSet/` | Curated breast cancer support dataset (JSON) |
 
-### Configuration and Dependencies
+---
 
-- **`requirements.txt`** - Python dependencies including FastAPI, LlamaIndex, OpenAI, Whisper, and other ML libraries
+## 📦 Installation Guide
 
-- **`Dockerfile`** - Containerization setup for deployment
+### Prerequisites
 
-- **`.env`** - Environment variables (API keys, configuration)
+- Python 3.10+ (3.12 recommended)
+- Git
+- (Optional) CUDA-capable GPU for faster Whisper transcription
 
-### Index Store
+### Step 1: Clone the Repository
 
-- **`cancer_index_store/`** - Vector database for efficient document retrieval:
-  - `docstore.json` - Document storage
-  - `graph_store.json` - Relationship graphs
-  - `image__vector_store.json` - Vector embeddings
-  - `index_store.json` - Main index data
+```bash
+git clone https://github.com/MuhammadAzan169/Well-Being-Agent.git
+cd Well-Being-Agent
+```
 
-### Cache and Temporary Files
+### Step 2: Create a Virtual Environment
 
-- **`cache/`** - Response cache to improve performance and reduce API calls
+```bash
+python -m venv venv
 
-- **`audio/`** - Temporary storage for audio files (auto-cleaned)
+# Windows
+venv\Scripts\activate
 
-- **`__pycache__/`** - Python bytecode cache
+# macOS/Linux
+source venv/bin/activate
+```
 
-## How It Works
+### Step 3: Install Dependencies
 
-### 1. System Initialization
-- On startup, `app.py` loads the vector index from `cancer_index_store/`
-- Initializes the `BreastCancerRAGSystem` with the index and retriever
-- Sets up FastAPI server with CORS and static file serving
+```bash
+pip install -r requirements.txt
+```
 
-### 2. Query Processing
-- User submits query via text input or voice recording
-- For voice queries: `audio_processor.py` converts speech to text using Whisper
-- Language detection determines if query is in English or Urdu
-- `BreastCancerRAGSystem` retrieves relevant chunks from the vector store
-- LLM (via OpenAI API) generates contextual response
-- Response is enhanced with emotional support and formatted appropriately
+### Step 4: Install Whisper Large v3
 
-### 3. Response Generation
-- System uses cached responses when available to reduce latency
-- Applies language-specific formatting and text cleaning
-- Adds compassionate, supportive language naturally
-- Logs conversation for quality improvement
+Whisper Large v3 is included in the `transformers` package. The model will be automatically downloaded on first use (~3GB).
 
-### 4. Frontend Interaction
-- Modern web interface with animated elements
-- Support for both English and Urdu input/output
-- Voice recording with real-time feedback
-- Quick question buttons for common concerns
-- Responsive design for mobile and desktop
+For GPU acceleration (recommended):
+```bash
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+```
 
-## Key Features
+For CPU-only:
+```bash
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+```
 
-- **Multilingual Support**: Full English and Urdu language support with proper text rendering
-- **Voice Input**: Speech-to-text capability for accessibility
-- **Emotional Support**: AI responses include compassionate, supportive language
-- **Evidence-Based**: Responses grounded in medical knowledge from curated datasets
-- **Caching**: Response caching for improved performance
-- **Conversation Logging**: Tracks interactions for system improvement
-- **Predefined Questions**: Curated question suggestions for common patient concerns
+### Step 5: Configure Environment
 
-## Technology Stack
+Create a `.env` file in the project root:
 
-- **Backend**: FastAPI (Python web framework)
-- **AI/ML**: 
-  - LlamaIndex for RAG implementation
-  - OpenAI GPT for response generation
-  - Whisper for speech-to-text
-  - Sentence Transformers for embeddings
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Deployment**: Docker containerization
-- **Vector Store**: Local JSON-based vector storage
+```env
+# LLM Configuration
+LLM_PROVIDER=openai          # or any OpenAI-compatible provider
+LLM_MODEL=your-model-name
+LLM_BASE_URL=https://your-api-base-url
+LLM_API_KEY=your-api-key
+LLM_API_KEY_2=optional-backup-key
+LLM_API_KEY_3=optional-backup-key
+LLM_MAX_TOKENS=1500
+LLM_TEMPERATURE=0.3
 
-## Usage
+# Embedding & Index
+EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+INDEX_PATH=cancer_index_store
+DATASET_PATH=DataSet/breast_cancer_comprehensive.json
+SIMILARITY_TOP_K=5
 
-1. **Local Development**:
-   ```bash
-   pip install -r requirements.txt
-   python app.py
-   ```
+# Cache
+CACHE_TTL_HOURS=24
+CACHE_SIMILARITY_THRESHOLD=0.85
 
-2. **Docker Deployment**:
-   ```bash
-   docker build -t well-being-agent .
-   docker run -p 7860:7860 well-being-agent
-   ```
+# Server
+PORT=8000
+```
 
-3. **Access**: Open browser to `http://localhost:7860`
+### Step 6: Build the Vector Index
 
-## API Endpoints
+```bash
+python Index.py
+```
 
-- `GET /` - Main web interface
-- `POST /ask-query` - Text query processing
-- `POST /voice-query` - Voice query processing
-- `GET /predefined-questions` - Get suggested questions
-- `GET /health` - System health check
-- `GET /info` - System information
+---
 
-## Configuration
+## 🚀 Running the System
 
-Environment variables in `.env`:
-- OpenAI API key for LLM responses
-- Model configuration (defaults to Llama 3.1 70B)
-- Port configuration (default 7860)
+### Option 1: Run with the FastAPI Server (recommended)
 
-## Data Sources
+```bash
+python app.py
+```
 
-The system uses a comprehensive breast cancer knowledge base including:
-- Medical diagnosis procedures
-- Treatment options and timelines
-- Recovery guidance
-- Emotional support strategies
-- Nutritional advice
-- Exercise recommendations during treatment
+Then open your browser at: **http://localhost:8000**
 
-All information is evidence-based and focused on patient support and well-being.</content>
-<filePath>c:\Users\muham\OneDrive\Desktop\Well-Being-Agent\README.md
+### Option 2: Run in CLI Mode
+
+```bash
+python Agent.py
+```
+
+This starts an interactive command-line interface for testing queries directly.
+
+### Option 3: Run with Uvicorn (production)
+
+```bash
+uvicorn app:app --host 0.0.0.0 --port 8000
+```
+
+### Option 4: Docker
+
+```bash
+docker build -t wellbeing-agent .
+docker run -p 7860:7860 --env-file .env wellbeing-agent
+```
+
+---
+
+## 🎤 Voice Input Setup
+
+### How Whisper Works Locally
+
+The system uses **OpenAI Whisper Large v3** via the Hugging Face `transformers` library for local speech-to-text transcription:
+
+1. **Audio Recording**: The browser captures audio using the MediaRecorder API
+2. **Base64 Encoding**: Audio is sent to the server as base64-encoded WebM
+3. **Whisper Transcription**: The server decodes the audio and runs Whisper Large v3 locally
+4. **Language Detection**: The system automatically detects the language from the transcription
+5. **RAG Processing**: The transcribed text goes through the same RAG pipeline as text queries
+
+### Voice Language Behavior
+
+| User Input | Agent Response Language |
+|------------|----------------------|
+| English voice message | English |
+| Urdu voice message | Urdu |
+| English text | English |
+| Urdu text (script) | Urdu |
+| Roman Urdu text (e.g., "mera sir dard kar raha hai") | Urdu |
+
+### GPU vs CPU
+
+- **GPU (CUDA)**: Real-time transcription (~2-5 seconds)
+- **CPU**: Slower transcription (~15-30 seconds per audio clip)
+
+The model is loaded lazily on first voice query and cached in memory for subsequent requests.
+
+---
+
+## 📁 Folder Structure
+
+```
+Well-Being-Agent/
+├── Agent.py                 # Core RAG pipeline and LLM integration
+├── app.py                   # FastAPI web server
+├── audio_processor.py       # Whisper Large v3 transcription pipeline
+├── language_utils.py        # Language detection (EN/UR/Roman Urdu)
+├── safety.py                # Safety guardrails and content validation
+├── Index.py                 # Vector index builder
+├── index.html               # Main web interface
+├── requirements.txt         # Python dependencies
+├── Dockerfile               # Docker deployment configuration
+├── conversations.json       # Conversation log (auto-generated)
+├── .env                     # Environment configuration (create manually)
+│
+├── static/
+│   ├── script.js            # Frontend JavaScript
+│   ├── styles.css           # Frontend CSS styles
+│   └── audio/               # Temporary audio files (auto-cleaned)
+│
+├── cache/
+│   └── response_cache.json  # Response cache (auto-generated)
+│
+├── cancer_index_store/      # Vector index (built by Index.py)
+│   ├── default__vector_store.json
+│   ├── docstore.json
+│   ├── index_store.json
+│   └── index_metadata.json
+│
+└── DataSet/
+    ├── breast_cancer_comprehensive.json  # Primary knowledge base
+    ├── breast_cancer.json                # Legacy dataset
+    └── Question.json                     # Predefined questions
+```
+
+### Module Descriptions
+
+| Module | Description |
+|--------|-------------|
+| `Agent.py` | The heart of the system. Contains the RAG pipeline: config, cache, retrieval, prompt engineering, LLM querying, and post-processing. |
+| `app.py` | FastAPI server exposing REST endpoints for the web interface. Handles text queries, voice queries, and health checks. |
+| `audio_processor.py` | Manages the Whisper Large v3 model lifecycle. Handles audio file transcription and temporary file cleanup. |
+| `language_utils.py` | Comprehensive language detection supporting Urdu script, Roman Urdu (transliterated), and English. Also handles Urdu text normalization. |
+| `safety.py` | Content safety guardrails: crisis detection (suicide/self-harm), off-topic filtering, dangerous medical advice detection, and disclaimer injection. |
+| `Index.py` | Builds the vector search index from the JSON dataset using HuggingFace embeddings and LlamaIndex. Run once during setup. |
+
+---
+
+## 🌍 Language Support
+
+The system supports three input modes:
+
+### 1. English
+Standard English text or voice input.
+```
+User: I feel very tired after radiation therapy
+Agent: [Responds in English with empathy and guidance]
+```
+
+### 2. Urdu (Script)
+Native Urdu text using Arabic script.
+```
+User: کیموتھراپی کے بعد تھکاوٹ کیسے کم کریں؟
+Agent: [اردو میں جواب]
+```
+
+### 3. Roman Urdu (Transliterated)
+Urdu written in English/Latin characters — common in Pakistan.
+```
+User: mera sir bohat dard kar raha hai chemotherapy ke baad
+Agent: [اردو میں جواب — system detects Roman Urdu and responds in Urdu]
+```
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/` | Serves the web interface |
+| `POST` | `/ask-query` | Text query → RAG answer |
+| `POST` | `/voice-query` | Voice audio (base64) → Whisper → RAG answer |
+| `GET` | `/predefined-questions?language=english` | Get predefined FAQ questions |
+| `GET` | `/health` | System health check |
+| `GET` | `/info` | System information and features |
+
+### Example Text Query
+
+```bash
+curl -X POST http://localhost:8000/ask-query \
+  -H "Content-Type: application/json" \
+  -d '{"message": "What foods should I eat during chemotherapy?", "language": "english"}'
+```
+
+### Response Format
+
+```json
+{
+  "answer": "During chemotherapy, focusing on...",
+  "sources": [
+    {"topic": "Nutrition", "category": "lifestyle", "source": "Knowledge Base", "score": 0.85}
+  ],
+  "language": "english"
+}
+```
+
+---
+
+## ⚠️ Safety Disclaimer
+
+> **IMPORTANT**: WellBeing Agent is an AI-powered well-being support tool. It is **NOT** a substitute for professional medical advice, diagnosis, or treatment.
+
+- 🏥 This agent **does not replace** medical professionals
+- 💊 This agent **does not prescribe** treatments or medications
+- 🩺 This agent **does not diagnose** medical conditions
+- 💛 This agent **only provides** supportive guidance, educational information, and emotional reassurance
+
+**Always consult your healthcare team** for medical decisions. If you are in crisis, please contact emergency services or a crisis hotline immediately.
+
+---
+
+## 📄 License
+
+This project is for educational and supportive purposes. See the repository for license details.
+
+---
+
+<p align="center">
+  Made with 💛 for breast cancer patients and their families
+</p>

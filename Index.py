@@ -1,14 +1,26 @@
-# Index.py - Vector Index Builder for Well Being Agent
-# Reads ALL configuration from .env — no config.json dependency
+"""Index.py — Vector Index Builder for WellBeing Agent
+
+Reads configuration from .env and builds a vector index from the breast cancer
+dataset using HuggingFace embeddings and sentence-aware chunking.
+
+Usage:
+    python Index.py
+"""
+
 import os
 import json
 import logging
+from typing import List, Optional
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-logger = logging.getLogger(__name__)
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+logger = logging.getLogger("WellBeingAgent.Index")
 
 # ── Configuration from .env ──────────────────────────────────────────────
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")

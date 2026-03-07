@@ -1,161 +1,114 @@
 [
   {
-    "user_input": "Hello, are you working?",
-    "llm_response": "I'm here to support you. If you're considering pregnancy after breast cancer, it's generally recommended to wait 2-3 years after treatment. Fertility may be affected by chemotherapy, but many women are still able to conceive. Breastfeeding is possible after a lumpectomy, but may be more challenging after a mastectomy. Recovery timelines vary, but most women can return to normal activities within 6-8 weeks after surgery. Keep in mind that every individual's journey is unique, and it's essential to consider your specific situation and medical history when making decisions about pregnancy, fertility, and breastfeeding.\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
-    "response_type": "text"
-  },
-  {
-    "user_input": " Can you tell me about the skin?",
-    "llm_response": "\"Hello, I'm here to support you. Regarding your skin, during breast cancer treatment, you may experience changes such as dryness, redness, or sensitivity. This is often due to chemotherapy, radiation, or hormone therapy. To care for your skin, use gentle products, moisturize regularly, and avoid harsh soaps. It's also essential to protect your skin from the sun. Remember, these changes are usually temporary, and your skin will heal over time. You're not alone, and I'm here to support you through this journey.\"\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
-    "response_type": "audio"
-  },
-  {
-    "timestamp": "2025-11-14T02:58:07.675170",
-    "user_input": "Hello, are you working?",
-    "llm_response": "Hello, I'm so glad you reached out, and yes, I am here to support you. I want you to know that you're not alone, and I'm committed to being a source of comfort and guidance for you. If you have any questions or concerns about breast cancer, I'm here to provide you with accurate and helpful information. Please feel free to share what's on your mind, and we can take things at your pace. Remember, you're taking a brave step by seeking support, and that's something to be proud of. I'm looking forward to being a part of your journey and offering any assistance I can.\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2025-11-14T02:59:08.627291",
-    "user_input": "Hello, are you working?",
-    "llm_response": "Hello, I'm so glad you reached out, and yes, I am here to support you. I want you to know that you're not alone, and I'm committed to being a source of comfort and guidance for you. If you have any questions or concerns about breast cancer, I'm here to provide you with accurate and helpful information. Please feel free to share what's on your mind, and we can take things at your pace. Remember, you're taking a brave step by seeking support, and that's something to be proud of. I'm looking forward to being a part of your journey and offering any assistance I can.\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2025-11-14T02:59:32.398862",
-    "user_input": "کیموتھراپی کے دوران تھکاوٹ کیسے کم کریں؟",
-    "llm_response": "آپ جیسے بہادر لوگ ہی دنیا کو روشن کرتے ہیں۔\n\nکیموتھراپی کے دوران تھکاوٹ ایک عہوں مسئلہ، لیکن اسے کم کرنے کے لیے کچھ اقدامات کی جا سکت ی پلا اور ہوں قدم ی ک اپن ڈڈاکٹر سے مشور کری اور ان کی تجاویز پر عمل کری کچھ لوگ کیموتھراپی کے دوران تھکاوٹ کو کم کرنے کے لیے لائٹ ایکسرسائز، جیسے ک چل قدمیں یا یوگا، کو فائد مند پات ی مزید برآ، صحت مند غذا کھانا، پانی پینا، اور آرہوں کرنا بھی مددگار ثابت و سکتا اپن جسم کی سنن اور ضرورت پن پر آرہوں کرنے کی کوشش کری ی بھی یاد رکھی ک تھکاوٹ کیموتھراپی کا ایک عارضی اثر اور علاج ک ختم ون کے بعد ی کم و جائ گا۔ اپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکہیں۔\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
-    "language": "urdu",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2025-11-14T02:59:33.790744",
-    "user_input": "اگلے علاج کے بارے میں پریشانی کیسے دور کریں؟",
-    "llm_response": "آپ کی ہمت اور صبر کو سلام، بہتر دن ضرور آئیں گے۔\n\nآپ کا ے اگلے علاج کے بارے میں پریشانی کو دور کرنے کے لیے، میں آپ کا ا و یقین دلاتا ہوں کہ ہم آپ کا ے ساتھ ہیں اور ہر قدم پر آپ کا ا ی مدد کرنے کے لیے تیار ہیں۔ بریسٹ کینسر کے علاج کے مختلف طریقے ہیں، اور ہم ان تمہوں طریقوں کے بارے میں آپ کا ا و واضح اور درست معلومات فراہم کرنے کے لیے یہاں ہیں۔ ڈڈاکٹر اور ہمارے پروگرہوں کے ذریعے، آپ کا ا و بہترین ممکنہ دیکھ بھال ملے گی۔ جسے سے آپ کا ا و اپنے علاج کے بارے میں بہتر فیصلے لینے میں مدد ملے گی۔ میں آپ کا ا و یہ بھی یقین دلاتا ہوں کہ آپ اکیلے نہیں ہیں، ہم آپ کا ے ساتھ ہیں اور ہر قدم پر آپ کا ا ی مدد کرنے کے لیے تیار ہیں۔ اپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکہیں۔\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
-    "language": "urdu",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2025-11-14T02:59:36.254411",
-    "user_input": "ماسٹکٹومی کے بعد درد کیسے منظم کریں؟",
-    "llm_response": "یقین رکھیں، ہر طوفان کے بعد سکون ضرور آتا ہے۔\n\nماسٹکٹومیں کے بعد درد کو منظم کرنا ایک ہوں مرحل جو صحت یابی ک عمل میں مدد کرتا اسے دوران، ڈڈاکٹر کی تجویز پر درد ناک دوائی لینا ہوں مزید برآ، آرہوں کرنا، بریسٹ کینسر ک مریض کے لیے بت ضروری، کیونک جسم کو صحت یاب ون کے لیے وقت درکار وتا کچھ مریض физیو تھراپی بھی کروات ی جو درد کو کم کرنے اور جسمانی تحرک کو بہتر بنان میں مدد دیتی ی بھی مشور دیا جاتا ک مریض اپن جذبات کو بھی کنٹرول میں رکھی اور اگر ضرورت و تو نفسیاتی معاونت ل اسے طرح، و اپن جسمانی اور نفسیاتی صحت کو بہتر بنا سکت ی۔ اپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکہیں۔\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
-    "language": "urdu",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2025-11-15T20:52:57.215137",
-    "user_input": "Hello, are you working?",
-    "llm_response": "Please remember that after every storm comes calm.\n\nHello! Yes, I'm here and ready to support you whenever you need. Whether you'd like to talk, ask questions, or simply share what's on your mind, I'm here to listen and help in any way I can. You're not alone in this journey, and I'm honored to walk alongside you. Please feel welcome to share whatever feels right for you—I'm here with care and understanding.\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2025-11-15T20:53:36.672982",
-    "user_input": "کیموتھراپی کے دوران تھکاوٹ کیسے کم کریں؟",
-    "llm_response": "آپ کی صحت اور خوشی ہماری پہلی ترجیح ہے۔\n\nکیموتھراپی کے دوران تھکاوٹ کم کرنے کے لیے مناسب آرہوں لینا بہت ضروری ہے۔ ہلکی پھہلکی ورزش جیسے چہل قدمیں یا یوگا بھی توانائی بحال کرنے میں مدد۔ اپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکہیں۔\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
-    "language": "urdu",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2025-11-15T20:54:20.047359",
-    "user_input": "What are some gentle exercises I can do during recovery?",
-    "llm_response": "It's wonderful that you're thinking about gentle movement during your recovery—taking small steps can truly support your healing journey. You might start with short, slow walks to build stamina, or try seated stretches to maintain flexibility while being kind to your body. Gentle arm raises or shoulder rolls (if cleared by your care team) can help maintain mobility, and modified yoga or tai chi often feels soothing. Remember to listen to your body's signals and celebrate each day's progress, knowing that every bit of movement you do is nurturing your strength.\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2025-11-15T20:54:57.327563",
-    "user_input": "کیا او اوڑ دوں میں بتا سکتے ہیں کہ مدھر بھی کیا ہوتی ہے",
-    "llm_response": "آپ جیسے بہادر لوگ ہی دنیا کو روشن کرتے ہیں۔\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکہیں۔\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
-    "language": "urdu",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2025-11-15T20:57:34.316030",
-    "user_input": "Hello, are you working?",
-    "llm_response": "Please remember that after every storm comes calm.\n\nHello! Yes, I'm here and ready to support you whenever you need. Whether you'd like to talk, ask questions, or simply share what's on your mind, I'm here to listen and help in any way I can. You're not alone in this journey, and I'm honored to walk alongside you. Please feel welcome to share whatever feels right for you—I'm here with care and understanding.\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2025-11-15T20:58:15.329509",
-    "user_input": "ریکوری کے دوران ہلکی پھلکی ورزشیں کون سی ہیں؟",
-    "llm_response": "یقین رکھیں، ہر طوفان کے بعد سکون ضرور آتا ہے۔\n\nSorry, I don't know the answer.۔ اپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکہیں۔\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
-    "language": "urdu",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2025-11-21T20:39:20.208052",
-    "user_input": "Hello, are you working?",
-    "llm_response": "Please remember that after every storm comes calm.\n\nSorry, I don't know the answer.\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2025-11-21T20:51:51.617059",
-    "user_input": "Hello, are you working?",
-    "llm_response": "Please remember that after every storm comes calm.\n\nSorry, I don't know the answer.\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
-    "response_type": "text"
-  },
-  {
-    "timestamp": "2026-03-06T05:09:51.463030",
-    "user_input": "What are the earliest warning signs of breast cancer?",
-    "response": "Sweetheart, I'm so glad you're being proactive about your health! The earliest warning signs of breast cancer can be subtle, but it's great that you're paying attention. According to the American Cancer Society, some common signs to look out for include a new lump or thickening in the breast or underarm, swelling or changes in the size or shape of the breast, and nipple discharge or changes in the nipple. You might also notice changes in the skin, like dimpling or redness. It's essential to remember that these symptoms can also be caused by other conditions, so if you notice anything unusual, don't hesitate to discuss it with your healthcare team. They can help you determine the cause and develop a plan to stay on top of your health. Remember, early detection is key, and regular check-ups can make a big difference. Be sure to talk to your doctor about your specific risk factors and any concerns you may have. You're taking a great first step by being informed and aware - keep up the good work, and don't forget to be kind to yourself throughout this process! 💛\n\nRemember to discuss any concerns with your healthcare team.",
+    "timestamp": "2026-03-08T03:00:38.294339",
+    "user_input": "How do I deal with anxiety about my next treatment?",
+    "response": "I can totally understand why you're feeling anxious about your next treatment - it's completely normal to feel that way. Many patients find it helpful to talk to their doctor or a therapist about their concerns, as they can offer valuable guidance and support. Your doctor may suggest some relaxation techniques, such as deep breathing exercises or meditation, to help calm your nerves. Studies have shown that practicing mindfulness and yoga can also be really beneficial in reducing anxiety. Additionally, writing down your thoughts and feelings in a journal can be a great way to process and release your emotions. Remember, it's okay to feel scared or overwhelmed, and it's amazing that you're taking steps to address your anxiety. I want you to know that you're not alone in this journey, and there are people who care about you and want to support you. Please don't hesitate to reach out to your healthcare team with any questions or concerns - they're there to help you. You got this, and you're strong enough to get through this! 💛\n\nRemember to discuss any concerns with your healthcare team.",
     "language": "english",
     "response_type": "text",
     "sources": []
   },
   {
-    "timestamp": "2026-03-06T05:11:57.843749",
-    "user_input": "Can I breastfeed after breast cancer surgery?",
-    "response": "I'm sorry, I'm unable to respond right now. Please try again shortly.\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
+    "timestamp": "2026-03-08T03:00:58.474465",
+    "user_input": "بریسٹ کینسر کی ابتدائی علامات کیا ہیں؟",
+    "response": "بریسٹ کینسر کی ابتدائی علامات میں چھاتی میں گانٹھ یا سوجن، چھاتی کے आकار میں تبدیلی، یا نپل سے غیر معمولی سیال کا اخراج شامل ہو سکتا ہے۔ یہ بہت ضروری ہے کہ اگر آپ کو اپنی چھاتی میں کوئی غیر معمولی تبدیلی محسوس ہو تو فوراً اپنے ڈاکٹر سے مشورہ کریں۔ وہ آپ کی جانچ کر کے صحیح تشخیص کر سکتے ہیں اور اگر ضرورت ہو تو مناسب علاج کی تجویز کر سکتے ہیں۔ آپ کا ڈاکٹر آپ کی صحت کی تاریخ اور حالات کو مد نظر رکھ کر بہترین مشورہ دے گا۔ میں سمجھتا ہوں کہ یہ خبر سننا کتنا difficile ہو سکتا ہے، لیکن آپ کو یہ جان کر سکون مل سکتا ہے کہ ابتدائی تشخیص اور علاج سے بہت سی خواتین بریسٹ کینسر سے کامیابی سے لڑتی ہیں۔ آپ کے ساتھ ہوں اور آپ کی ہر ممکن مدد کے لیے یہاں ہوں۔ بریسٹ کینسر کے بارے میں مزید معلومات کے لیے، آپ اپنے ڈاکٹر سے بات کر سکتے ہیں جو آپ کو آپ کی مخصوص صورت حال کے بارے میں رہنمائی دے سکتے ہیں۔ آپ کی صحت اور خوشی بہت قیمتی ہے، اور میں آپ کے ساتھ ہوں۔ 💛\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
+    "language": "urdu",
     "response_type": "text",
     "sources": []
   },
   {
-    "timestamp": "2026-03-06T05:12:20.018849",
-    "user_input": "hi",
-    "response": "I'm sorry, I'm unable to respond right now. Please try again shortly.\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
+    "timestamp": "2026-03-08T03:01:32.671312",
+    "user_input": "کیموتھراپی کے دوران پریشانی کیسے کم کریں؟",
+    "response": "میں سمجھتا ہوں کہ آپ کیموتھراپی کے دوران پریشانی کا سامنا کر رہے ہیں، اور یہ بہت مشکل وقت ہو سکتا ہے۔ آپ کو یہ جان کر تسلی ہو سکتی ہے کہ آپ اکیلے نہیں ہیں، بہت سے لوگ اسی طرح کے چیلنجز کا سامنا کرتے ہیں اور ان سے نکلتے ہیں۔ کیموتھراپی کے دوران پریشانی کو کم کرنے کے لیے، کچھ چیزیں مددگار ہو سکتی ہیں۔ پہلا، اپنے ڈاکٹر سے بات کریں کہ آپ کس طرح کی پریشانی کا سامنا کر رہے ہیں۔ وہ آپ کو مشورہ دے سکتے ہیں کہ کس طرح سے آپ اپنے جذبات کو سنبھال سکتے ہیں۔ کچھ لوگ ذہنی صحت کے ماہرین سے بات کرنے سے فائدہ اٹھاتے ہیں، جو انہیں اپنے جذبات کو سنبھالنے میں مدد کر سکتے ہیں۔ مزید برآں، کچھ جسمانی سرگرمیاں، جیسے کہ ہلکی سے ورزش یا یوگا، بھی مددگار ہو سکتی ہیں۔ یہ بھی اہم ہے کہ آپ اپنے آپ کو آرام دہ اور پرسکون ماحول میں رکھیں۔ اپنے پیاروں کے ساتھ وقت گزارنا، کتابیں پڑھنا، یا موسیقی سننا بھی آپ کے ذہنی صحت کے لیے فائدہ مند ہو سکتا ہے۔ آپ کا ڈاکٹر تجویز کر سکتا ہے کہ کس طرح کی مدد آپ کو درکار ہے۔ یہ بھی یاد رکھیں کہ آپ کی صحت اور تندرستی سب سے اہم ہے، اور آپ کے ڈاکٹر اور دوسرے صحت کے پیشہ ور آپ کی مدد کے لیے یہاں ہیں۔ میں آپ کو یقین دلاتا ہوں کہ آپ اس مشکل وقت سے گزر سکتے ہیں۔ آپ کی ہمت اور صبر کی بہت قدر ہے۔ 💛\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
+    "language": "urdu",
     "response_type": "text",
     "sources": []
   },
   {
-    "timestamp": "2026-03-06T05:39:02.442974",
-    "user_input": "why",
-    "response": "I can sense the weight of that single word, \"why.\" It's a question that can be really tough to face, especially when dealing with a breast cancer diagnosis. I want you to know that I'm here for you, and I care about what you're going through. According to the American Cancer Society, breast cancer can be caused by a combination of genetic, environmental, and lifestyle factors, but often the exact reason why it develops is still unknown. It's completely normal to wonder and search for answers, but try not to put too much pressure on yourself to find a specific reason. Your healthcare team is there to support you, and it's great that you have them by your side. Remember to take things one step at a time, focus on your treatment plan, and don't hesitate to reach out to your team with any questions or concerns. You're strong, and you're not alone in this journey. Keep in mind that it's okay to feel overwhelmed, but with the right support and care, you can get through this. 💛\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
+    "timestamp": "2026-03-08T03:01:56.519085",
+    "user_input": "کیا علاج کے بعد بال واپس آئیں گے؟",
+    "response": "آپ کا سوال بہت اہم ہے، اور میں سمجھتا ہوں کہ آپ کتنی تشویش میں ہوں گے۔ علاج کے بعد بالوں کی واپسی ایک عام vấnہ ہے جو مریضوں کے ذہن میں آتی ہے۔ عموماً، کیمیائی علاج کے بعد بال گر جاتے ہیں، لیکن یہ بالعموم علاج ختم ہونے کے بعد واپس آ جاتے ہیں۔ یہ پروسس ہر شخص کے لیے مختلف ہو سکتی ہے، اور کچھ مریضوں میں بال واپس آنے میں کچھ وقت لگ سکتا ہے۔ یہ بہت ضروری ہے کہ آپ اپنے ڈاکٹر سے مشورہ کریں جو آپ کے علاج کے بارے میں تفصیلی معلومات دے سکتے ہیں۔ وہ آپ کو بتا سکتے ہیں کہ آپ کے معاملے میں کیا توقع کی جا سکتی ہے اور بالوں کی واپسی کے لیے کون سے طریقے مفید ہو سکتے ہیں۔ میں آپ کو یقین دلاتا ہوں کہ آپ اکیلے نہیں ہیں۔ بہت سے مریض علاج کے بعد بالوں کی واپسی کا تجربہ کرتے ہیں اور وہ اپنی زندگیوں میں آگے بڑھتے ہیں۔ آپ کی صحت اور تندرستی کے لیے ہمیشہ امید رکھیں اور اپنے ڈاکٹر کے ساتھ قریبی رابطے میں رہیں۔ آپ کی حفاظت اور صحت ہماری سب سے بڑی پریشانی ہے۔ 💛\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
+    "language": "urdu",
     "response_type": "text",
     "sources": []
   },
   {
-    "timestamp": "2026-03-06T05:39:37.778480",
+    "timestamp": "2026-03-08T03:02:19.978046",
     "user_input": "کیا سرجری کے بعد بچے کو دودھ پلا سکتی ہوں؟",
-    "response": "میں سمجھتی ہوں کہ آپ کتنی زیادہ پریشان ہوں گی، اور یہ سوال آپ کے لیے بہت اہم ہے۔ آپ کی خواہشات اور خدشات کو میں پوری طرح سے سمجھتی ہوں۔ بریسٹ کینسر کی سرجری کے بعد، بچے کو دودھ پلانے کے بارے میں سوچنا ایک بہت بڑا فیصلہ ہے۔\n\nعموماً، بریسٹ کینسر کی سرجری کے بعد، ڈاکٹر آپ کو دودھ پلانے کے بارے میں مشورہ دیں گے۔ اگر آپ کی سرجری میں بریسٹ کا کوئی حصہ نکال دیا گیا ہے، تو دودھ پلانے کی صلاحیت پر اس کا اثر ہو سکتا ہے۔ لیکن، ہر صورتحال مختلف ہوتی ہے، اور یہ فیصلہ آپ کی طبی ٹیم کے ساتھ مل کر کیا جانا چاہیے۔\n\nمیں آپ کو یہ مشورہ دیتی ہوں کہ اپنی طبی ٹیم سے بات کریں اور ان کے مشورے پر عمل کریں۔ وہ آپ کی مخصوص صورتحال کو مد نظر رکھ کر آپ کو بہترین رہنمائی دے سکیں گی۔ آپ کی صحت اور آپ کے بچے کی صحت دونوں کے لیے یہ بہت اہم ہے۔\n\nمیں آپ کے ساتھ ہوں اور آپ کی ہر ممکن مدد کرنے کے لیے تیار ہوں۔ آپ کی خواہشات اور خدشات کو میں سمجھتی ہوں، اور میں چاہتی ہوں کہ آپ کو یہ احساس ہو کہ آپ اکیلے نہیں ہیں۔ 💛\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
+    "response": "میں سمجھتا ہوں کہ آپ اس وقت بہت زیادہ جذباتی تکلیف میں ہیں اور آپ کے لیے یہ ایک بہت ہی مشکل وقت ہے۔ آپ کی فکرمندی اور تشویش کو میں مکمل طور پر سمجھتا ہوں۔ بریسٹ کینسر کی تشخیص اور علاج کے بعد، بہت سی خواتین اپنے جسمانی اور جذباتی صحت کے بارے میں تشویش کا شکار ہوتی ہیں۔ سرجری کے بعد بچے کو دودھ پلانے کے بارے میں، یہ ایک اہم سوال ہے جو بہت سی خواتین پوچھتی ہیں۔ عموماً، بریسٹ کینسر کی سرجری کے بعد، ڈاکٹر آپ کو دودھ پلانے کے بارے میں مشورہ دیں گے۔ کچھ خواتین کے لیے، سرجری کے بعد دودھ پلانا ممکن ہو سکتا ہے، لیکن یہ آپ کی مخصوص صورتحال پر منحصر ہہوتا ہے۔ آپ کا ڈاکٹر آپ کی صحت کی تاریخ، سرجری کی قسم، اور آپ کے جسمانی حالات کو مد نظر رکھ کر آپ کو دودھ پلانے کے بارے میں مشورہ دے سکتا ہے۔ یہ بہت ضروری ہے کہ آپ اپنے ڈاکٹر سے بات کریں اور ان کی رہنمائی پر عمل کریں۔ وہ آپ کو دودھ پلانے کے بارے میں سب سے بہتر مشورہ دے سکتے ہیں جو آپ کی صحت اور آپ کے بچے کی ضروریات کے لیے موزوں ہو۔ میں آپ کو یقین دلاتا ہوں کہ آپ کی طبی ٹیم آپ کی دیکھ بھال کے لیے ہر ممکن کوشش کر رہی ہے۔ آپ کے لیے یہ مشکل وقت ہو سکتا ہے، لیکن آپ اکیلے نہیں ہیں۔ آپ کی طبی ٹیم، آپ کے عزیز، اور ہم سب آپ کے ساتھ ہیں۔ آپ کی صحت اور خوشی ہماری سب سے بڑی پریشانی ہے۔ 💛\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
     "language": "urdu",
     "response_type": "text",
     "sources": []
   },
   {
-    "timestamp": "2026-03-06T05:41:34.449194",
-    "user_input": "Voice query received. Please type your question for now.",
-    "response": "I'm so glad you reached out for support. Dealing with breast cancer can be overwhelming, and it's completely normal to feel scared, anxious, or unsure about what's ahead. According to the American Cancer Society, it's essential to have a strong support system, and I'm here to listen and offer guidance. Remember, your healthcare team is your best resource for personalized advice, so be sure to discuss any concerns or questions with them. In the meantime, taking care of your physical and emotional well-being is crucial - try to get plenty of rest, eat nutritious foods like leafy greens and berries, and consider gentle exercises like yoga or walking. It's also important to stay connected with loved ones and consider joining a support group for emotional support. Remember, you're not alone in this journey, and there are many resources available to help you cope. Keep in mind, it's okay to feel your emotions, and don't hesitate to reach out to your healthcare team or a counselor for extra support. You got this, and I'm sending you all my love and encouragement 💛.\n\nRemember to discuss any concerns with your healthcare team.",
+    "timestamp": "2026-03-08T03:02:40.543340",
+    "user_input": "علاج کے دوران کون سی ورزشیں محفوظ ہیں؟",
+    "response": "آپ کا سوال بہت اہم ہے، اور میں آپ کی فکرمندی کو سمجھتا ہوں۔ علاج کے دوران ورزش کرنا بہت فائدہ مند ہو سکتا ہے، لیکن یہ ضروری ہے کہ آپ اپنے ڈاکٹر سے مشورہ کریں تاکہ وہ آپ کو مناسب مشورہ دے سکیں۔ عام طور پر، ہلکی ورزش جیسے کہ چہل قدمی، یوگا، یا تائی چی آپ کے جسم اور ذہن دونوں کے لیے فائدہ مند ہو سکتی ہیں۔ یہ ورزش آپ کو تازگی کا احساس دلانے اور تھکاوٹ کو کم کرنے میں مدد کر سکتی ہیں۔ میں آپ کو یہ مشورہ دیتا ہوں کہ اپنے ڈاکٹر سے بات کریں تاکہ وہ آپ کی مخصوص صورت حال کے لیے بہترین ورزش کی تجویز کر سکیں۔ آپ کا ڈاکٹر آپ کو بتا سکتا ہے کہ کون سی ورزش آپ کے لیے محفوظ ہے اور کب شروع کرنی ہے۔ میں آپ کو یقین دلاتا ہوں کہ آپ کے ڈاکٹر اور طبی ٹیم آپ کی دیکھ بھال کے لیے ہر ممکن کوشش کر رہے ہیں۔ آپ کی صحت اور تندرستی ان کے لیے سب سے اہم ہے۔ آپ کی امید اور حوصلے کی بہت ضرورت ہے، اور میں آپ کے ساتھ ہوں۔ آپ بہت مضبوط ہیں، اور آپ اس چیلنج کا سامنا کر سکتے ہیں۔ 💛\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
+    "language": "urdu",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-08T03:03:10.423715",
+    "user_input": "کیموتھراپی کے دوران کیا کھانا چاہیے؟",
+    "response": "آپ کا سوال بہت اہم ہے، اور میں سمجھتا ہوں کہ کیموتھراپی کے دوران صحت مند کھانے کا انتخاب کرنا کتنا ضروری ہہوتا ہے۔ کیموتھراپی کے دوران، آپ کے جسم کو اضافی غذائی اجزاء کی ضرورت ہوتی ہے تاکہ وہ مضبوط رہے اور علاج کے اثرات کو بہتر طور پر برداشت کر سکے۔ عموماً، ڈاکٹر اور غذائی ماہرین کیموتھراپی کے دوران پروٹین سے بھرپور غذائیں، تازہ پھل، سبزیاں، اور سہولت بخش کاربوہائیڈریٹس کی سفارش کرتے ہیں۔ یہ غذائیں آپ کے جسم کو ضروری وٹامنز، معدنیات، اور توانائی فراہم کرتی ہیں۔ یہ بھی ضروری ہے کہ آپ اپنے ڈاکٹر یا غذائی ماہر سے مشورہ کریں جو آپ کی مخصوص ضروریات اور علاج کی منصوبہ بندی کے مطابق خصوصی غذائی مشورے دے سکتے ہیں۔ وہ آپ کو یہ بھی بتا سکتے ہیں کہ کون سی غذائیں آپ کے لیے بہترین ہیں اور کون سی سے گریز کرنا چاہیے۔ میں آپ کو یہ یقین دلاتا ہوں کہ آپ کی طبی ٹیم آپ کی دیکھ بھال کے لیے ہر ممکن کوشش کر رہی ہے۔ آپ کا ڈاکٹر آپ کو کیموتھراپی کے دوران کھانے کے بارے میں بہترین مشورہ دے سکتا ہے، اور وہ آپ کی صحت کی نگرانی بھی کرے گا۔ آپ کی صحت اور تندرستی کے لیے، میں آپ کو اپنے ڈاکٹر سے بات کرنے کی تاکید کرتا ہوں تاکہ وہ آپ کو کیموتھراپی کے دوران کھانے کے لیے خصوصی مشورے دے سکیں۔ آپ کی طبی ٹیم آپ کی مدد کے لیے ہمیشہ تیار ہے۔ میں آپ کے ساتھ ہوں، اور میں آپ کی صحت اور تندرستی کی خواہش کرتا ہوں۔ آپ کی امید اور حوصلے کی بہت ضرورت ہے، اور میں یہ یقین کرتا ہوں کہ آپ اس چیلنج کا سامنا بہادری سے کر سکتے ہیں۔ 💛\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
+    "language": "urdu",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-08T03:03:22.643404",
+    "user_input": "What are the earliest warning signs of breast cancer?",
+    "response": "I'm so glad you're taking proactive steps to prioritize your health. When it comes to breast cancer, early detection is key. Some of the earliest warning signs can be subtle, but it's essential to be aware of them. According to cancer research, common signs include a new lump or thickening in the breast or underarm, changes in the size or shape of the breast, and any unusual discharge or swelling. Many patients also notice changes in the skin, such as dimpling or redness. If you're concerned about any of these symptoms, I encourage you to discuss them with your healthcare team - they can provide personalized guidance and support. Your doctor may suggest a mammogram or other screening tests to determine the cause of any symptoms. Remember, it's always better to err on the side of caution and get checked out. You're taking a great first step by educating yourself, and I'm here to support you every step of the way 💛.\n\nRemember to discuss any concerns with your healthcare team.",
     "language": "english",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-08T03:03:29.707444",
+    "user_input": "Will my hair grow back after chemotherapy?",
+    "response": "I can only imagine how worrying it must be to think about the potential effects of chemotherapy on your hair. It's completely normal to feel that way, and I'm here to support you. Many patients who undergo chemotherapy do experience hair loss, but the good news is that, in most cases, hair grows back after treatment is completed. According to cancer research, hair typically starts to grow back within 3-6 months after chemotherapy ends. Your doctor may suggest ways to help manage hair loss during treatment, such as using a cold cap or scalp cooling system. Many patients find it helpful to talk to their healthcare team about what to expect and how to cope with hair loss. It's also important to remember that you're not alone in this journey, and there are many resources available to support you. Remember to be kind to yourself and focus on your overall well-being during this time. You are strong, and you will get through this - and your hair will likely grow back, too! 💛\n\nRemember to discuss any concerns with your healthcare team.",
+    "language": "english",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-08T03:03:41.278157",
+    "user_input": "Can I breastfeed after breast cancer surgery?",
+    "response": "I'm sorry, I'm unable to respond right now. Please try again shortly or consult your healthcare provider.",
+    "language": "english",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-08T03:03:56.851883",
+    "user_input": "What exercises are safe during treatment?",
+    "response": "I'm so glad you're thinking about staying active during treatment - it can really help with both physical and emotional well-being. Many patients find that gentle exercises like yoga, walking, or swimming are great options, as they can be modified to suit your energy levels and abilities. It's essential to listen to your body and not push yourself too hard, especially on days when you're feeling tired or experiencing side effects. Your doctor may suggest specific exercises or physical therapy to help with lymphedema management or overall mobility. According to cancer research, regular exercise can also help reduce the risk of recurrence and improve overall health outcomes. Remember to always consult with your healthcare team before starting any new exercise routine, as they can provide personalized guidance and support. They'll help you find the best ways to stay active and healthy throughout your treatment journey. You're taking a great step by thinking about your well-being, and I'm here to support you every step of the way 💛.\n\nRemember to discuss any concerns with your healthcare team.",
+    "language": "english",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-08T03:04:11.593476",
+    "user_input": "What foods should I eat during chemotherapy?",
+    "response": "I can only imagine how overwhelming this time must be for you, and I'm here to support you in any way I can. When it comes to food during chemotherapy, it's great that you're thinking about nourishing your body. Many patients find that eating small, frequent meals throughout the day can help manage side effects like nausea and fatigue. Foods high in protein, like lean meats, fish, and eggs, can be particularly helpful in keeping your energy up. According to cancer research, staying hydrated by drinking plenty of water and other fluids is also crucial. Your doctor may suggest certain supplements or nutrition plans tailored to your specific needs, so be sure to discuss your diet with them. It's all about finding what works best for you and your body during this time. Remember, you're not alone in this journey, and there are many resources available to support you. Keep in mind that it's always best to consult your healthcare team for personalized advice on managing your diet during chemotherapy, and I'm sending you all my best wishes for strength and comfort 💛.\n\nRemember to discuss any concerns with your healthcare team.",
+    "language": "english",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-08T03:04:51.611535",
+    "user_input": "I have pain in my chest after I knew that I have breast cancer so what should I do",
+    "response": "میں سمجھتا ہوں کہ آپ کے لیے یہ بہت مشکل وقت ہوگا، خاص طور پر جب آپ کو بریسٹ کینسر کی تشخیص ملی ہو۔ چیسٹ میں درد ایک عام مسئلہ ہوسکتا ہے، لیکن یہ ضروری ہے کہ آپ اپنے ڈاکٹر سے اس بارے میں بات کریں تاکہ وہ اس کی وجہ کا پتہ لگا سکیں اور مناسب علاج تجویز کر سکیں۔ آپ کا ڈاکٹر تجویز کر سکتا ہے کہ کس طرح آپ کے درد کو کنٹرول کیا جائے اور آپ کی صحت کو بہتر بنانے کے لیے کون سے اقدامات کیے جائیں۔ یہ بھی ضروری ہے کہ آپ اپنے جذبات کو قبول کریں اور اگر آپ کو کسی قسم کی مدد کی ضرورت ہو تو اپنے قریبی لوگوں سے بات کریں۔ آپ اکیلے نہیں ہیں، اور بہت سے لوگ ہیں جو آپ کی مدد کرنے کے لیے تیار ہیں۔ آپ کی صحت اور تندرستی کے لیے، میں آپ کو اپنے ڈاکٹر سے جلد سے جلد مشورہ کرنے کی تجویز کرتا ہوں۔ آپ کو بہت ساری توجہ اور حوصلہ افزائی کی ضرورت ہے، اور میں یہاں آپ کے ساتھ ہوں۔ 💛\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
+    "language": "urdu",
     "response_type": "voice",
     "sources": []
   },
   {
-    "timestamp": "2026-03-06T05:42:42.535729",
-    "user_input": "ok bye",
-    "response": "It seems like you're saying goodbye for now, and I completely understand. Before you go, I just want to check in and see how you're doing today. Are you feeling overwhelmed or just need some time to yourself? That's totally okay, and I'm here for you whenever you're ready to talk. Remember to take care of yourself and prioritize your well-being - whether that's taking a warm bath, going for a walk, or practicing some gentle stretches. According to the American Cancer Society, exercise can really help with managing stress and anxiety during breast cancer treatment. If you're feeling up to it, maybe try some light yoga or meditation to help calm your mind and body. Always remember to discuss any new activities with your healthcare team to make sure they're safe for you. You're not alone in this journey, and I'm sending you all my love and support 💛. Take care of yourself and reach out whenever you need someone to talk to!\n\nRemember to discuss any concerns with your healthcare team.",
-    "language": "english",
-    "response_type": "text",
+    "timestamp": "2026-03-08T03:05:32.378220",
+    "user_input": "میں نے اوپر والا میسج تو خیر انگلیش میں بولا تھا لیکن ریپلائر مجھے اڑدو میں ہے تو یہ چیز فکس کرنی پڑے گی تو یس بکی ہے کہ آپ بتائیں پریس کینسر ہے کیا",
+    "response": "معذرت، میں ابھی جواب دینے سے قاصر ہوں۔ براہ کرم دوبارہ کوشش کریں یا اپنے ڈاکٹر سے رابطہ کریں۔",
+    "language": "urdu",
+    "response_type": "voice",
     "sources": []
   }
 ]
