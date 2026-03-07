@@ -154,9 +154,12 @@ async def voice_query(req: VoiceRequest):
         # Map Whisper language to system language ('urdu' or 'english')
         language = map_whisper_lang_to_system(detected_lang)
 
-        # Also check with the RAG system's language detector for Roman Urdu
-        rag_lang = rag.detect_language(transcribed_text)
-        if rag_lang == "urdu":
+        # For voice input, only override to Urdu if Urdu SCRIPT characters
+        # are present in the transcription. Do NOT use Roman Urdu detection
+        # here because Whisper transcribes English speech as English text
+        # which can false-positive on Roman Urdu word lists.
+        import re
+        if re.search(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]+', transcribed_text):
             language = "urdu"
 
         # Get answer from RAG system

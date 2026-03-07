@@ -31,13 +31,13 @@ ROMAN_URDU_WORDS = {
     # Medical / body
     "dard", "sar", "sir", "pet", "kamar", "seena", "hath", "pair",
     "jism", "khoon", "haddi", "dil", "jigar", "gurda", "sar dard",
-    # Cancer related
-    "cancer", "kenser", "kanser", "chemo", "chemotherapy", "radiation",
-    "surgery", "operation", "biopsy", "tumor", "rasoli",
-    "breast", "chhati", "seena", "mastectomy",
-    # Symptoms
+    # Cancer-related (Urdu-specific terms only — NOT English medical words
+    # like cancer/chemo/surgery/radiation which appear in English speech too)
+    "kenser", "kanser", "rasoli",
+    "chhati", "mastectomy",
+    # Symptoms (Urdu words only)
     "dard", "bukhar", "ulti", "matli", "thakan", "kamzori",
-    "bhook", "neend", "sujan", "kharish", "baal", "girna",
+    "bhook", "neend", "sujan", "kharish", "girna",
     # Feelings
     "dar", "khauf", "fikar", "pareshani", "ghabrahat", "udasi",
     "mayoosi", "akela", "akeli", "mushkil", "takleef", "aziyat",
@@ -45,9 +45,9 @@ ROMAN_URDU_WORDS = {
     "batao", "batain", "bataiye", "karo", "kijiye", "karein",
     "chahiye", "hona", "raha", "rahi", "sakta", "sakti",
     "kaise", "kya", "kyun", "kab", "kahan", "kaun",
-    # Treatment
-    "ilaj", "ilaaj", "dawa", "dawai", "doctor", "daktar",
-    "hospital", "aspatal", "nurse", "operation",
+    # Treatment (Urdu-specific only — NOT hospital/nurse/operation which are English)
+    "ilaj", "ilaaj", "dawa", "dawai", "daktar",
+    "aspatal",
     # Common Urdu phrases (romanized)
     "mujhe", "mera", "meri", "mere", "apna", "apni", "apne",
     "bohat", "bohot", "bahut", "acha", "achi", "theek",
@@ -152,12 +152,26 @@ def clean_urdu_text(text: str) -> str:
     """
     Normalize common Urdu spelling mistakes and fix character issues.
     This is especially important for LLM-generated Urdu text.
+    Also strips foreign characters that LLMs sometimes leak into Urdu output.
     """
     if not text:
         return text
 
     for wrong, right in URDU_SPELLING_FIXES.items():
         text = text.replace(wrong, right)
+
+    # ── Strip foreign characters that LLMs leak into Urdu ────────────────
+    # Remove Devanagari / Hindi script (आकार, सबसे, etc.)
+    text = re.sub(r"[\u0900-\u097F]+", "", text)
+    # Remove CJK characters (Chinese: 亲 etc.)
+    text = re.sub(r"[\u4E00-\u9FFF]+", "", text)
+    # Remove Vietnamese / Extended Latin characters (vấn, difficile, etc.)
+    text = re.sub(r"[\u0100-\u024F]+", "", text)
+    text = re.sub(r"[\u1E00-\u1EFF]+", "", text)
+    # Remove combining diacritical marks
+    text = re.sub(r"[\u0300-\u036F]+", "", text)
+    # Remove long Latin words (4+ chars), but keep short medical terms like DNA, CT
+    text = re.sub(r"\b[a-zA-Z]{4,}\b", "", text)
 
     # Remove extra whitespace
     text = re.sub(r"\s+", " ", text)

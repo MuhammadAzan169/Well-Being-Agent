@@ -190,7 +190,7 @@ async function loadPredefinedQuestions(lang) {
                 (q) => `
             <div class="question-card ${lang === "urdu" ? "urdu-text" : ""}"
                  ${lang === "urdu" ? 'dir="rtl"' : ""}
-                 onclick="askPredefined('${escapeHtml(q.question)}')">
+                 onclick="askPredefined('${escapeHtml(q.question)}', '${lang}')">
                 <i class="${q.icon || "fas fa-question-circle"}"></i>
                 <span>${q.question}</span>
             </div>`
@@ -201,8 +201,13 @@ async function loadPredefinedQuestions(lang) {
     }
 }
 
-function askPredefined(question) {
+function askPredefined(question, lang) {
     if (isGenerating) return;
+    // Set chat language based on which tab the question came from
+    if (lang) {
+        currentLanguage = lang;
+        updateLanguageDisplay(currentLanguage);
+    }
     document.getElementById("userInput").value = question;
     sendMessage(question);
 }
@@ -241,8 +246,13 @@ async function toggleRecording() {
     }
 }
 
+let pendingVoiceBlob = null;
+
 async function startRecording() {
     try {
+        // Remove any existing voice preview
+        removeVoicePreview();
+
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         mediaRecorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
         audioChunks = [];
@@ -251,10 +261,11 @@ async function startRecording() {
             if (e.data.size > 0) audioChunks.push(e.data);
         };
 
-        mediaRecorder.onstop = async () => {
+        mediaRecorder.onstop = () => {
             stream.getTracks().forEach((t) => t.stop());
             const blob = new Blob(audioChunks, { type: "audio/webm" });
-            await sendVoice(blob);
+            pendingVoiceBlob = blob;
+            showVoicePreview(blob);
         };
 
         mediaRecorder.start();
@@ -281,6 +292,55 @@ function updateVoiceUI(recording) {
     btn.innerHTML = recording
         ? '<i class="fas fa-stop"></i>'
         : '<i class="fas fa-microphone"></i>';
+}
+
+// ── Voice Preview ────────────────────────────────────────────────────────
+function showVoicePreview(blob) {
+    removeVoicePreview();
+    const url = URL.createObjectURL(blob);
+
+    const preview = document.createElement("div");
+    preview.id = "voicePreview";
+    preview.className = "voice-preview";
+    preview.innerHTML = `
+        <audio controls src="${url}"></audio>
+        <div class="voice-preview-actions">
+            <button class="voice-preview-btn re-record" onclick="reRecord()" title="Re-record">
+                <i class="fas fa-redo"></i> Re-record
+            </button>
+            <button class="voice-preview-btn send-voice" onclick="confirmSendVoice()" title="Send">
+                <i class="fas fa-paper-plane"></i> Send
+            </button>
+            <button class="voice-preview-btn cancel-voice" onclick="removeVoicePreview()" title="Cancel">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    `;
+
+    const inputContainer = document.querySelector(".chat-input-container");
+    inputContainer.insertBefore(preview, inputContainer.firstChild);
+}
+
+function removeVoicePreview() {
+    const existing = document.getElementById("voicePreview");
+    if (existing) {
+        const audio = existing.querySelector("audio");
+        if (audio && audio.src) URL.revokeObjectURL(audio.src);
+        existing.remove();
+    }
+    pendingVoiceBlob = null;
+}
+
+function reRecord() {
+    removeVoicePreview();
+    startRecording();
+}
+
+async function confirmSendVoice() {
+    if (!pendingVoiceBlob) return;
+    const blob = pendingVoiceBlob;
+    removeVoicePreview();
+    await sendVoice(blob);
 }
 
 async function sendVoice(blob) {
@@ -383,6 +443,16 @@ function cleanUrduText(text) {
     for (const [wrong, right] of Object.entries(fixes)) {
         text = text.replaceAll(wrong, right);
     }
+
+    // Strip foreign characters that LLMs sometimes leak into Urdu responses
+    // Remove Devanagari (Hindi), CJK (Chinese), Vietnamese diacritics, Latin chars
+    text = text.replace(/[\u0900-\u097F]/g, "");           // Devanagari (Hindi)
+    text = text.replace(/[\u4E00-\u9FFF]/g, "");           // CJK (Chinese)
+    text = text.replace(/[\u0100-\u024F]/g, "");           // Extended Latin (Vietnamese etc.)
+    text = text.replace(/[\u1E00-\u1EFF]/g, "");           // Latin Extended Additional
+    text = text.replace(/[\u0300-\u036F]/g, "");           // Combining diacritical marks
+    text = text.replace(/[a-zA-Z]{4,}/g, "");              // Long Latin words (keep short like "DNA")
+
     return text.replace(/\s+/g, " ").trim();
 }
 

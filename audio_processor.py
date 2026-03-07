@@ -161,8 +161,25 @@ def transcribe_audio(
                 "error": "No speech detected in the audio. Please try again.",
             }
 
-        # Detect language from the transcription
-        detected_lang = _detect_audio_language(text)
+        # ── Language Detection ─────────────────────────────────────────────
+        # Priority 1: Use Whisper's own language prediction from chunk metadata.
+        # Whisper embeds language tokens in the output — trust these over
+        # text heuristics which false-positive on medical English ("cancer",
+        # "chemo", "surgery" are in the Roman-Urdu word list).
+        whisper_lang = _extract_whisper_language(result)
+
+        if whisper_lang is not None:
+            # Whisper told us the language
+            if whisper_lang == "ur":
+                detected_lang = "urdu"
+            elif whisper_lang == "en":
+                detected_lang = "english"
+            else:
+                # Non-English, non-Urdu — fall back to script check only
+                detected_lang = _detect_audio_language_by_script(text)
+        else:
+            # Whisper gave no language hint — use script/text heuristics
+            detected_lang = _detect_audio_language(text)
 
         logger.info(
             f"✅ Transcribed ({elapsed:.1f}s): [{detected_lang}] "
@@ -194,22 +211,66 @@ def transcribe_audio(
                 pass
 
 
+def _extract_whisper_language(result: Dict[str, Any]) -> Optional[str]:
+    """
+    Extract Whisper's own language prediction from pipeline output.
+    Whisper encodes the language in chunk metadata when return_timestamps=True.
+    Returns a BCP-47 language code (e.g. 'en', 'ur') or None if unavailable.
+    """
+    # The transformers ASR pipeline stores per-chunk metadata in result["chunks"]
+    chunks = result.get("chunks", [])
+    if chunks:
+        # Each chunk may have a "language" key set by Whisper's language token
+        for chunk in chunks:
+            lang = chunk.get("language")
+            if lang:
+                return lang
+
+    # Some pipeline versions surface language at the top level
+    lang = result.get("language")
+    if lang:
+        return lang
+
+    return None
+
+
+def _detect_audio_language_by_script(text: str) -> str:
+    """
+    Detect language using ONLY script (Unicode range) checks.
+    Does NOT use Roman Urdu word matching — avoids false positives
+    on English medical terms that overlap with the Roman Urdu word list.
+    Returns 'urdu' or 'english'.
+    """
+    if re.search(r"[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]+", text):
+        return "urdu"
+    return "english"
+
+
 def _detect_audio_language(text: str) -> str:
     """
     Detect whether transcribed text is Urdu or English.
+    Used only as a fallback when Whisper provides no language metadata.
     Returns 'urdu' or 'english'.
     """
-    # 1) Check for Urdu script characters
+    # 1) Check for Urdu script characters (most reliable)
     if re.search(r"[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]+", text):
         return "urdu"
 
-    # 2) Check for Roman Urdu patterns
-    try:
-        from language_utils import detect_roman_urdu
-        if detect_roman_urdu(text):
-            return "urdu"
-    except ImportError:
-        pass
+    # 2) Roman Urdu check — use ONLY grammar/pronoun words, NOT medical
+    # terms like "cancer" / "chemo" that appear in English speech too.
+    roman_urdu_grammar = {
+        "mera", "meri", "mere", "mujhe", "apna", "apni", "apne",
+        "bohat", "bohot", "kaise", "kyun", "kab",
+        "hai", "hain", "tha", "thi",
+        "nahi", "nahin", "haan", "bilkul",
+        "batao", "batain", "chahiye", "sakta", "sakti",
+        "shukria", "shukriya", "meharbani",
+        "dard", "bukhar", "thakan", "kamzori",
+        "ilaj", "ilaaj", "dawa", "dawai", "daktar",
+    }
+    words = set(re.findall(r"[a-zA-Z]+", text.lower()))
+    if len(words & roman_urdu_grammar) >= 2:
+        return "urdu"
 
     return "english"
 

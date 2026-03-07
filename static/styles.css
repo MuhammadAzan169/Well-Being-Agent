@@ -1389,6 +1389,91 @@ body {
     }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* Voice Preview                                                              */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+.voice-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(168, 85, 247, 0.08));
+    border: 1px solid rgba(236, 72, 153, 0.2);
+    border-radius: 12px;
+    margin-bottom: 8px;
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.voice-preview audio {
+    flex: 1;
+    height: 36px;
+    min-width: 0;
+}
+
+.voice-preview-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.voice-preview-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.voice-preview-btn.send-voice {
+    background: linear-gradient(135deg, var(--primary-color, #ec4899), var(--secondary-color, #a855f7));
+    color: #fff;
+}
+.voice-preview-btn.send-voice:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
+}
+
+.voice-preview-btn.re-record {
+    background: rgba(99, 102, 241, 0.1);
+    color: #6366f1;
+}
+.voice-preview-btn.re-record:hover {
+    background: rgba(99, 102, 241, 0.2);
+}
+
+.voice-preview-btn.cancel-voice {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    padding: 6px 8px;
+}
+.voice-preview-btn.cancel-voice:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+@media (max-width: 768px) {
+    .voice-preview {
+        flex-wrap: wrap;
+    }
+    .voice-preview audio {
+        width: 100%;
+    }
+    .voice-preview-actions {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 @media print {
     .floating-elements,
     .send-button,
