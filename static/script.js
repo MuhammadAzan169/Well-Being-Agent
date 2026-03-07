@@ -302,20 +302,55 @@ function showVoicePreview(blob) {
     const preview = document.createElement("div");
     preview.id = "voicePreview";
     preview.className = "voice-preview";
-    preview.innerHTML = `
-        <audio controls src="${url}"></audio>
-        <div class="voice-preview-actions">
-            <button class="voice-preview-btn re-record" onclick="reRecord()" title="Re-record">
-                <i class="fas fa-redo"></i> Re-record
-            </button>
-            <button class="voice-preview-btn send-voice" onclick="confirmSendVoice()" title="Send">
-                <i class="fas fa-paper-plane"></i> Send
-            </button>
-            <button class="voice-preview-btn cancel-voice" onclick="removeVoicePreview()" title="Cancel">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    `;
+
+    const audio = document.createElement("audio");
+    audio.controls = true;
+    audio.src = url;
+
+    const actions = document.createElement("div");
+    actions.className = "voice-preview-actions";
+
+    const reRecordBtn = document.createElement("button");
+    reRecordBtn.className = "voice-preview-btn re-record";
+    reRecordBtn.title = "Re-record";
+    reRecordBtn.innerHTML = '<i class="fas fa-redo"></i> Re-record';
+
+    const sendBtn = document.createElement("button");
+    sendBtn.className = "voice-preview-btn send-voice";
+    sendBtn.title = "Send";
+    sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send';
+
+    const cancelBtn = document.createElement("button");
+    cancelBtn.className = "voice-preview-btn cancel-voice";
+    cancelBtn.title = "Cancel";
+    cancelBtn.innerHTML = '<i class="fas fa-times"></i>';
+
+    reRecordBtn.addEventListener("click", () => {
+        URL.revokeObjectURL(url);
+        preview.remove();
+        pendingVoiceBlob = null;
+        startRecording();
+    });
+
+    sendBtn.addEventListener("click", () => {
+        const blobToSend = pendingVoiceBlob;
+        URL.revokeObjectURL(url);
+        preview.remove();
+        pendingVoiceBlob = null;
+        if (blobToSend) sendVoice(blobToSend);
+    });
+
+    cancelBtn.addEventListener("click", () => {
+        URL.revokeObjectURL(url);
+        preview.remove();
+        pendingVoiceBlob = null;
+    });
+
+    actions.appendChild(reRecordBtn);
+    actions.appendChild(sendBtn);
+    actions.appendChild(cancelBtn);
+    preview.appendChild(audio);
+    preview.appendChild(actions);
 
     const inputContainer = document.querySelector(".chat-input-container");
     inputContainer.insertBefore(preview, inputContainer.firstChild);
@@ -334,13 +369,6 @@ function removeVoicePreview() {
 function reRecord() {
     removeVoicePreview();
     startRecording();
-}
-
-async function confirmSendVoice() {
-    if (!pendingVoiceBlob) return;
-    const blob = pendingVoiceBlob;
-    removeVoicePreview();
-    await sendVoice(blob);
 }
 
 async function sendVoice(blob) {
