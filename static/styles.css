@@ -424,12 +424,11 @@ body {
     color: white !important;
 }
 
-/* ===== OPTIMIZED URDU LANGUAGE STYLING - MATCHING ENGLISH SIZE ===== */
-/* ===== OPTIMIZED URDU LANGUAGE STYLING - MATCHING ENGLISH SIZE ===== */
+/* ===== OPTIMIZED URDU LANGUAGE STYLING ===== */
+
+/* Generic urdu-text class for non-chat elements (questions, etc.) */
 .urdu-text {
     font-family: 'Noto Nastaliq Urdu', 'Noto Naskh Arabic', 'Scheherazade New', 'Lateef', 'Amiri', serif !important;
-    direction: rtl !important;
-    text-align: right !important;
     line-height: 1.8 !important;
     font-size: 1em !important;
     font-weight: 400 !important;
@@ -437,7 +436,27 @@ body {
     word-spacing: normal !important;
 }
 
-/* Urdu Chat Messages */
+/* For non-message urdu elements (questions cards, tabs), apply RTL */
+.urdu-text:not(.message) {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+/* IMPORTANT: message.urdu-text must NOT have direction:rtl on the container
+   because it breaks the flex layout (avatar swaps sides, bubble arrow flips).
+   Instead RTL is applied only to .message-content via dir="rtl" attribute. */
+.message.urdu-text {
+    direction: ltr;   /* keep message layout LTR */
+}
+
+/* Urdu message content: make the text itself RTL */
+.message.urdu-text .message-content,
+.message.urdu-text .urdu-content {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Urdu Chat Message text */
 .message.urdu-text .message-content p {
     font-family: 'Noto Nastaliq Urdu', 'Scheherazade New', 'Lateef', serif !important;
     font-size: 1em !important;

@@ -165,13 +165,13 @@ def clean_urdu_text(text: str) -> str:
     text = re.sub(r"[\u0900-\u097F]+", "", text)
     # Remove CJK characters (Chinese: 亲 etc.)
     text = re.sub(r"[\u4E00-\u9FFF]+", "", text)
-    # Remove Vietnamese / Extended Latin characters (vấn, difficile, etc.)
-    text = re.sub(r"[\u0100-\u024F]+", "", text)
+    # Remove Vietnamese / Extended Latin with diacritics (vấn, etc.)
     text = re.sub(r"[\u1E00-\u1EFF]+", "", text)
     # Remove combining diacritical marks
     text = re.sub(r"[\u0300-\u036F]+", "", text)
-    # Remove long Latin words (4+ chars), but keep short medical terms like DNA, CT
-    text = re.sub(r"\b[a-zA-Z]{4,}\b", "", text)
+    # NOTE: Do NOT strip all Latin words — LLM Urdu responses legitimately
+    # contain English medical terms (cancer, chemo, DNA, etc.) and removing
+    # them mangles the response.
 
     # Remove extra whitespace
     text = re.sub(r"\s+", " ", text)

@@ -38,6 +38,13 @@ function initChat() {
             sendMessage();
         }
     });
+
+    // Auto-detect Urdu script and switch input direction to RTL
+    input.addEventListener("input", () => {
+        const hasUrdu = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(input.value);
+        input.dir = hasUrdu ? "rtl" : "ltr";
+        input.style.textAlign = hasUrdu ? "right" : "left";
+    });
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -135,10 +142,9 @@ function addMessageToChat(message, sender, language = "english", sources = []) {
     const isSystem = sender === "system";
 
     div.className = `message ${sender}-message${isUrdu ? " urdu-text" : ""}`;
-    if (isUrdu) div.setAttribute("dir", "rtl");
 
-    // Clean Urdu if needed
-    let displayMsg = isUrdu ? cleanUrduText(message) : message;
+    // Clean Urdu system responses (don't clean user input — they typed it)
+    let displayMsg = (isUrdu && isSystem) ? cleanUrduText(message) : message;
 
     // Build sources HTML
     let sourcesHtml = "";
@@ -155,11 +161,15 @@ function addMessageToChat(message, sender, language = "english", sources = []) {
         sourcesHtml = `<div class="sources-container"><div class="sources-label"><i class="fas fa-book-medical"></i> Sources</div><div class="sources-list">${items}</div></div>`;
     }
 
+    // Set direction on the content paragraph, not the entire message div
+    // This keeps the avatar/bubble layout correct while making text RTL
+    const contentDir = isUrdu ? ' dir="rtl"' : '';
+
     div.innerHTML = `
         <div class="message-avatar">
             <i class="fas fa-${isSystem ? "robot" : "user"}"></i>
         </div>
-        <div class="message-content${isUrdu ? " urdu-content" : ""}">
+        <div class="message-content${isUrdu ? " urdu-content" : ""}"${contentDir}>
             <p>${formatMessage(displayMsg)}</p>
             ${sourcesHtml}
             <span class="message-time">${formatTime(new Date())}</span>
@@ -496,13 +506,12 @@ function cleanUrduText(text) {
     }
 
     // Strip foreign characters that LLMs sometimes leak into Urdu responses
-    // Remove Devanagari (Hindi), CJK (Chinese), Vietnamese diacritics, Latin chars
     text = text.replace(/[\u0900-\u097F]/g, "");           // Devanagari (Hindi)
     text = text.replace(/[\u4E00-\u9FFF]/g, "");           // CJK (Chinese)
-    text = text.replace(/[\u0100-\u024F]/g, "");           // Extended Latin (Vietnamese etc.)
-    text = text.replace(/[\u1E00-\u1EFF]/g, "");           // Latin Extended Additional
+    text = text.replace(/[\u1E00-\u1EFF]/g, "");           // Latin Extended Additional (Vietnamese)
     text = text.replace(/[\u0300-\u036F]/g, "");           // Combining diacritical marks
-    text = text.replace(/[a-zA-Z]{4,}/g, "");              // Long Latin words (keep short like "DNA")
+    // NOTE: Do NOT strip Latin words — Urdu responses legitimately use
+    // English medical terms like cancer, chemo, DNA, etc.
 
     return text.replace(/\s+/g, " ").trim();
 }

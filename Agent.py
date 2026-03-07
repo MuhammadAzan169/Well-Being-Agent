@@ -763,7 +763,8 @@ class BreastCancerRAGSystem:
                     )
                     if config.rotate_key():
                         headers["Authorization"] = f"Bearer {config.api_key}"
-                    time.sleep(2 ** attempt)
+                    # Longer backoff for free-tier rate limits
+                    time.sleep(3 + 2 ** attempt)
                     continue
 
                 resp.raise_for_status()
@@ -844,22 +845,31 @@ class BreastCancerRAGSystem:
                 "language": language,
             }
 
-        # 3) Check cache
+        # 3) Check cache (skip error/fallback responses so we retry the LLM)
         cached = cache.get(user_query)
-        if cached and not cached.get("is_error", False):
-            logger.info("Returning cached response")
-            conv_logger.log(
-                user_query,
-                cached["response"],
-                language,
-                response_type,
-                cached.get("sources", []),
+        if cached:
+            cached_resp = cached.get("response", "")
+            is_error = cached.get("is_error", False)
+            is_fallback = cached_resp in (
+                config.FALLBACK_MESSAGE,
+                config.FALLBACK_MESSAGE_URDU,
             )
-            return {
-                "answer": cached["response"],
-                "sources": cached.get("sources", []),
-                "language": cached.get("language", language),
-            }
+            if not is_error and not is_fallback:
+                logger.info("Returning cached response")
+                conv_logger.log(
+                    user_query,
+                    cached_resp,
+                    language,
+                    response_type,
+                    cached.get("sources", []),
+                )
+                return {
+                    "answer": cached_resp,
+                    "sources": cached.get("sources", []),
+                    "language": cached.get("language", language),
+                }
+            else:
+                logger.info("Skipping cached error/fallback — will retry LLM")
 
         # 4) Retrieve from knowledge base
         chunks, sources = self._retrieve(user_query)

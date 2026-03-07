@@ -166,24 +166,11 @@ def transcribe_audio(
             }
 
         # ── Language Detection ─────────────────────────────────────────────
-        # Priority 1: Use Whisper's own language prediction from chunk metadata.
-        # Whisper embeds language tokens in the output — trust these over
-        # text heuristics which false-positive on medical English ("cancer",
-        # "chemo", "surgery" are in the Roman-Urdu word list).
-        whisper_lang = _extract_whisper_language(result)
-
-        if whisper_lang is not None:
-            # Whisper told us the language
-            if whisper_lang == "ur":
-                detected_lang = "urdu"
-            elif whisper_lang == "en":
-                detected_lang = "english"
-            else:
-                # Non-English, non-Urdu — fall back to script check only
-                detected_lang = _detect_audio_language_by_script(text)
-        else:
-            # Whisper gave no language hint — use script/text heuristics
-            detected_lang = _detect_audio_language(text)
+        # The most reliable method: check if the transcribed TEXT contains
+        # Urdu script characters. Whisper transcribes Urdu speech as Urdu
+        # script and English speech as Latin text, so script detection is
+        # the most trustworthy signal — no false positives from word lists.
+        detected_lang = _detect_audio_language_by_script(text)
 
         logger.info(
             f"✅ Transcribed ({elapsed:.1f}s): [{detected_lang}] "
