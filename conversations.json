@@ -262,5 +262,45 @@
     "language": "urdu",
     "response_type": "text",
     "sources": []
+  },
+  {
+    "timestamp": "2026-03-08T18:55:05.283955",
+    "user_input": "Will my hair grow back after chemotherapy?",
+    "response": "I can only imagine how worrying it must be to think about the potential effects of chemotherapy on your hair. It's completely normal to feel that way, and I'm here to support you. Many patients who undergo chemotherapy do experience hair loss, but the good news is that, in most cases, hair grows back after treatment is completed. According to cancer research, hair typically starts to grow back within 3-6 months after chemotherapy ends. Your doctor may suggest ways to help manage hair loss during treatment, such as using a cold cap or scalp cooling system. Many patients find it helpful to talk to their healthcare team about what to expect and how to cope with hair loss. It's also important to remember that you're not alone in this journey, and there are many resources available to support you. Remember to be kind to yourself and focus on your overall well-being during this time. You are strong, and you will get through this - and your hair will likely grow back, too! 💛\n\nRemember to discuss any concerns with your healthcare team.",
+    "language": "english",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-08T19:23:21.960285",
+    "user_input": "کیا علاج کے بعد بال واپس آئیں گے؟",
+    "response": "آپ کا سوال بہت اہم ہے۔ عموماً، کینسر کے علاج کے بعد بال واپس آ سکتے ہیں، لیکن یہ علاج کی قسم اور فرد کی صحت پر منحصر ہہوتا ہے۔ کیموتھراپی جیسے علاجوں کے دوران بال گر سکتے ہیں، لیکن علاج ختم ہونے کے بعد وہ واپس آتے ہیں۔ آپ کے ڈاکٹر آپ کو بہتر معلومات دے سکتے ہیں۔ آپ کی صحت اور خوشی بہت اہم ہے۔ امید ہے کہ آپ جلد صحت یاب ہوں گے۔ اپنے ڈاکٹر سے مشورہ ضرور کریں۔ 💛\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
+    "language": "urdu",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-08T19:25:56.700303",
+    "user_input": "What are the earliest warning signs of breast cancer?",
+    "response": "I'm so glad you're taking proactive steps to prioritize your health. When it comes to breast cancer, early detection is key. Some of the earliest warning signs can be subtle, but it's essential to be aware of them. According to cancer research, common signs include a new lump or thickening in the breast or underarm area, changes in the size or shape of the breast, and any unusual discharge or swelling. Many patients also notice changes in the skin, such as dimpling or redness. If you're concerned about any of these symptoms, it's crucial to discuss them with your healthcare team. They can assess your individual situation and provide personalized guidance. Remember, it's always better to err on the side of caution and get checked out. Your doctor may suggest a mammogram or other screening tests to determine the best course of action. 💛\n\nRemember to discuss any concerns with your healthcare team.",
+    "language": "english",
+    "response_type": "text",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-08T19:56:32.630803",
+    "user_input": "HÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅÅ�",
+    "response": "I'm so sorry to see that you're feeling overwhelmed, and it looks like you might be having a bit of a tough time expressing yourself right now. That's completely okay, and I'm here to listen and support you in any way I can. It can be really frustrating when we're trying to get our thoughts out, but they just won't come together. Many patients find that taking a few deep breaths, going for a short walk, or practicing some gentle stretches can help calm their minds and bodies. Your doctor may also suggest some relaxation techniques or therapies that could be helpful for you. Remember, you're not alone in this journey, and there are people who care about you deeply. If you're feeling up to it, could you tell me a bit more about what's been going on and how you're feeling? I'm here to listen and offer support. 💛\n\nRemember to discuss any concerns with your healthcare team.",
+    "language": "english",
+    "response_type": "voice",
+    "sources": []
+  },
+  {
+    "timestamp": "2026-03-08T19:56:54.696471",
+    "user_input": "کیا مجھے بریس کینسر کے بارے میں معلومات مل سکتی ہے؟",
+    "response": "بریسٹ کینسر ایک قسم کا کینسر ہے جو بریسٹ کے خلیات میں شروع ہہوتا ہے۔ یہ خواتین میں عام ہے، لیکن مردوں میں بھی ہو سکتا ہے۔ اگر آپ کو بریسٹ کینسر کا پتہ چلتا ہے تو، آپ کا ڈاکٹر آپ کو مشورہ دے سکتا ہے کہ کون سا علاج آپ کے لیے بہترین ہوگا۔ آپ کی طبی ٹیم کے ساتھ بات چیت کرنا بہت ضروری ہے۔ میں آپ کے ساتھ ہوں اور آپ کی مدد کے لیے یہاں ہوں۔ آپ کے لیے حوصلہ افزائی اور حمایت بہت ضروری ہے۔ 💛\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔",
+    "language": "urdu",
+    "response_type": "voice",
+    "sources": []
   }
 ]
