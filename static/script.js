@@ -1,5 +1,5 @@
 // script.js — WellBeing Agent Frontend
-// Handles chat, voice recording, language detection, and UI state
+// Handles chat, voice recording, language detection, UI state, and AI particle canvas
 
 // ═══════════════════════════════════════════════════════════════════════════
 // State
@@ -10,7 +10,7 @@ let currentLanguage = "english";
 let mediaRecorder = null;
 let audioChunks = [];
 let isRecording = false;
-let pendingVoiceBlob = null;          // recorded audio waiting to be sent
+let pendingVoiceBlob = null;
 
 // ═══════════════════════════════════════════════════════════════════════════
 // DOM Ready
@@ -21,9 +21,87 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPredefinedQuestions("urdu");
     initTabs();
     initVoice();
+    initParticleCanvas();
 
     document.getElementById("welcomeTime").textContent = formatTime(new Date());
 });
+
+// ═══════════════════════════════════════════════════════════════════════════
+// AI Particle Canvas
+// ═══════════════════════════════════════════════════════════════════════════
+function initParticleCanvas() {
+    const canvas = document.getElementById("particleCanvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+
+    let particles = [];
+    const PARTICLE_COUNT = 50;
+    const CONNECTION_DIST = 120;
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.vx = (Math.random() - 0.5) * 0.4;
+            this.vy = (Math.random() - 0.5) * 0.4;
+            this.radius = Math.random() * 2 + 1;
+            this.opacity = Math.random() * 0.3 + 0.1;
+        }
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 107, 147, ${this.opacity})`;
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push(new Particle());
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < CONNECTION_DIST) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(255, 107, 147, ${0.06 * (1 - dist / CONNECTION_DIST)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // Update & draw particles
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Chat Initialization
@@ -40,16 +118,28 @@ function initChat() {
         }
     });
 
-    // Auto-detect Urdu script and switch input direction to RTL
     input.addEventListener("input", () => {
         const hasUrdu = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(input.value);
         input.dir = hasUrdu ? "rtl" : "ltr";
         input.style.textAlign = hasUrdu ? "right" : "left";
     });
+
+    if (sendBtn) {
+        sendBtn.addEventListener('click', function(e) {
+            const x = e.clientX - e.target.getBoundingClientRect().left;
+            const y = e.clientY - e.target.getBoundingClientRect().top;
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple-effect');
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
+    }
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// Send Message – handles both text and pending voice
+// Send Message
 // ═══════════════════════════════════════════════════════════════════════════
 async function sendMessage(overrideText = null) {
     console.log("sendMessage called, pendingVoiceBlob =", pendingVoiceBlob ? "yes" : "no");
@@ -58,30 +148,25 @@ async function sendMessage(overrideText = null) {
         return;
     }
 
-    // If there's pending audio, send it
     if (pendingVoiceBlob) {
         const blob = pendingVoiceBlob;
-        pendingVoiceBlob = null;          // clear immediately
-        removeVoicePreview();              // hide preview
-        document.getElementById("userInput").value = ""; // optional clear
-        await sendVoice(blob);             // send audio
+        pendingVoiceBlob = null;
+        removeVoicePreview();
+        document.getElementById("userInput").value = "";
+        await sendVoice(blob);
         return;
     }
 
-    // Otherwise handle text input
     const input = document.getElementById("userInput");
     const message = overrideText || input.value.trim();
     if (!message) return;
 
-    // Lock UI
     setGenerating(true);
     input.value = "";
 
-    // Detect language
     currentLanguage = detectLanguage(message);
     updateLanguageDisplay(currentLanguage);
 
-    // Show user bubble
     addMessageToChat(message, "user", currentLanguage);
     showTypingIndicator();
 
@@ -159,10 +244,8 @@ function addMessageToChat(message, sender, language = "english", sources = []) {
 
     div.className = `message ${sender}-message${isUrdu ? " urdu-text" : ""}`;
 
-    // Clean Urdu system responses (don't clean user input — they typed it)
     let displayMsg = (isUrdu && isSystem) ? cleanUrduText(message) : message;
 
-    // Build sources HTML
     let sourcesHtml = "";
     if (isSystem && sources.length > 0) {
         const items = sources
@@ -175,7 +258,6 @@ function addMessageToChat(message, sender, language = "english", sources = []) {
         sourcesHtml = `<div class="sources-container"><div class="sources-label"><i class="fas fa-book-medical"></i> Sources</div><div class="sources-list">${items}</div></div>`;
     }
 
-    // Set direction on the content paragraph
     const contentDir = isUrdu ? ' dir="rtl"' : '';
 
     div.innerHTML = `
@@ -216,8 +298,7 @@ async function toggleRecording() {
 
 async function startRecording() {
     try {
-        removeVoicePreview(); // remove any existing preview
-
+        removeVoicePreview();
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         mediaRecorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
         audioChunks = [];
@@ -229,7 +310,7 @@ async function startRecording() {
         mediaRecorder.onstop = () => {
             stream.getTracks().forEach((t) => t.stop());
             const blob = new Blob(audioChunks, { type: "audio/webm" });
-            pendingVoiceBlob = blob;               // store for later sending
+            pendingVoiceBlob = blob;
             showVoicePreview(blob);
         };
 
@@ -259,7 +340,6 @@ function updateVoiceUI(recording) {
         : '<i class="fas fa-microphone"></i>';
 }
 
-// ── Voice Preview (Re-record & Cancel only; Send uses main send button) ──
 function showVoicePreview(blob) {
     removeVoicePreview();
     const url = URL.createObjectURL(blob);
@@ -314,18 +394,16 @@ function removeVoicePreview() {
         if (audio && audio.src) URL.revokeObjectURL(audio.src);
         existing.remove();
     }
-    // Do NOT clear pendingVoiceBlob here – it's cleared when send or re-record
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// ✅ FIXED: sendVoice – sends blob to backend and displays transcription + answer
+// sendVoice
 // ═══════════════════════════════════════════════════════════════════════════
 async function sendVoice(blob) {
     console.log("sendVoice: starting, blob size:", blob.size);
     setGenerating(true);
     showTypingIndicator();
 
-    // Safety timeout: if something hangs, reset UI after 35 seconds
     const safetyTimeout = setTimeout(() => {
         console.warn("sendVoice safety timeout triggered");
         hideTypingIndicator();
@@ -334,7 +412,6 @@ async function sendVoice(blob) {
     }, 35000);
 
     try {
-        // Convert blob to base64
         const base64 = await new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.onloadend = () => resolve(reader.result.split(",")[1]);
@@ -354,7 +431,7 @@ async function sendVoice(blob) {
             signal: controller.signal
         });
         clearTimeout(fetchTimeout);
-        clearTimeout(safetyTimeout);  // clear safety if fetch returned
+        clearTimeout(safetyTimeout);
 
         hideTypingIndicator();
 
@@ -368,14 +445,12 @@ async function sendVoice(blob) {
         const data = await resp.json();
         console.log("sendVoice: received data", data);
 
-        // Display transcribed text as user message
         if (data.transcribed_text) {
             addMessageToChat(data.transcribed_text, "user", data.language || "english");
         } else {
             console.warn("No transcribed text in response");
         }
 
-        // Display the answer
         addMessageToChat(
             data.answer,
             "system",
@@ -453,7 +528,7 @@ function initTabs() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// Language Detection (client-side)
+// Language Detection
 // ═══════════════════════════════════════════════════════════════════════════
 const ROMAN_URDU_WORDS = new Set([
     "mera", "meri", "mere", "mujhe", "apna", "apni", "apne",
@@ -506,11 +581,10 @@ function cleanUrduText(text) {
     for (const [wrong, right] of Object.entries(fixes)) {
         text = text.replaceAll(wrong, right);
     }
-    // Strip foreign characters
-    text = text.replace(/[\u0900-\u097F]/g, "");           // Devanagari
-    text = text.replace(/[\u4E00-\u9FFF]/g, "");           // CJK
-    text = text.replace(/[\u1E00-\u1EFF]/g, "");           // Latin Extended Additional
-    text = text.replace(/[\u0300-\u036F]/g, "");           // Combining diacritics
+    text = text.replace(/[\u0900-\u097F]/g, "");
+    text = text.replace(/[\u4E00-\u9FFF]/g, "");
+    text = text.replace(/[\u1E00-\u1EFF]/g, "");
+    text = text.replace(/[\u0300-\u036F]/g, "");
     return text.replace(/\s+/g, " ").trim();
 }
 
