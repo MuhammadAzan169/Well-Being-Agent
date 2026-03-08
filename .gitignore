@@ -59,6 +59,7 @@ rag_system.log
 
 # ── Project-specific runtime files ───────────────────
 cache/
+recorded_audio/
 conversations.json
 static/audio/
 *.tmp
