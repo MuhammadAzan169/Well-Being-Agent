@@ -259,7 +259,7 @@ def _detect_audio_language(text: str) -> str:
 
 
 def cleanup_old_audio_files(
-    directory: str = "static/audio",
+    directory: str = "recorded_audio",
     max_age_seconds: int = 3600,
 ) -> int:
     """

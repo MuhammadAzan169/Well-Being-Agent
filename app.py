@@ -69,7 +69,6 @@ app.add_middleware(
 )
 
 # Static files
-os.makedirs("static/audio", exist_ok=True)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 

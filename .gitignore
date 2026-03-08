@@ -61,7 +61,6 @@ rag_system.log
 cache/
 recorded_audio/
 conversations.json
-static/audio/
 *.tmp
 *.temp
 
