@@ -23,8 +23,8 @@ import httpx
 from dotenv import load_dotenv
 from langdetect import detect, DetectorFactory
 
-from safety import SafetyValidator
-from language_utils import (
+from backend.safety import SafetyValidator
+from backend.language_utils import (
     detect_language,
     clean_urdu_text,
     detect_roman_urdu,

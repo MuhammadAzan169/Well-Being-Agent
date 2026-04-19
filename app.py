@@ -1,10 +1,11 @@
 """app.py — FastAPI Server for WellBeing Agent
 
-Serves the web interface, text queries, and voice queries.
+Main entry point. Serves the web interface, text queries, and voice queries.
 Integrates the RAG system and Whisper speech-to-text pipeline.
 """
 
 import os
+import re
 import asyncio
 import logging
 from contextlib import asynccontextmanager
@@ -13,7 +14,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -24,6 +25,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger("WellBeingAgent.Server")
 
+MAX_QUERY_LENGTH = 2000
+MAX_AUDIO_SIZE_MB = 10
+
 
 # ── Lifespan (import RAG system + Whisper on startup) ────────────────────
 @asynccontextmanager
@@ -32,7 +36,7 @@ async def lifespan(app: FastAPI):
 
     # Load RAG system
     try:
-        from Agent import rag_system
+        from backend.agent import rag_system
         app.state.rag = rag_system
         logger.info("✅ RAG system loaded")
     except Exception as exc:
@@ -43,7 +47,7 @@ async def lifespan(app: FastAPI):
 
     # Pre-load Whisper (in background so startup isn't blocked)
     try:
-        from audio_processor import is_whisper_available
+        from backend.audio_processor import is_whisper_available
         app.state.whisper_available = is_whisper_available()
         if app.state.whisper_available:
             logger.info("✅ Whisper Large v3 available")
@@ -68,14 +72,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Static files
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# Static files — serve frontend assets
+app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
 
 
 # ── Request / Response Models ────────────────────────────────────────────
 class QueryRequest(BaseModel):
     message: str
     language: str = None
+
+    @field_validator("message")
+    @classmethod
+    def validate_message(cls, v: str) -> str:
+        v = v.strip()
+        if len(v) > MAX_QUERY_LENGTH:
+            raise ValueError(f"Message must be under {MAX_QUERY_LENGTH} characters")
+        return v
 
 
 class VoiceRequest(BaseModel):
@@ -86,11 +98,21 @@ class VoiceRequest(BaseModel):
 # Endpoints
 # ══════════════════════════════════════════════════════════════════════════
 
-# ── Serve index.html at root ─────────────────────────────────────────────
+# ── Serve project home page at root ──────────────────────────────────────
 @app.get("/", response_class=HTMLResponse)
-async def root():
+async def home():
     try:
-        with open("index.html", "r", encoding="utf-8") as f:
+        with open("frontend/home.html", "r", encoding="utf-8") as f:
+            return HTMLResponse(content=f.read())
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="home.html not found")
+
+
+# ── Serve chat app ───────────────────────────────────────────────────────
+@app.get("/chat", response_class=HTMLResponse)
+async def chat():
+    try:
+        with open("frontend/index.html", "r", encoding="utf-8") as f:
             return HTMLResponse(content=f.read())
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="index.html not found")
@@ -119,7 +141,7 @@ async def ask_query(req: QueryRequest):
         })
     except Exception as e:
         logger.error(f"Query error: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail="An internal error occurred. Please try again.")
 
 
 # ── Voice query (Whisper Large v3 transcription) ─────────────────────────
@@ -130,8 +152,8 @@ async def voice_query(req: VoiceRequest):
         raise HTTPException(status_code=503, detail="RAG system not available")
 
     import base64
-    from audio_processor import transcribe_audio
-    from language_utils import map_whisper_lang_to_system
+    from backend.audio_processor import transcribe_audio
+    from backend.language_utils import map_whisper_lang_to_system
 
     try:
         audio_bytes = base64.b64decode(req.audio_data)
@@ -157,7 +179,6 @@ async def voice_query(req: VoiceRequest):
         # are present in the transcription. Do NOT use Roman Urdu detection
         # here because Whisper transcribes English speech as English text
         # which can false-positive on Roman Urdu word lists.
-        import re
         if re.search(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]+', transcribed_text):
             language = "urdu"
 
@@ -175,7 +196,7 @@ async def voice_query(req: VoiceRequest):
 
     except Exception as exc:
         logger.error(f"Voice query error: {exc}")
-        raise HTTPException(status_code=500, detail=str(exc))
+        raise HTTPException(status_code=500, detail="Voice processing failed. Please try again.")
 
 
 # ── Predefined questions ─────────────────────────────────────────────────

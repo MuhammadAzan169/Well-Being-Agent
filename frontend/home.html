@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well Being Agent — Breast Cancer Support System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #ff6b93;
+            --primary-pink-light: #ff8fa9;
+            --primary-pink-lighter: #ffb6c8;
+            --primary-pink-lightest: #ffe8ee;
+            --accent-pink: #ff4d7a;
+            --white: #ffffff;
+            --text-dark: #2d2d3a;
+            --text-secondary: #6b7280;
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --shadow-soft: 0 8px 32px rgba(255, 107, 147, 0.08);
+            --shadow-medium: 0 15px 35px rgba(255, 107, 147, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff0f3 0%, #fce4ec 25%, #ffb6c8 50%, #fce4ec 75%, #fff0f3 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease-in-out infinite;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Particle Canvas */
+        #particleCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Floating elements */
+        .floating-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .float-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+
+        .float-orb:nth-child(1) { width: 300px; height: 300px; top: -5%; left: -5%; background: rgba(255, 107, 147, 0.25); animation-duration: 18s; }
+        .float-orb:nth-child(2) { width: 250px; height: 250px; bottom: 10%; right: -5%; background: rgba(255, 107, 147, 0.2); animation-duration: 22s; animation-delay: -5s; }
+        .float-orb:nth-child(3) { width: 200px; height: 200px; top: 40%; left: 50%; background: rgba(255, 107, 147, 0.18); animation-duration: 25s; animation-delay: -10s; }
+        .float-orb:nth-child(4) { width: 180px; height: 180px; top: 70%; right: 30%; background: rgba(255, 107, 147, 0.15); animation-duration: 28s; animation-delay: -8s; }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -20px) scale(1.05); }
+            50% { transform: translate(-20px, 30px) scale(0.95); }
+            75% { transform: translate(20px, 20px) scale(1.02); }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .nav-brand .brand-icon {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .nav-brand span {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--primary-pink); }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 77, 122, 0.35);
+            color: white !important;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* Sections */
+        section { position: relative; z-index: 1; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-content { max-width: 800px; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--primary-pink);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+            color: white;
+            padding: 0.9rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 77, 122, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            color: var(--text-dark);
+            padding: 0.9rem 2.5rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1), box-shadow 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .feature-icon {
+            width: 56px; height: 56px;
+            background: linear-gradient(135deg, var(--primary-pink-lightest), var(--primary-pink-lighter));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--primary-pink);
+            margin-bottom: 1.25rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 6rem 2rem;
+        }
+
+        .steps {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover { transform: translateX(8px); }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .step-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            padding: 6rem 2rem;
+        }
+
+        .tech-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .tech-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .tech-item i {
+            font-size: 2rem;
+            color: var(--primary-pink);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .tech-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .tech-item p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Languages Section */
+        .languages {
+            padding: 6rem 2rem;
+        }
+
+        .lang-cards {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .lang-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .lang-card:hover { transform: translateY(-6px); }
+
+        .lang-card .lang-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .lang-card h3 { margin-bottom: 0.5rem; }
+
+        .lang-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Safety Section */
+        .safety {
+            padding: 6rem 2rem;
+        }
+
+        .safety-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .safety-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .safety-card i {
+            font-size: 2rem;
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .safety-card h3 { margin-bottom: 0.5rem; font-size: 1.05rem; }
+
+        .safety-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .cta-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+            border-radius: 32px;
+            padding: 4rem 3rem;
+            color: white;
+        }
+
+        .cta-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--accent-pink);
+            padding: 0.9rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 107, 147, 0.1);
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+
+        .footer .disclaimer {
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--primary-pink); }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 1.5rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--glass-border);
+            }
+            .mobile-menu-btn { display: block; }
+            .hero h1 { font-size: 2.3rem; }
+            .hero p { font-size: 1rem; }
+            .section-header h2 { font-size: 2rem; }
+            .step { flex-direction: column; text-align: center; align-items: center; }
+            .cta-box { padding: 3rem 1.5rem; }
+            .cta-box h2 { font-size: 1.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="floating-bg">
+        <div class="float-orb"></div>
+        <div class="float-orb"></div>
+        <div class="float-orb"></div>
+        <div class="float-orb"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-brand">
+                <div class="brand-icon"><i class="fas fa-heartbeat"></i></div>
+                <span>Well Being Agent</span>
+            </a>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#tech">Technology</a></li>
+                <li><a href="#languages">Languages</a></li>
+                <li><a href="#safety">Safety</a></li>
+                <li><a href="/chat" class="nav-cta">Open Chat <i class="fas fa-arrow-right"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-ribbon"></i>
+                AI-Powered Breast Cancer Support
+            </div>
+            <h1>Compassionate, Evidence-Based <span class="highlight">Well-Being Support</span> When You Need It Most</h1>
+            <p>A RAG-powered AI companion providing empathetic, multilingual support for breast cancer patients. Get answers about symptoms, treatment side effects, emotional coping, nutrition, and recovery — in English, Urdu, or Roman Urdu.</p>
+            <div class="hero-buttons">
+                <a href="/chat" class="btn-primary">
+                    <i class="fas fa-comments"></i> Start a Conversation
+                </a>
+                <a href="#features" class="btn-secondary">
+                    <i class="fas fa-info-circle"></i> Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>What Makes Us Different</h2>
+            <p>Purpose-built to support breast cancer patients with safety, empathy, and intelligence at its core.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                <h3>RAG-Powered Intelligence</h3>
+                <p>Retrieval-Augmented Generation using a curated knowledge base of 378+ breast cancer documents with semantic search for accurate, grounded responses.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                <h3>Emotional Intelligence</h3>
+                <p>Detects emotional distress in real-time and adjusts tone — leading with empathy and validation before providing medical information.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-microphone-alt"></i></div>
+                <h3>Voice Input (Whisper v3)</h3>
+                <p>Speak your questions using Whisper Large v3 for high-quality, multilingual speech-to-text transcription with automatic language detection.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-language"></i></div>
+                <h3>Trilingual Support</h3>
+                <p>Seamlessly handles English, Urdu script, and Roman Urdu (transliterated) with automatic detection and culturally appropriate responses.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Safety-First Design</h3>
+                <p>Crisis detection, off-topic filtering, dangerous advice prevention, and automatic medical disclaimers keep every interaction safe.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-book-medical"></i></div>
+                <h3>Source Citations</h3>
+                <p>Every response includes relevant source citations from the knowledge base, so you can trust and verify the information provided.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>A sophisticated 10-step pipeline processes every query to ensure safe, accurate, and empathetic responses.</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Language Detection</h3>
+                    <p>Your input is analyzed for Urdu script characters, Roman Urdu patterns, or English — automatically routing to the right language pipeline.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Safety Screening</h3>
+                    <p>Crisis detection checks for suicidal ideation or self-harm, providing immediate helpline resources. Off-topic queries are filtered out.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Smart Cache Lookup</h3>
+                    <p>Exact-match and fuzzy similarity search checks if a similar question was answered recently — delivering instant responses when possible.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Knowledge Retrieval</h3>
+                    <p>Semantic vector search retrieves the top-5 most relevant passages from the breast cancer knowledge base using sentence-transformers embeddings.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Empathetic Response Generation</h3>
+                    <p>Emotional analysis calibrates the tone, then a carefully engineered prompt guides the LLM to generate a warm, accurate, language-appropriate answer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-stack" id="tech">
+        <div class="section-header">
+            <h2>Built With Modern Technology</h2>
+            <p>A robust stack designed for reliability, performance, and extensibility.</p>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <i class="fas fa-server"></i>
+                <h4>FastAPI</h4>
+                <p>Async Python backend</p>
+            </div>
+            <div class="tech-item">
+                <i class="fas fa-database"></i>
+                <h4>LlamaIndex</h4>
+                <p>RAG framework</p>
+            </div>
+            <div class="tech-item">
+                <i class="fas fa-vector-square"></i>
+                <h4>Sentence Transformers</h4>
+                <p>Semantic embeddings</p>
+            </div>
+            <div class="tech-item">
+                <i class="fas fa-microphone"></i>
+                <h4>Whisper Large v3</h4>
+                <p>Speech-to-text</p>
+            </div>
+            <div class="tech-item">
+                <i class="fas fa-robot"></i>
+                <h4>LLM (GPT-4)</h4>
+                <p>Response generation</p>
+            </div>
+            <div class="tech-item">
+                <i class="fab fa-python"></i>
+                <h4>Python 3.12</h4>
+                <p>Core language</p>
+            </div>
+            <div class="tech-item">
+                <i class="fab fa-docker"></i>
+                <h4>Docker</h4>
+                <p>Containerized deploy</p>
+            </div>
+            <div class="tech-item">
+                <i class="fas fa-code"></i>
+                <h4>HTML/CSS/JS</h4>
+                <p>Modern frontend</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages -->
+    <section class="languages" id="languages">
+        <div class="section-header">
+            <h2>Multilingual by Design</h2>
+            <p>Breaking language barriers for breast cancer patients who need support in their preferred language.</p>
+        </div>
+        <div class="lang-cards">
+            <div class="lang-card">
+                <div class="lang-icon">🇬🇧</div>
+                <h3>English</h3>
+                <p>Full support with medical terminology, emotional sensitivity, and conversational warmth.</p>
+            </div>
+            <div class="lang-card">
+                <div class="lang-icon" style="font-family: 'Noto Nastaliq Urdu', serif; font-size: 2rem;">اردو</div>
+                <h3>Urdu Script</h3>
+                <p>Native Nastaliq/Naskh rendering with RTL support, Urdu spelling normalization, and foreign character filtering.</p>
+            </div>
+            <div class="lang-card">
+                <div class="lang-icon">🔤</div>
+                <h3>Roman Urdu</h3>
+                <p>Detects transliterated Urdu (Latin script) using a dictionary of 80+ common words and responds appropriately.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety -->
+    <section class="safety" id="safety">
+        <div class="section-header">
+            <h2>Your Safety Comes First</h2>
+            <p>Multiple layers of protection ensure every interaction is safe, responsible, and supportive.</p>
+        </div>
+        <div class="safety-grid">
+            <div class="safety-card">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Crisis Detection</h3>
+                <p>Automatically detects suicidal ideation and self-harm patterns in English and Urdu, providing immediate crisis helpline resources.</p>
+            </div>
+            <div class="safety-card">
+                <i class="fas fa-filter"></i>
+                <h3>Topic Boundaries</h3>
+                <p>Stays strictly within breast cancer well-being scope. Off-topic queries (stocks, politics, coding) are politely redirected.</p>
+            </div>
+            <div class="safety-card">
+                <i class="fas fa-prescription"></i>
+                <h3>No Prescriptions</h3>
+                <p>Never prescribes medications, dosages, or specific treatments. Always defers medical decisions to healthcare professionals.</p>
+            </div>
+            <div class="safety-card">
+                <i class="fas fa-clipboard-check"></i>
+                <h3>Response Validation</h3>
+                <p>Every AI response is scanned for dangerous advice patterns before delivery, with automatic medical disclaimers injected.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Ready to Get Support?</h2>
+            <p>Our AI companion is here 24/7 to provide compassionate, evidence-based information about breast cancer well-being. Start a conversation in English, Urdu, or use your voice.</p>
+            <a href="/chat" class="btn-white">
+                <i class="fas fa-comments"></i> Open the Chat
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="disclaimer">
+            <i class="fas fa-info-circle"></i>
+            <strong>Medical Disclaimer:</strong> This AI assistant provides supportive well-being information only. It is NOT a substitute for professional medical advice, diagnosis, or treatment. Always consult your healthcare provider for medical decisions.
+        </p>
+        <p>&copy; 2026 Well Being Agent — Breast Cancer Support System</p>
+        <div class="footer-links">
+            <a href="/chat">Chat</a>
+            <a href="/health">System Health</a>
+            <a href="/info">API Info</a>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu toggle
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+
+        // Particle canvas (matching main app theme)
+        (function() {
+            const canvas = document.getElementById('particleCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const COUNT = 40;
+            const DIST = 140;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            class P {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * 0.3;
+                    this.vy = (Math.random() - 0.5) * 0.3;
+                    this.r = Math.random() * 2 + 0.5;
+                    this.o = Math.random() * 0.25 + 0.05;
+                }
+                update() {
+                    this.x += this.vx; this.y += this.vy;
+                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 107, 147, ${this.o})`;
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < COUNT; i++) particles.push(new P());
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const d = Math.sqrt(dx * dx + dy * dy);
+                        if (d < DIST) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(255, 107, 147, ${0.05 * (1 - d / DIST)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                particles.forEach(p => { p.update(); p.draw(); });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature-card, .step, .tech-item, .lang-card, .safety-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

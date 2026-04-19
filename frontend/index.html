@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well Being Agent - Breast Cancer Support</title>
+    
+    <!-- Optimized Urdu Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&family=Lateef:wght@400;500;600;700&family=Amiri:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/frontend/styles.css">
+</head>
+<body>
+    <!-- AI Particle Canvas Background -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Animated Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-element el-1"></div>
+        <div class="floating-element el-2"></div>
+        <div class="floating-element el-3"></div>
+        <div class="floating-element el-4"></div>
+        <div class="floating-particle particle-1"></div>
+        <div class="floating-particle particle-2"></div>
+        <div class="floating-particle particle-3"></div>
+        <div class="floating-particle particle-4"></div>
+        <div class="floating-particle particle-5"></div>
+        <!-- Extra glow orbs -->
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+        <div class="glow-orb orb-4"></div>
+        <div class="glow-orb orb-5"></div>
+        <!-- Additional floating elements -->
+        <div class="floating-element el-5"></div>
+        <div class="floating-element el-6"></div>
+        <div class="floating-element el-7"></div>
+        <div class="floating-element el-8"></div>
+        <!-- More particles -->
+        <div class="floating-particle particle-6"></div>
+        <div class="floating-particle particle-7"></div>
+        <div class="floating-particle particle-8"></div>
+        <div class="floating-particle particle-9"></div>
+        <div class="floating-particle particle-10"></div>
+        <div class="floating-particle particle-11"></div>
+        <div class="floating-particle particle-12"></div>
+        <div class="floating-particle particle-13"></div>
+        <div class="floating-particle particle-14"></div>
+        <div class="floating-particle particle-15"></div>
+        <!-- Small dots -->
+        <div class="floating-dot dot-1"></div>
+        <div class="floating-dot dot-2"></div>
+        <div class="floating-dot dot-3"></div>
+        <div class="floating-dot dot-4"></div>
+        <div class="floating-dot dot-5"></div>
+        <div class="floating-dot dot-6"></div>
+        <div class="floating-dot dot-7"></div>
+        <div class="floating-dot dot-8"></div>
+        <div class="floating-dot dot-9"></div>
+        <div class="floating-dot dot-10"></div>
+        <div class="floating-dot dot-11"></div>
+        <div class="floating-dot dot-12"></div>
+        <div class="floating-dot dot-13"></div>
+        <div class="floating-dot dot-14"></div>
+        <div class="floating-dot dot-15"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header Section - Compact -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="header-text">
+                        <h1 class="title">Well Being Agent</h1>
+                        <p class="subtitle">Breast Cancer Support System</p>
+                    </div>
+                </div>
+                <p class="compassion-message">Providing compassionate, evidence-based support for breast cancer patients and their families</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Quick Questions Section -->
+            <aside class="quick-questions">
+                <div class="section-header">
+                    <h2 class="section-title">Quick Questions</h2>
+                    <div class="decoration-line"></div>
+                </div>
+                
+                <!-- Tab Navigation -->
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="english">
+                            <i class="fas fa-language"></i> English Questions
+                        </button>
+                        <button class="tab-btn" data-tab="urdu">
+                            <i class="fas fa-language"></i> اردو سوالات
+                        </button>
+                    </div>
+                    
+                    <!-- English Questions Tab -->
+                    <div class="tab-content active" id="english-tab">
+                        <div class="questions-grid" id="english-questions">
+                            <div class="empty-state">
+                                <i class="fas fa-comments"></i>
+                                <p>No recent English questions yet. Start chatting to see them here!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Urdu Questions Tab -->
+                    <div class="tab-content" id="urdu-tab">
+                        <div class="questions-grid urdu-questions" id="urdu-questions">
+                            <div class="empty-state">
+                                <i class="fas fa-comments"></i>
+                                <p>ابھی تک کوئی اردو سوالات نہیں ہیں۔ بات چیت شروع کریں!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Chat Section -->
+            <section class="chat-section">
+                <div class="chat-container">
+                    <!-- Chat Header -->
+                    <div class="chat-header">
+                        <div class="chat-profile">
+                            <div class="profile-avatar">
+                                <i class="fas fa-robot"></i>
+                                <div class="online-indicator"></div>
+                            </div>
+                            <div class="profile-info">
+                                <h3>Well Being Assistant</h3>
+                                <p>Always here to support you</p>
+                            </div>
+                        </div>
+                        <div class="chat-stats">
+                            <div class="stat">
+                                <span class="stat-number" id="messageCount">0</span>
+                                <span class="stat-label">Messages</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" id="activeLanguage">English</span>
+                                <span class="stat-label">Language</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Messages -->
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message system-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <p>Hello! I'm your WellBeing Agent. I'm here to provide supportive, evidence-based information about breast cancer. You can type or use the 🎤 microphone to ask questions in English or Urdu. How can I help you today?</p>
+                                <span class="message-time" id="welcomeTime"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Typing Indicator -->
+                    <div class="typing-indicator" id="typingIndicator">
+                        <div class="typing-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="typing-bubble">
+                            <div class="typing-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <p>Agent is typing...</p>
+                        </div>
+                    </div>
+
+                    <!-- Chat Input -->
+                    <div class="chat-input-container">
+                        <div class="input-wrapper">
+                            <input type="text" id="userInput" placeholder="Ask about breast cancer support, treatment options, or recovery...">
+                        
+                            <button id="voiceButton" class="voice-button">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <button id="sendButton" class="send-button">
+                                <i class="fas fa-paper-plane"></i>
+                                <span class="button-text">Send</span>
+                            </button>
+                        </div>
+                        <div class="input-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Current language: <strong id="currentLanguageDisplay">English</strong> - You can ask about symptoms, treatments, recovery, or emotional support</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/frontend/script.js"></script>
+</body>
+</html>

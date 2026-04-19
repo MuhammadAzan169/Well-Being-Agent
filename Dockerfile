@@ -20,7 +20,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Create runtime directories
-RUN mkdir -p cache DataSet
+RUN mkdir -p cache DataSet recorded_audio
 
 # Expose port (Hugging Face uses 7860)
 EXPOSE 7860
