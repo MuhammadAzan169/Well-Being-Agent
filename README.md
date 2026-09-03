@@ -439,9 +439,17 @@ matches `index_metadata.json`.
 detects this, logs a warning, and uses the index's own model — but the real fix
 is to rebuild: `cd backend && python -m scripts.build_index`.
 
-**First request after idle times out**
-Expected on the free plan (~50 s cold start). Retry, or keep the service warm
-with a periodic `/health` ping.
+**First message after idle fails or shows "something went wrong"**
+A sleeping free instance returns 502/504 (or drops the connection) for ~50 s
+while it wakes. The chat UI retries those automatically with backoff for about
+a minute and shows a "waking up" notice, so this should self-heal. If it still
+fails, the backend is genuinely down - check the Render logs. To avoid cold
+starts entirely, ping `/health` periodically or upgrade off the free plan.
+
+**Voice warning in the Render logs**
+`Voice enabled but Whisper unavailable` means `ENABLE_VOICE` is `true` on
+Render. Set it to `false` - server-side Whisper does not fit the free plan, and
+the frontend uses the browser's Web Speech API there anyway.
 
 **Out of memory on Render**
 Ensure `ENABLE_VOICE=false`, `OMP_NUM_THREADS=1`, and that nothing has added

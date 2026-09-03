@@ -17,7 +17,19 @@ async function request(path, { method = "GET", body, signal } = {}) {
     opts.headers["Content-Type"] = "application/json";
     opts.body = JSON.stringify(body);
   }
-  const resp = await fetch(apiUrl(path), opts);
+  let resp;
+  try {
+    resp = await fetch(apiUrl(path), opts);
+  } catch (cause) {
+    // fetch() rejects with a TypeError and no status for DNS failures, dropped
+    // connections, and CORS rejections. A sleeping Render free instance looks
+    // exactly like this, so flag it as retryable rather than losing the reason.
+    const err = new Error("Could not reach the server. Please check your connection.");
+    err.status = 0;
+    err.isNetworkError = true;
+    err.cause = cause;
+    throw err;
+  }
   if (!resp.ok) {
     let detail = `Server error ${resp.status}`;
     try {

@@ -8,9 +8,13 @@ from app.models.schemas import HealthResponse, InfoResponse
 router = APIRouter(tags=["system"])
 
 
-@router.get("/")
+@router.api_route("/", methods=["GET", "HEAD"])
 async def root():
-    """Lightweight root payload describing the API."""
+    """Lightweight root payload describing the API.
+
+    HEAD is included because platform probes (Render's port detection among
+    them) issue `HEAD /`, which a GET-only route answers with a 405.
+    """
     return {
         "name": settings.APP_NAME,
         "version": settings.APP_VERSION,

@@ -177,10 +177,11 @@ async function sendMessage(overrideText = null) {
     addMessageToChat(data.answer, "system", data.language || currentLanguage, data.sources || []);
   } catch (err) {
     hideTypingIndicator();
-    const msg =
-      err.status === 503
-        ? "The assistant is still starting up. Please try again in about 30 seconds."
-        : "Sorry, something went wrong. Please try again.";
+    // Warm-up statuses only reach here after every retry has been exhausted.
+    const stillWaking = [0, 502, 503, 504].includes(err.status);
+    const msg = stillWaking
+      ? "The assistant is taking longer than usual to wake up. Please try again in a moment."
+      : "Sorry, something went wrong. Please try again.";
     addMessageToChat(msg, "system", "english");
     console.error("Send error:", err);
   } finally {
@@ -191,16 +192,43 @@ async function sendMessage(overrideText = null) {
 // On a cold start the backend loads its index/model in the background and
 // returns 503 for ~20-30s. Retry a couple of times with backoff before
 // surfacing an error, so users don't see a failure for a transient warmup.
+// Statuses that mean "the backend isn't ready yet", not "your request was bad":
+//   503 - the app is up but still loading its index in the background
+//   502 / 504 - the platform proxy has no healthy instance to route to, which
+//               is what a spun-down Render free instance returns while waking
+//   0   - fetch() failed outright (dropped connection / CORS), see api.js
+const WARMUP_STATUSES = [0, 502, 503, 504];
+
+// A free-plan instance sleeps after ~15 min idle and takes ~50s to wake, so the
+// backoff has to cover roughly a minute in total rather than a few seconds.
+const WARMUP_DELAYS = [3000, 6000, 12000, 20000, 25000];
+
 async function askQueryWithWarmupRetry(message, language) {
-  const delays = [4000, 8000];
+  let notified = false;
   for (let attempt = 0; ; attempt++) {
     try {
       return await api.askQuery(message, language);
     } catch (err) {
-      if (err.status !== 503 || attempt >= delays.length) throw err;
-      await new Promise((resolve) => setTimeout(resolve, delays[attempt]));
+      const retryable = WARMUP_STATUSES.includes(err.status);
+      if (!retryable || attempt >= WARMUP_DELAYS.length) throw err;
+      if (!notified) {
+        notified = true;
+        showWarmupNotice();
+      }
+      await new Promise((resolve) => setTimeout(resolve, WARMUP_DELAYS[attempt]));
     }
   }
+}
+
+// Tell the user why the first message of the day is slow, so a ~50s free-plan
+// cold start reads as "waking up" rather than "broken". Shown at most once per
+// send, and only once we've actually hit a warm-up failure.
+function showWarmupNotice() {
+  addMessageToChat(
+    "The assistant is waking up — this can take up to a minute on the free tier. Hang tight…",
+    "system",
+    "english"
+  );
 }
 
 function setGenerating(state) {
