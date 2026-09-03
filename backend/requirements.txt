@@ -1,0 +1,39 @@
+# ── WellBeing Agent — Backend Dependencies ────────────────────────────
+# Kept deliberately small so it installs inside the Render free plan's
+# build limits and runs inside its 512 MB memory limit.
+
+# Web framework
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.27,<1.0
+python-multipart>=0.0.9
+pydantic>=2.6,<3.0
+pydantic-settings>=2.2,<3.0
+
+# Settings loading (app/core/config.py imports dotenv directly)
+python-dotenv>=1.0
+
+# HTTP client for the OpenAI-compatible LLM API
+httpx>=0.27,<1.0
+
+# Language detection
+langdetect>=1.0.9
+
+# RAG pipeline (LlamaIndex)
+# NOTE: llama-index-core only — NOT the `llama-index` meta-package, which
+# pulls in OpenAI/torch and blows past the free plan's memory budget.
+llama-index-core>=0.10,<0.13
+# fastembed runs the embedding model through ONNX Runtime instead of PyTorch:
+# ~50 MB RAM and ~90 MB download, versus ~250 MB+ for sentence-transformers.
+# This is what makes local-quality embeddings viable on the Render free plan.
+llama-index-embeddings-fastembed>=0.1,<0.4
+fastembed>=0.3,<0.8
+
+# Numerical (transitive, pinned below 2.0 for llama-index compatibility)
+numpy>=1.26,<2.3
+
+# ── Voice (optional, LOCAL ONLY) ──────────────────────────────────────
+# faster-whisper is intentionally NOT listed here: it does not fit the
+# Render free plan. Install it locally with:
+#   pip install -r requirements-voice.txt
+# The backend degrades gracefully when it is absent, and the frontend
+# falls back to the browser's built-in Web Speech API.

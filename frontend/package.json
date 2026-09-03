@@ -1,0 +1,11 @@
+{
+  "name": "wellbeing-agent-frontend",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Static frontend (landing + chat) for the Well Being Agent.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs && npx --yes serve -l 5500 ."
+  }
+}

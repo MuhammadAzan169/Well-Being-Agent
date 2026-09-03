@@ -1,28 +1,20 @@
-"""
-safety.py — Content Safety Validation and Guardrails for WellBeing Agent
+"""Content safety validation and guardrails.
 
-Provides:
-  - Crisis detection (suicidal ideation, self-harm)
-  - Off-topic query filtering
-  - Dangerous medical advice detection in responses
-  - Medical disclaimer injection
-  - Prescription / medication prescription prevention
-
-⚠️ IMPORTANT: This module ensures the agent never provides medical prescriptions,
-   always flags crisis situations, and stays within its breast cancer support scope.
+Provides crisis detection, off-topic filtering, dangerous-advice detection in
+responses, and medical-disclaimer injection. Ensures the agent never provides
+prescriptions and always stays within its breast-cancer support scope.
 """
 
 import re
-import logging
 from typing import Dict
 
-logger = logging.getLogger("WellBeingAgent.Safety")
+from app.core.logging import get_logger
+
+logger = get_logger("WellBeingAgent.Safety")
 
 
 class SafetyValidator:
     """Validates queries and responses for safety, relevance, and sensitivity."""
-
-    # ── Allowed Topics (breast cancer & well-being related) ───────────────
 
     ALLOWED_TOPICS = [
         # Medical
@@ -59,17 +51,12 @@ class SafetyValidator:
         "سرجری", "دودھ", "بال", "خوف", "پریشانی",
     ]
 
-    # ── Crisis Patterns ───────────────────────────────────────────────────
-
     CRISIS_PATTERNS = [
         r"\b(suicid|kill\s*my\s*self|end\s*my\s*life|want\s*to\s*die|self[\s-]*harm)\b",
         r"\b(overdose|hurt\s*myself|no\s*reason\s*to\s*live)\b",
         r"\b(jump off|hang myself|slit my|cut myself)\b",
-        # Urdu crisis patterns
         r"(خودکشی|مرنا چاہ|زندگی ختم|خود کو مار)",
     ]
-
-    # ── Off-Topic Patterns ────────────────────────────────────────────────
 
     OFF_TOPIC_PATTERNS = [
         r"\b(stock|crypto|bitcoin|invest|trading|forex)\b",
@@ -79,8 +66,6 @@ class SafetyValidator:
         r"\b(homework|essay|math\s*problem|calculate|algebra)\b",
         r"\b(dating|tinder|love letter|pickup line)\b",
     ]
-
-    # ── Dangerous Advice Patterns (in responses) ──────────────────────────
 
     DANGEROUS_PATTERNS = [
         (
@@ -105,8 +90,6 @@ class SafetyValidator:
         ),
     ]
 
-    # ── Crisis Responses ──────────────────────────────────────────────────
-
     CRISIS_RESPONSE_EN = (
         "💛 I can hear that you're going through an incredibly difficult time, "
         "and I want you to know that your life matters deeply.\n\n"
@@ -129,8 +112,6 @@ class SafetyValidator:
         "📞 **روزن ہیلپ لائن**: 0800-22-444\n\n"
         "آپ اکیلے نہیں ہیں۔ مدد دستیاب ہے۔ 💛"
     )
-
-    # ── Off-Topic Responses ───────────────────────────────────────────────
 
     OFF_TOPIC_RESPONSE_EN = (
         "I appreciate your question, but I'm specifically designed to support "
@@ -158,22 +139,15 @@ class SafetyValidator:
         "کیا بریسٹ کینسر سے متعلق کوئی سوال ہے جس میں میں مدد کر سکتی ہوں؟"
     )
 
-    # ══════════════════════════════════════════════════════════════════════
-    # Query Validation
-    # ══════════════════════════════════════════════════════════════════════
-
     @classmethod
     def validate_query(cls, query: str, language: str = "english") -> Dict:
-        """
-        Validate a user query for safety, crisis detection, and topic relevance.
+        """Validate a query for crisis signals and topic relevance.
 
-        Returns:
-            dict with keys: is_safe, is_on_topic, is_crisis, response
-            If response is not None, it should be returned directly to the user.
+        Returns a dict with keys: is_safe, is_on_topic, is_crisis, response.
+        A non-null ``response`` should be returned directly to the user.
         """
         query_lower = query.lower().strip()
 
-        # 1) Crisis detection (highest priority)
         for pattern in cls.CRISIS_PATTERNS:
             if re.search(pattern, query_lower):
                 logger.warning(f"⚠️  CRISIS detected: {query[:50]}…")
@@ -182,19 +156,13 @@ class SafetyValidator:
                     "is_on_topic": True,
                     "is_crisis": True,
                     "response": (
-                        cls.CRISIS_RESPONSE_UR
-                        if language == "urdu"
-                        else cls.CRISIS_RESPONSE_EN
+                        cls.CRISIS_RESPONSE_UR if language == "urdu" else cls.CRISIS_RESPONSE_EN
                     ),
                 }
 
-        # 2) Off-topic detection
-        off_score = sum(
-            1 for p in cls.OFF_TOPIC_PATTERNS if re.search(p, query_lower)
-        )
+        off_score = sum(1 for p in cls.OFF_TOPIC_PATTERNS if re.search(p, query_lower))
         on_score = sum(1 for t in cls.ALLOWED_TOPICS if t in query_lower)
 
-        # Only flag as off-topic if clearly unrelated AND no on-topic keywords
         if off_score > 0 and on_score == 0 and len(query_lower.split()) > 3:
             logger.info(f"Off-topic query detected: {query[:50]}…")
             return {
@@ -202,30 +170,15 @@ class SafetyValidator:
                 "is_on_topic": False,
                 "is_crisis": False,
                 "response": (
-                    cls.OFF_TOPIC_RESPONSE_UR
-                    if language == "urdu"
-                    else cls.OFF_TOPIC_RESPONSE_EN
+                    cls.OFF_TOPIC_RESPONSE_UR if language == "urdu" else cls.OFF_TOPIC_RESPONSE_EN
                 ),
             }
 
-        # 3) Query is safe and on-topic
-        return {
-            "is_safe": True,
-            "is_on_topic": True,
-            "is_crisis": False,
-            "response": None,
-        }
-
-    # ══════════════════════════════════════════════════════════════════════
-    # Response Validation
-    # ══════════════════════════════════════════════════════════════════════
+        return {"is_safe": True, "is_on_topic": True, "is_crisis": False, "response": None}
 
     @classmethod
     def validate_response(cls, response: str, language: str = "english") -> str:
-        """
-        Check an LLM response for dangerous medical advice.
-        Appends warnings if dangerous patterns are found.
-        """
+        """Check an LLM response for dangerous medical advice and append warnings."""
         for pattern, warning_en in cls.DANGEROUS_PATTERNS:
             if re.search(pattern, response, re.IGNORECASE):
                 logger.warning("⚠️  Dangerous advice detected — adding disclaimer")
@@ -240,18 +193,12 @@ class SafetyValidator:
 
     @classmethod
     def add_medical_disclaimer(cls, response: str, language: str = "english") -> str:
-        """
-        Append a gentle medical disclaimer to the response if not already present.
-        """
-        disclaimer_ur = (
+        """Append a gentle medical disclaimer if not already present."""
+        disclaimer = (
             "\n\nاپنی صحت کی دیکھ بھال ٹیم سے اپنے خدشات پر بات کرنا یاد رکھیں۔"
+            if language == "urdu"
+            else "\n\nRemember to discuss any concerns with your healthcare team."
         )
-        disclaimer_en = (
-            "\n\nRemember to discuss any concerns with your healthcare team."
-        )
-        disclaimer = disclaimer_ur if language == "urdu" else disclaimer_en
-
         if disclaimer.strip() not in response:
             response += disclaimer
-
         return response

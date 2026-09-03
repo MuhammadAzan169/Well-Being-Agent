@@ -1,0 +1,10 @@
+# ── Optional LOCAL voice dependencies (faster-whisper) ─────────────────
+# Install these on your local machine only — they do NOT fit the Render
+# free plan (512 MB RAM). Enable with ENABLE_VOICE=true in backend/.env.
+#
+#   pip install -r requirements-voice.txt
+#
+# CTranslate2-based Whisper: no torch needed, runs well on CPU.
+#   WHISPER_MODEL_ID=small  → ~500 MB (int8), good accuracy  (default)
+#   WHISPER_MODEL_ID=base   → ~150 MB, lower accuracy, low memory
+faster-whisper>=1.0

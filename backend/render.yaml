@@ -1,0 +1,93 @@
+# ── Render Blueprint — WellBeing Agent backend (FREE plan) ────────────
+#
+# TWO WAYS TO USE THIS FILE
+#   1. Manual (recommended, and what the README describes):
+#      New + -> Web Service -> set "Root Directory" to `backend` and copy the
+#      build/start commands and env vars below into the dashboard.
+#   2. Blueprint: Render only reads render.yaml from the REPOSITORY ROOT, so
+#      copy this file there first (`rootDir: backend` below already points it
+#      at the backend). New + -> Blueprint, then fill in the `sync: false`
+#      secrets by hand.
+#
+# Everything below is sized for the free plan:
+#   • 512 MB RAM, 0.1 CPU
+#   • Spins down after ~15 min idle (first request after that takes ~50 s)
+#   • Ephemeral disk — anything written to var/ is lost on restart
+#
+# Secrets are NEVER committed. Every value marked `sync: false` must be set by
+# hand in the Render dashboard (Environment → Add Environment Variable).
+services:
+  - type: web
+    name: wellbeing-agent-api
+    runtime: python
+    plan: free
+    region: oregon
+    rootDir: backend
+    healthCheckPath: /health
+
+    # The vector index is committed under data/cancer_index_store, so the build
+    # only needs to install deps and pre-download the fastembed ONNX model
+    # (~90 MB). Build and runtime share the same disk on the python runtime, so
+    # warming the cache here means zero downloads on a cold start.
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      python -m scripts.warm_cache
+
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+
+      # Keep the fastembed model cache inside the project dir so the copy
+      # downloaded during the build is the one the running server uses.
+      - key: FASTEMBED_CACHE_PATH
+        value: /opt/render/project/src/backend/var/fastembed-cache
+
+      # Single-core instance: stop ONNX/BLAS from spawning thread pools that
+      # would push the container past the 512 MB limit.
+      - key: OMP_NUM_THREADS
+        value: "1"
+      - key: MKL_NUM_THREADS
+        value: "1"
+      - key: TOKENIZERS_PARALLELISM
+        value: "false"
+
+      # Local Whisper does NOT fit the free plan. Voice still works in the
+      # browser via the Web Speech API, which needs no backend at all.
+      - key: ENABLE_VOICE
+        value: "false"
+
+      # Must match the model the committed index was built with.
+      - key: EMBEDDING_MODEL
+        value: sentence-transformers/all-MiniLM-L6-v2
+      - key: INDEX_PATH
+        value: data/cancer_index_store
+      - key: DATASET_PATH
+        value: data/DataSet/breast_cancer_comprehensive.json
+
+      # ── Set these in the Render dashboard ──────────────────────────
+      # Comma-separated Vercel origins, or "*" to allow any origin.
+      - key: ALLOWED_ORIGINS
+        sync: false
+      # At least one OpenRouter key is required. Add OPENROUTER_API_KEY1,
+      # OPENROUTER_API_KEY2, … for automatic rotation on rate limits.
+      - key: OPENROUTER_API_KEY1
+        sync: false
+      # Optional ordered model fallback chain: OPENROUTER_MODEL_1, _2, …
+      - key: OPENROUTER_MODEL_1
+        sync: false
+
+      # Fallback single-model config, used only when no OPENROUTER_MODEL_<N>
+      # variables are present.
+      - key: LLM_BASE_URL
+        value: https://openrouter.ai/api/v1
+      - key: LLM_MODEL
+        value: openai/gpt-oss-20b:free
+      - key: LLM_MAX_TOKENS
+        value: "1500"

@@ -1,82 +1,50 @@
-# ── Environment variables (NEVER commit secrets) ──────
+# ── Secrets ───────────────────────────────────────────────────────────
+# Never commit real credentials. Use .env.example as the tracked template.
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+*.pem
+*.key
 
-# ── Python ────────────────────────────────────────────
+# ── Python ────────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-*.manifest
-*.spec
-
-# ── Distribution / packaging ─────────────────────────
+*.egg-info/
 .Python
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
 
-# ── Virtual environments ─────────────────────────────
+# Virtual environments
+.venv/
 venv/
 env/
 ENV/
-.venv/
-env.bak/
-venv.bak/
 
-# ── Testing & coverage ──────────────────────────────
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
+# ── Backend runtime (ephemeral: cache, conversation log, recordings,
+#    downloaded model weights) ──────────────────────────────────────────
+backend/var/
+var/
+
+# ── Frontend ──────────────────────────────────────────────────────────
+node_modules/
+.vercel/
+# Generated at build time by build.mjs (Vercel) or app.py (local).
+frontend/js/config.js
+
+# ── Model caches ──────────────────────────────────────────────────────
 .cache/
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
+fastembed-cache/
+.huggingface/
+
+# ── Tooling ───────────────────────────────────────────────────────────
 .pytest_cache/
-
-# ── Logs ─────────────────────────────────────────────
+.mypy_cache/
+.ruff_cache/
 *.log
-pip-log.txt
-pip-delete-this-directory.txt
-rag_system.log
 
-# ── Project-specific runtime files ───────────────────
-cache/
-recorded_audio/
-conversations.json
-*.tmp
-*.temp
-
-# ── Jupyter ──────────────────────────────────────────
-.ipynb_checkpoints/
-
-# ── IDE ──────────────────────────────────────────────
+# ── Editors / OS ──────────────────────────────────────────────────────
 .vscode/
 .idea/
-
-# ── OS ───────────────────────────────────────────────
 .DS_Store
 Thumbs.db
-
-# ── Type checkers ────────────────────────────────────
-.mypy_cache/
-.dmypy.json
-dmypy.json
-.pyre/
+desktop.ini

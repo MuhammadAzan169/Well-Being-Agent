@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat — Well Being Agent</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&family=Lateef:wght@400;500;600;700&family=Amiri:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="floating-elements">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+        <div class="glow-orb orb-4"></div>
+        <div class="glow-orb orb-5"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <a href="/" class="logo" aria-label="Back to home">
+                        <i class="fas fa-heartbeat"></i>
+                    </a>
+                    <div class="header-text">
+                        <h1 class="title">Well Being Agent</h1>
+                        <p class="subtitle">Breast Cancer Support System</p>
+                    </div>
+                </div>
+                <p class="compassion-message">Providing compassionate, evidence-based support for breast cancer patients and their families</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <aside class="quick-questions">
+                <div class="section-header">
+                    <h2 class="section-title">Quick Questions</h2>
+                    <div class="decoration-line"></div>
+                </div>
+
+                <div class="tabs-container" role="tablist" aria-label="Question language tabs">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="english" role="tab" aria-selected="true" aria-controls="english-tab" id="tab-english">
+                            <i class="fas fa-language" aria-hidden="true"></i> English Questions
+                        </button>
+                        <button class="tab-btn" data-tab="urdu" role="tab" aria-selected="false" aria-controls="urdu-tab" id="tab-urdu">
+                            <i class="fas fa-language" aria-hidden="true"></i> اردو سوالات
+                        </button>
+                    </div>
+
+                    <div class="tab-content active" id="english-tab" role="tabpanel" aria-labelledby="tab-english">
+                        <div class="questions-grid" id="english-questions" aria-label="English quick questions">
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="urdu-tab" role="tabpanel" aria-labelledby="tab-urdu">
+                        <div class="questions-grid urdu-questions" id="urdu-questions" aria-label="Urdu quick questions">
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="chat-section">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="chat-profile">
+                            <div class="profile-avatar">
+                                <i class="fas fa-robot"></i>
+                                <div class="online-indicator"></div>
+                            </div>
+                            <div class="profile-info">
+                                <h3>Well Being Assistant</h3>
+                                <p>Always here to support you</p>
+                            </div>
+                        </div>
+                        <div class="chat-stats">
+                            <div class="stat">
+                                <span class="stat-number" id="messageCount">0</span>
+                                <span class="stat-label">Messages</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" id="activeLanguage">English</span>
+                                <span class="stat-label">Language</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chat conversation">
+                        <div class="message system-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <p>Hello! I'm your WellBeing Agent. I'm here to provide supportive, evidence-based information about breast cancer. You can type or use the 🎤 microphone to ask questions in English or Urdu. How can I help you today?</p>
+                                <span class="message-time" id="welcomeTime"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="typing-indicator" id="typingIndicator">
+                        <div class="typing-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="typing-bubble">
+                            <div class="typing-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <p>Agent is typing...</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-container">
+                        <div class="input-wrapper">
+                            <label for="userInput" class="visually-hidden">Type your question</label>
+                            <input type="text" id="userInput" placeholder="Ask about breast cancer support, treatment options, or recovery..." aria-label="Type your question in English or Urdu">
+
+                            <button id="voiceButton" class="voice-button" aria-label="Start voice recording" title="Record voice message">
+                                <i class="fas fa-microphone" aria-hidden="true"></i>
+                            </button>
+                            <button id="sendButton" class="send-button" aria-label="Send message">
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                <span class="button-text">Send</span>
+                            </button>
+                        </div>
+                        <div class="input-hint" aria-live="polite">
+                            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                            <span>Language: <strong id="currentLanguageDisplay">English</strong> — Ask about symptoms, treatments, recovery, or emotional support</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script type="module" src="/js/chat.js"></script>
+</body>
+</html>

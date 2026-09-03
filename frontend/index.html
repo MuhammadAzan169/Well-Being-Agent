@@ -3,208 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Well Being Agent - Breast Cancer Support</title>
-    
-    <!-- Optimized Urdu Fonts -->
+    <title>Well Being Agent — Compassionate AI Support for Breast Cancer Patients</title>
+    <meta name="description" content="A RAG-powered, multilingual AI companion offering empathetic, evidence-based well-being support for breast cancer patients — in English, Urdu, and Roman Urdu.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&family=Lateef:wght@400;500;600;700&family=Amiri:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/frontend/styles.css">
+    <link rel="stylesheet" href="/assets/css/landing.css">
 </head>
 <body>
-    <!-- AI Particle Canvas Background -->
-    <canvas id="particleCanvas"></canvas>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="#top" class="brand">
+                <span class="brand-mark"><i class="fas fa-heartbeat"></i></span>
+                Well Being Agent
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how">How it works</a></li>
+                <li><a href="#audience">Who it's for</a></li>
+                <li><a href="#safety">Safety</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="/chat" class="btn btn-primary">Open Chat <i class="fas fa-arrow-right"></i></a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <!-- Animated Background Elements -->
-    <div class="floating-elements">
-        <div class="floating-element el-1"></div>
-        <div class="floating-element el-2"></div>
-        <div class="floating-element el-3"></div>
-        <div class="floating-element el-4"></div>
-        <div class="floating-particle particle-1"></div>
-        <div class="floating-particle particle-2"></div>
-        <div class="floating-particle particle-3"></div>
-        <div class="floating-particle particle-4"></div>
-        <div class="floating-particle particle-5"></div>
-        <!-- Extra glow orbs -->
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-        <div class="glow-orb orb-3"></div>
-        <div class="glow-orb orb-4"></div>
-        <div class="glow-orb orb-5"></div>
-        <!-- Additional floating elements -->
-        <div class="floating-element el-5"></div>
-        <div class="floating-element el-6"></div>
-        <div class="floating-element el-7"></div>
-        <div class="floating-element el-8"></div>
-        <!-- More particles -->
-        <div class="floating-particle particle-6"></div>
-        <div class="floating-particle particle-7"></div>
-        <div class="floating-particle particle-8"></div>
-        <div class="floating-particle particle-9"></div>
-        <div class="floating-particle particle-10"></div>
-        <div class="floating-particle particle-11"></div>
-        <div class="floating-particle particle-12"></div>
-        <div class="floating-particle particle-13"></div>
-        <div class="floating-particle particle-14"></div>
-        <div class="floating-particle particle-15"></div>
-        <!-- Small dots -->
-        <div class="floating-dot dot-1"></div>
-        <div class="floating-dot dot-2"></div>
-        <div class="floating-dot dot-3"></div>
-        <div class="floating-dot dot-4"></div>
-        <div class="floating-dot dot-5"></div>
-        <div class="floating-dot dot-6"></div>
-        <div class="floating-dot dot-7"></div>
-        <div class="floating-dot dot-8"></div>
-        <div class="floating-dot dot-9"></div>
-        <div class="floating-dot dot-10"></div>
-        <div class="floating-dot dot-11"></div>
-        <div class="floating-dot dot-12"></div>
-        <div class="floating-dot dot-13"></div>
-        <div class="floating-dot dot-14"></div>
-        <div class="floating-dot dot-15"></div>
-    </div>
-
-    <div class="container">
-        <!-- Header Section - Compact -->
-        <header class="header">
-            <div class="header-content">
-                <div class="logo-container">
-                    <div class="logo">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <div class="header-text">
-                        <h1 class="title">Well Being Agent</h1>
-                        <p class="subtitle">Breast Cancer Support System</p>
-                    </div>
+    <!-- Hero -->
+    <header class="hero" id="top">
+        <div class="container hero-grid">
+            <div class="hero-copy reveal">
+                <span class="hero-badge"><i class="fas fa-ribbon"></i> AI-powered breast cancer support</span>
+                <h1>Compassionate guidance, <span class="grad">whenever you need it</span>.</h1>
+                <p class="hero-sub">
+                    A warm, multilingual AI companion that answers your questions about symptoms,
+                    treatment side effects, nutrition, and emotional well-being — grounded in a
+                    curated medical knowledge base, available 24/7.
+                </p>
+                <div class="hero-cta">
+                    <a href="/chat" class="btn btn-primary btn-lg">Start a conversation <i class="fas fa-comments"></i></a>
+                    <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
                 </div>
-                <p class="compassion-message">Providing compassionate, evidence-based support for breast cancer patients and their families</p>
+                <div class="hero-trust">
+                    <span><i class="fas fa-language"></i> English · اردو · Roman Urdu</span>
+                    <span><i class="fas fa-shield-heart"></i> Safety-first design</span>
+                    <span><i class="fas fa-book-medical"></i> Cited sources</span>
+                </div>
             </div>
-        </header>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Quick Questions Section -->
-            <aside class="quick-questions">
-                <div class="section-header">
-                    <h2 class="section-title">Quick Questions</h2>
-                    <div class="decoration-line"></div>
-                </div>
-                
-                <!-- Tab Navigation -->
-                <div class="tabs-container">
-                    <div class="tabs">
-                        <button class="tab-btn active" data-tab="english">
-                            <i class="fas fa-language"></i> English Questions
-                        </button>
-                        <button class="tab-btn" data-tab="urdu">
-                            <i class="fas fa-language"></i> اردو سوالات
-                        </button>
-                    </div>
-                    
-                    <!-- English Questions Tab -->
-                    <div class="tab-content active" id="english-tab">
-                        <div class="questions-grid" id="english-questions">
-                            <div class="empty-state">
-                                <i class="fas fa-comments"></i>
-                                <p>No recent English questions yet. Start chatting to see them here!</p>
-                            </div>
+            <div class="hero-visual reveal">
+                <div class="hero-float f1"><i class="fas fa-microphone"></i> Voice supported</div>
+                <div class="hero-float f2"><i class="fas fa-heart"></i> Empathy-aware</div>
+                <div class="mock" aria-hidden="true">
+                    <div class="mock-bar">
+                        <span class="mock-avatar"><i class="fas fa-robot"></i></span>
+                        <div>
+                            <strong>Well Being Assistant</strong><br>
+                            <small><span class="dot"></span> Online · always here for you</small>
                         </div>
                     </div>
-                    
-                    <!-- Urdu Questions Tab -->
-                    <div class="tab-content" id="urdu-tab">
-                        <div class="questions-grid urdu-questions" id="urdu-questions">
-                            <div class="empty-state">
-                                <i class="fas fa-comments"></i>
-                                <p>ابھی تک کوئی اردو سوالات نہیں ہیں۔ بات چیت شروع کریں!</p>
-                            </div>
+                    <div class="mock-body">
+                        <div class="bubble user">Will my hair grow back after chemotherapy?</div>
+                        <div class="bubble bot">
+                            It's completely normal to worry about this. 💛 For most people, hair begins to
+                            regrow within a few weeks of finishing chemo — often softer or a little different
+                            at first. Many find gentle scalp care helps.
+                            <span class="src"><i class="fas fa-bookmark"></i> Hair &amp; appearance</span>
                         </div>
+                        <div class="mock-typing"><span></span><span></span><span></span></div>
                     </div>
                 </div>
-            </aside>
+            </div>
+        </div>
+    </header>
 
-            <!-- Chat Section -->
-            <section class="chat-section">
-                <div class="chat-container">
-                    <!-- Chat Header -->
-                    <div class="chat-header">
-                        <div class="chat-profile">
-                            <div class="profile-avatar">
-                                <i class="fas fa-robot"></i>
-                                <div class="online-indicator"></div>
-                            </div>
-                            <div class="profile-info">
-                                <h3>Well Being Assistant</h3>
-                                <p>Always here to support you</p>
-                            </div>
-                        </div>
-                        <div class="chat-stats">
-                            <div class="stat">
-                                <span class="stat-number" id="messageCount">0</span>
-                                <span class="stat-label">Messages</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number" id="activeLanguage">English</span>
-                                <span class="stat-label">Language</span>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Stats band -->
+    <section class="container" aria-label="At a glance">
+        <div class="stats reveal">
+            <div class="stat-item"><div class="num">3</div><div class="lbl">Languages supported</div></div>
+            <div class="stat-item"><div class="num">378+</div><div class="lbl">Knowledge entries</div></div>
+            <div class="stat-item"><div class="num">24/7</div><div class="lbl">Always available</div></div>
+            <div class="stat-item"><div class="num">100%</div><div class="lbl">Cited &amp; safety-checked</div></div>
+        </div>
+    </section>
 
-                    <!-- Chat Messages -->
-                    <div class="chat-messages" id="chatMessages">
-                        <div class="message system-message">
-                            <div class="message-avatar">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <div class="message-content">
-                                <p>Hello! I'm your WellBeing Agent. I'm here to provide supportive, evidence-based information about breast cancer. You can type or use the 🎤 microphone to ask questions in English or Urdu. How can I help you today?</p>
-                                <span class="message-time" id="welcomeTime"></span>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Features -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow"><i class="fas fa-star"></i> Why it's different</span>
+                <h2>Built for care, not just answers</h2>
+                <p>Every feature is designed around the emotional and informational needs of breast cancer patients.</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card reveal"><div class="card-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Grounded intelligence</h3>
+                    <p>Retrieval-Augmented Generation searches a curated knowledge base, so answers stay accurate and grounded — not made up.</p></div>
+                <div class="card reveal"><div class="card-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Emotionally aware</h3>
+                    <p>Detects distress in real time and leads with empathy and validation before sharing information.</p></div>
+                <div class="card reveal"><div class="card-icon"><i class="fas fa-microphone-alt"></i></div>
+                    <h3>Talk or type</h3>
+                    <p>Ask by voice with Whisper Large v3 transcription, or type — whichever feels easier in the moment.</p></div>
+                <div class="card reveal"><div class="card-icon"><i class="fas fa-language"></i></div>
+                    <h3>Trilingual</h3>
+                    <p>Understands English, Urdu script, and Roman Urdu with automatic detection and culturally aware replies.</p></div>
+                <div class="card reveal"><div class="card-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>Safety-first</h3>
+                    <p>Crisis detection, topic boundaries, and dangerous-advice screening protect every conversation.</p></div>
+                <div class="card reveal"><div class="card-icon"><i class="fas fa-book-medical"></i></div>
+                    <h3>Cited sources</h3>
+                    <p>Responses surface the knowledge-base sources behind them, so you can read further and trust the answer.</p></div>
+            </div>
+        </div>
+    </section>
 
-                    <!-- Typing Indicator -->
-                    <div class="typing-indicator" id="typingIndicator">
-                        <div class="typing-avatar">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="typing-bubble">
-                            <div class="typing-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <p>Agent is typing...</p>
-                        </div>
-                    </div>
+    <!-- How it works -->
+    <section class="section" id="how">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow"><i class="fas fa-route"></i> How it works</span>
+                <h2>Thoughtful by design, in three steps</h2>
+                <p>Behind every reply is a careful pipeline that keeps responses safe, relevant, and kind.</p>
+            </div>
+            <div class="steps">
+                <div class="step reveal"><div class="num">1</div>
+                    <h3>Ask in your language</h3>
+                    <p>Type or speak in English, Urdu, or Roman Urdu. Your input is detected and routed automatically.</p></div>
+                <div class="step reveal"><div class="num">2</div>
+                    <h3>We retrieve &amp; reason</h3>
+                    <p>A safety screen runs first, then semantic search pulls the most relevant, vetted knowledge for your question.</p></div>
+                <div class="step reveal"><div class="num">3</div>
+                    <h3>You get a caring reply</h3>
+                    <p>An empathy-calibrated response is generated, validated for safety, and returned with its sources.</p></div>
+            </div>
+        </div>
+    </section>
 
-                    <!-- Chat Input -->
-                    <div class="chat-input-container">
-                        <div class="input-wrapper">
-                            <input type="text" id="userInput" placeholder="Ask about breast cancer support, treatment options, or recovery...">
-                        
-                            <button id="voiceButton" class="voice-button">
-                                <i class="fas fa-microphone"></i>
-                            </button>
-                            <button id="sendButton" class="send-button">
-                                <i class="fas fa-paper-plane"></i>
-                                <span class="button-text">Send</span>
-                            </button>
-                        </div>
-                        <div class="input-hint">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>Current language: <strong id="currentLanguageDisplay">English</strong> - You can ask about symptoms, treatments, recovery, or emotional support</span>
-                        </div>
-                    </div>
+    <!-- Audience -->
+    <section class="section" id="audience">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow"><i class="fas fa-people-group"></i> Who it's for</span>
+                <h2>Support for the whole journey</h2>
+                <p>Wherever you are in your experience, there's a place to ask.</p>
+            </div>
+            <div class="audience">
+                <div class="use reveal"><i class="fas fa-user-nurse"></i>
+                    <h3>Newly diagnosed</h3>
+                    <p>Understand symptoms, tests, and treatment options in plain, reassuring language.</p></div>
+                <div class="use reveal"><i class="fas fa-pills"></i>
+                    <h3>In treatment</h3>
+                    <p>Manage side effects, nutrition, and day-to-day coping with practical, gentle guidance.</p></div>
+                <div class="use reveal"><i class="fas fa-hands-holding-child"></i>
+                    <h3>Families &amp; caregivers</h3>
+                    <p>Find clear answers and emotional support so you can be there for someone you love.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages -->
+    <section class="section" id="languages">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow"><i class="fas fa-globe"></i> Multilingual</span>
+                <h2>In the language you think in</h2>
+                <p>Breaking language barriers for patients who need support in their own words.</p>
+            </div>
+            <div class="lang-grid">
+                <div class="tile reveal"><div class="tile-icon">🇬🇧</div><h3>English</h3>
+                    <p>Full support with medical accuracy, emotional sensitivity, and conversational warmth.</p></div>
+                <div class="tile reveal"><div class="tile-icon" style="font-family:'Noto Nastaliq Urdu',serif;">اردو</div><h3>Urdu script</h3>
+                    <p>Native Nastaliq rendering with right-to-left support and spelling normalization.</p></div>
+                <div class="tile reveal"><div class="tile-icon">🔤</div><h3>Roman Urdu</h3>
+                    <p>Detects transliterated Urdu and responds appropriately — no script switch required.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety -->
+    <section class="section" id="safety">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow"><i class="fas fa-shield-heart"></i> Safety</span>
+                <h2>Your safety comes first</h2>
+                <p>Multiple layers of protection keep every interaction responsible and supportive.</p>
+            </div>
+            <div class="safety-grid">
+                <div class="tile reveal"><div class="tile-icon"><i class="fas fa-triangle-exclamation"></i></div><h3>Crisis detection</h3>
+                    <p>Recognizes self-harm signals in English and Urdu and surfaces helpline resources immediately.</p></div>
+                <div class="tile reveal"><div class="tile-icon"><i class="fas fa-filter"></i></div><h3>Topic boundaries</h3>
+                    <p>Stays within breast cancer well-being; off-topic requests are gently redirected.</p></div>
+                <div class="tile reveal"><div class="tile-icon"><i class="fas fa-prescription"></i></div><h3>No prescriptions</h3>
+                    <p>Never prescribes medications or dosages — medical decisions stay with your care team.</p></div>
+                <div class="tile reveal"><div class="tile-icon"><i class="fas fa-clipboard-check"></i></div><h3>Validated replies</h3>
+                    <p>Every response is screened for dangerous advice and carries a medical disclaimer.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow"><i class="fas fa-circle-question"></i> FAQ</span>
+                <h2>Questions, answered</h2>
+            </div>
+            <div class="faq reveal">
+                <div class="faq-item">
+                    <button class="faq-q">Is this a replacement for my doctor? <i class="fas fa-plus"></i></button>
+                    <div class="faq-a"><p>No. Well Being Agent provides supportive, educational information only. It is not a substitute for professional medical advice, diagnosis, or treatment — always consult your healthcare team for medical decisions.</p></div>
                 </div>
-            </section>
-        </main>
-    </div>
+                <div class="faq-item">
+                    <button class="faq-q">Which languages can I use? <i class="fas fa-plus"></i></button>
+                    <div class="faq-a"><p>English, Urdu (Nastaliq script), and Roman Urdu (Urdu written in Latin letters). The language is detected automatically, so you can switch freely.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">Can I ask by voice? <i class="fas fa-plus"></i></button>
+                    <div class="faq-a"><p>Yes, where enabled. Voice uses Whisper Large v3 for high-quality, multilingual transcription. If voice isn't available on a given deployment, you can always type instead.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">Where do the answers come from? <i class="fas fa-plus"></i></button>
+                    <div class="faq-a"><p>Answers are grounded in a curated breast cancer knowledge base using retrieval-augmented generation, and each reply surfaces the sources it drew from.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script src="/frontend/script.js"></script>
+    <!-- CTA -->
+    <section class="cta-wrap">
+        <div class="container">
+            <div class="cta reveal">
+                <h2>You don't have to navigate this alone</h2>
+                <p>Start a conversation in English, Urdu, or with your voice — and get compassionate, evidence-based support whenever you need it.</p>
+                <a href="/chat" class="btn btn-white btn-lg">Open the Chat <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div>
+                    <div class="brand"><span class="brand-mark"><i class="fas fa-heartbeat"></i></span> Well Being Agent</div>
+                    <p class="footer-tag">Compassionate, multilingual AI well-being support for breast cancer patients and their families.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#features">Features</a>
+                    <a href="#how">How it works</a>
+                    <a href="#safety">Safety</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="/chat">Open Chat</a>
+                </div>
+            </div>
+            <p class="disclaimer">
+                <i class="fas fa-circle-info"></i>
+                <strong>Medical disclaimer:</strong> This AI assistant provides supportive well-being information only.
+                It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult your
+                healthcare provider for medical decisions. If you are in crisis, contact your local emergency services.
+            </p>
+            <p class="copyright">© 2026 Well Being Agent — Breast Cancer Support System</p>
+        </div>
+    </footer>
+
+    <script src="/js/landing.js"></script>
 </body>
 </html>
