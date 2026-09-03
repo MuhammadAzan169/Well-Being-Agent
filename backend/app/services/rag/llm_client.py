@@ -9,6 +9,7 @@ Strategy:
   If every (model, key) pair fails → return the language-appropriate fallback message.
 """
 
+import re
 import time
 from typing import List, Optional, Tuple
 
@@ -38,6 +39,75 @@ _SERVER_ERROR = "server_error"  # 5xx — try next key
 _TIMEOUT = "timeout"            # httpx timeout — try next key
 _EMPTY = "empty"                # API returned blank text — try next key
 _FORMAT_ERROR = "format_error"  # Unexpected JSON shape — skip model
+
+
+
+# ── Reasoning-leak sanitisation ────────────────────────────────────────────
+# Several strong free models on OpenRouter are reasoning models that
+# *intermittently* emit their chain of thought into `message.content` instead
+# of the separate `reasoning` field (asking for reasoning.exclude does not
+# reliably stop it). The same prompt can return clean prose one call and a
+# "Okay, the user is asking…" preamble the next, so the response is cleaned
+# defensively here. A well-formed answer passes through untouched.
+
+_THINK_BLOCK = re.compile(
+    r"<\s*(think|thinking|reasoning|scratchpad)\s*>.*?<\s*/\s*\s*>",
+    re.IGNORECASE | re.DOTALL,
+)
+
+# Markers that only ever appear when a model is narrating its own process.
+_PREAMBLE_START = re.compile(
+    r"^\s*(okay|ok|alright|so|now|first|hmm|let me|let's|we need to|i need to|"
+    r"the user (is|wants|asks|asked)|here'?s (a|my) (thinking|thought) process|"
+    r"thinking process|analysis|reasoning)",
+    re.IGNORECASE,
+)
+
+_URDU_CHAR = re.compile(r"[؀-ۿ]")
+
+
+def _strip_reasoning(text: str, language: str) -> str:
+    """Remove leaked chain-of-thought from an LLM response."""
+    if not text:
+        return text
+
+    cleaned = _THINK_BLOCK.sub("", text).strip()
+
+    # Urdu answers are the clearest case: the reply must be in Urdu script, so
+    # a long Latin-script run before the first Urdu character is always leakage.
+    if language == "urdu":
+        match = _URDU_CHAR.search(cleaned)
+        if match and match.start() > 60:
+            trimmed = cleaned[match.start():].lstrip()
+            # Start at the beginning of that line rather than mid-sentence.
+            line_start = cleaned.rfind("
+", 0, match.start())
+            if line_start != -1:
+                candidate = cleaned[line_start:].strip()
+                if _URDU_CHAR.search(candidate):
+                    trimmed = candidate
+            if len(trimmed) >= 40:
+                logger.info("Stripped leaked reasoning preamble from Urdu response")
+                return trimmed
+        return cleaned
+
+    # English: drop leading paragraphs that read as self-narration, but only
+    # while enough substantive text remains afterwards.
+    paragraphs = [p for p in re.split(r"
+\s*
+", cleaned) if p.strip()]
+    while len(paragraphs) > 1 and _PREAMBLE_START.match(paragraphs[0]):
+        remainder = "
+
+".join(paragraphs[1:]).strip()
+        if len(remainder) < 80:
+            break
+        paragraphs = paragraphs[1:]
+        logger.info("Stripped leaked reasoning preamble from English response")
+
+    return "
+
+".join(paragraphs).strip() or cleaned
 
 
 def fallback_message(language: str = "english") -> str:
@@ -117,7 +187,8 @@ class LLMClient:
             resp.raise_for_status()
 
             data = resp.json()
-            text = data["choices"][0]["message"]["content"].strip()
+            text = (data["choices"][0]["message"]["content"] or "").strip()
+            text = _strip_reasoning(text, language)
             if not text:
                 logger.warning("LLM returned empty response")
                 return None, _EMPTY
