@@ -42,28 +42,28 @@ _FORMAT_ERROR = "format_error"  # Unexpected JSON shape — skip model
 
 
 
-# ── Reasoning-leak sanitisation ────────────────────────────────────────────
+# -- Reasoning-leak sanitisation --------------------------------------------
 # Several strong free models on OpenRouter are reasoning models that
 # *intermittently* emit their chain of thought into `message.content` instead
-# of the separate `reasoning` field (asking for reasoning.exclude does not
-# reliably stop it). The same prompt can return clean prose one call and a
-# "Okay, the user is asking…" preamble the next, so the response is cleaned
+# of the separate `reasoning` field (requesting reasoning.exclude does not
+# reliably stop it). The same prompt can return clean prose on one call and an
+# "Okay, the user is asking..." preamble on the next, so responses are cleaned
 # defensively here. A well-formed answer passes through untouched.
 
 _THINK_BLOCK = re.compile(
-    r"<\s*(think|thinking|reasoning|scratchpad)\s*>.*?<\s*/\s*\s*>",
+    r"<\s*(think|thinking|reasoning|scratchpad)\s*>.*?<\s*/\s*\1\s*>",
     re.IGNORECASE | re.DOTALL,
 )
 
-# Markers that only ever appear when a model is narrating its own process.
+# Openers that only appear when a model is narrating its own process.
 _PREAMBLE_START = re.compile(
-    r"^\s*(okay|ok|alright|so|now|first|hmm|let me|let's|we need to|i need to|"
+    r"^\s*(okay|ok|alright|hmm|let me|let's|we need to|i need to|i should|"
     r"the user (is|wants|asks|asked)|here'?s (a|my) (thinking|thought) process|"
-    r"thinking process|analysis|reasoning)",
+    r"thinking process)\b",
     re.IGNORECASE,
 )
 
-_URDU_CHAR = re.compile(r"[؀-ۿ]")
+_URDU_CHAR = re.compile(r"[\u0600-\u06FF]")
 
 
 def _strip_reasoning(text: str, language: str) -> str:
@@ -73,15 +73,14 @@ def _strip_reasoning(text: str, language: str) -> str:
 
     cleaned = _THINK_BLOCK.sub("", text).strip()
 
-    # Urdu answers are the clearest case: the reply must be in Urdu script, so
-    # a long Latin-script run before the first Urdu character is always leakage.
+    # Urdu is the clearest case: the reply must be in Urdu script, so a long
+    # Latin-script run before the first Urdu character is always leakage.
     if language == "urdu":
         match = _URDU_CHAR.search(cleaned)
         if match and match.start() > 60:
             trimmed = cleaned[match.start():].lstrip()
-            # Start at the beginning of that line rather than mid-sentence.
-            line_start = cleaned.rfind("
-", 0, match.start())
+            # Prefer starting at that line's beginning over mid-sentence.
+            line_start = cleaned.rfind("\n", 0, match.start())
             if line_start != -1:
                 candidate = cleaned[line_start:].strip()
                 if _URDU_CHAR.search(candidate):
@@ -93,21 +92,15 @@ def _strip_reasoning(text: str, language: str) -> str:
 
     # English: drop leading paragraphs that read as self-narration, but only
     # while enough substantive text remains afterwards.
-    paragraphs = [p for p in re.split(r"
-\s*
-", cleaned) if p.strip()]
+    paragraphs = [p for p in re.split(r"\n\s*\n", cleaned) if p.strip()]
     while len(paragraphs) > 1 and _PREAMBLE_START.match(paragraphs[0]):
-        remainder = "
-
-".join(paragraphs[1:]).strip()
+        remainder = "\n\n".join(paragraphs[1:]).strip()
         if len(remainder) < 80:
             break
         paragraphs = paragraphs[1:]
         logger.info("Stripped leaked reasoning preamble from English response")
 
-    return "
-
-".join(paragraphs).strip() or cleaned
+    return "\n\n".join(paragraphs).strip() or cleaned
 
 
 def fallback_message(language: str = "english") -> str:
@@ -217,13 +210,25 @@ class LLMClient:
             logger.error("No API keys available")
             return fallback_message(language)
 
+        # Bound the whole sweep: with many keys and models a total outage would
+        # otherwise keep the caller waiting far longer than any client will.
+        deadline = time.monotonic() + settings.LLM_TOTAL_TIMEOUT_SECONDS
+
         for model_idx, model in enumerate(self.models):
+            if time.monotonic() >= deadline:
+                logger.warning("Overall LLM deadline reached — returning fallback")
+                return fallback_message(language)
+
             logger.info(
                 f"🤖 Trying model {model_idx + 1}/{len(self.models)}: {model}"
             )
             skip_model = False
 
             for key_idx, key in enumerate(self.api_keys):
+                if time.monotonic() >= deadline:
+                    logger.warning("Overall LLM deadline reached — returning fallback")
+                    return fallback_message(language)
+
                 text, status = self._call(model, key, prompt, language)
 
                 if status == _OK:

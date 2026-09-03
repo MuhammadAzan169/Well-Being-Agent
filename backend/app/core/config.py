@@ -60,6 +60,10 @@ class Settings(BaseSettings):
     LLM_MAX_TOKENS: int = 1500
     LLM_TEMPERATURE: float = 0.3
     LLM_TIMEOUT_SECONDS: float = 60.0
+    # Upper bound on the whole retry sweep. Without it, a total outage would
+    # walk every key against every model (dozens of keys x 60s) and leave the
+    # caller hanging for hours instead of returning the fallback message.
+    LLM_TOTAL_TIMEOUT_SECONDS: float = 120.0
 
     # Primary key fallback (used only when no OPENROUTER_API_KEY<N> vars are found).
     LLM_API_KEY: str = ""

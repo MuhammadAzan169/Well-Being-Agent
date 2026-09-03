@@ -138,6 +138,7 @@ dashboard. **Nothing sensitive is ever committed.**
 | `LLM_MAX_TOKENS` | `1500` | Response length cap |
 | `LLM_TEMPERATURE` | `0.3` | Sampling temperature |
 | `LLM_TIMEOUT_SECONDS` | `60` | Per-request timeout |
+| `LLM_TOTAL_TIMEOUT_SECONDS` | `120` | Cap on the whole key/model retry sweep |
 | `EMBEDDING_MODEL` | `sentence-transformers/all-MiniLM-L6-v2` | **Must match the model the index was built with** |
 | `INDEX_PATH` | `data/cancer_index_store` | Persisted vector index |
 | `DATASET_PATH` | `data/DataSet/breast_cancer_comprehensive.json` | Source dataset |
@@ -157,7 +158,13 @@ Key rotation: the backend discovers `OPENROUTER_API_KEY1`, `OPENROUTER_API_KEY2`
 … in order and tries every key for each model before moving to the next model
 in the `OPENROUTER_MODEL_<N>` chain. A rate-limited or invalid key is skipped
 automatically; a model that returns 400/404 is dropped without burning the
-remaining keys against it.
+remaining keys against it. The entire sweep is bounded by
+`LLM_TOTAL_TIMEOUT_SECONDS`, so a provider outage returns the fallback
+message promptly rather than hanging.
+
+Model ids on OpenRouter are retired regularly. If answers suddenly become
+the fallback message, check your chain against the live list:
+`curl -H "Authorization: Bearer $KEY" https://openrouter.ai/api/v1/models`.
 
 ### `frontend/.env`
 
