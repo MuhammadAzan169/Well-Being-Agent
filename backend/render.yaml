@@ -88,6 +88,6 @@ services:
       - key: LLM_BASE_URL
         value: https://openrouter.ai/api/v1
       - key: LLM_MODEL
-        value: openai/gpt-oss-20b:free
+        value: nvidia/nemotron-3-super-120b-a12b:free
       - key: LLM_MAX_TOKENS
         value: "1500"

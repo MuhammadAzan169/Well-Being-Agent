@@ -55,7 +55,7 @@ class Settings(BaseSettings):
 
     # ── LLM ────────────────────────────────────────────────────────────────
     LLM_PROVIDER: str = "openrouter"
-    LLM_MODEL: str = "openai/gpt-oss-20b:free"
+    LLM_MODEL: str = "nvidia/nemotron-3-super-120b-a12b:free"
     LLM_BASE_URL: str = "https://openrouter.ai/api/v1"
     LLM_MAX_TOKENS: int = 1500
     LLM_TEMPERATURE: float = 0.3

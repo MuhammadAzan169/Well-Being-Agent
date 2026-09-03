@@ -133,7 +133,7 @@ dashboard. **Nothing sensitive is ever committed.**
 | `OPENROUTER_API_KEY1`, `…2`, `…3` | — | API keys; extra numbered keys rotate on rate limits |
 | `LLM_API_KEY` | — | Single-key fallback when no numbered keys exist |
 | `OPENROUTER_MODEL_1`, `…2`, … | — | Ordered model fallback chain |
-| `LLM_MODEL` | `openai/gpt-oss-20b:free` | Fallback when no numbered models exist |
+| `LLM_MODEL` | `nvidia/nemotron-3-super-120b-a12b:free` | Fallback when no numbered models exist |
 | `LLM_BASE_URL` | `https://openrouter.ai/api/v1` | Any OpenAI-compatible endpoint |
 | `LLM_MAX_TOKENS` | `1500` | Response length cap |
 | `LLM_TEMPERATURE` | `0.3` | Sampling temperature |
@@ -284,7 +284,7 @@ and switching models is an environment-variable change.
    | `ALLOWED_ORIGINS` | `https://<your-project>.vercel.app` |
    | `OPENROUTER_API_KEY1` | *your key* (add `…2`, `…3` for rotation) |
    | `OPENROUTER_MODEL_1` | *e.g.* `openai/gpt-oss-120b` (optional chain) |
-   | `LLM_MODEL` | `openai/gpt-oss-20b:free` |
+   | `LLM_MODEL` | `nvidia/nemotron-3-super-120b-a12b:free` |
    | `LLM_BASE_URL` | `https://openrouter.ai/api/v1` |
    | `EMBEDDING_MODEL` | `sentence-transformers/all-MiniLM-L6-v2` |
    | `FASTEMBED_CACHE_PATH` | `/opt/render/project/src/backend/var/fastembed-cache` |
